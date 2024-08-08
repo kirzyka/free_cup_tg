@@ -28,6 +28,7 @@ async function initCamera() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    document.body.style.height = `${window.innerHeight}px`;
     initCamera(); // Запрос задней камеры при загрузке страницы
     setMsg("Инициализация камеры...");
 });
