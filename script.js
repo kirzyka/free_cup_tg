@@ -3,6 +3,7 @@ let msg = document.getElementById('msg');
 let canvas = document.createElement('canvas');
 let canvasContext = canvas.getContext('2d');
 let currentStream = null; // Хранит текущий видеопоток
+let scanAttempts = 0; // Счётчик попыток сканирования
 
 function setMsg(message) {
     msg.innerHTML = message;
@@ -26,6 +27,8 @@ async function initCamera() {
         video.addEventListener('loadedmetadata', () => {
             video.style.width = '100%'; // Устанавливаем размеры элемента video
             video.style.height = 'auto'; // Или установите фиксированную высоту, если это нужно
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
             setMsg("Видео загружено, начинаем сканирование...");
             scan(); // Запуск сканирования QR-кода
         });
@@ -36,6 +39,8 @@ async function initCamera() {
 
 function scan() {
     if (currentStream) {
+        scanAttempts++; // Увеличиваем счётчик попыток
+
         // Установим размеры canvas равными размерам video
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -53,7 +58,7 @@ function scan() {
             setMsg("QR-код найден: " + code.data);
             console.log("QR-код найден:", code.data);
         } else {
-            setMsg("Ищем QR-код...");
+            setMsg(`Ищем QR-код... Попытка #${scanAttempts}`);
         }
 
         // Повторяем сканирование через небольшой интервал
