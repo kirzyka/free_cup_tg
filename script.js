@@ -9,10 +9,16 @@ function setMsg(message) {
 
 async function initCamera() {
     try {
+        if (currentStream) {
+            // Если видеопоток уже инициализирован, не запрашиваем снова
+            setMsg("Камера уже запущена.");
+            return;
+        }
+
         // Проверка доступных устройств
         const devices = await navigator.mediaDevices.enumerateDevices();
         const videoDevices = devices.filter(device => device.kind === 'videoinput');
-        
+
         if (videoDevices.length === 0) {
             setMsg("Нет доступных видеоустройств.");
             return;
