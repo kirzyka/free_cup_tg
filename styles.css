@@ -3,7 +3,7 @@ body {
     padding: 20px; /* Отступы вокруг всех элементов */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* Размещаем элементы по вертикали с равными промежутками */
     align-items: center;
     height: calc(100vh - 40px); /* Учитываем отступы */
     background-color: black;
@@ -21,10 +21,10 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
-    max-width: calc(100vh - 40px); /* Делаем видео квадратным */
-    max-height: calc(100vh - 40px); /* Делаем видео квадратным */
+    width: 100%;
+    max-width: 400px; /* Ограничиваем максимальный размер видео */
+    aspect-ratio: 1/1; /* Делаем видео квадратным */
+    background-color: black;
 }
 
 video {
@@ -35,10 +35,7 @@ video {
 }
 
 #msg {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    text-align: center;
+    margin-top: 20px;
     color: #228B22; /* Зелёный цвет для сообщения */
+    text-align: center;
 }
