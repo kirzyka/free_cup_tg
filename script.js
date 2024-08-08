@@ -1,8 +1,6 @@
-import { BrowserQRCodeReader } from '@zxing/library';
-
 let video = document.getElementById('videoElement');
 let msg = document.getElementById('msg');
-let codeReader = new BrowserQRCodeReader();
+let codeReader = new ZXing.BrowserQRCodeReader();
 
 function setMsg(message) {
     msg.innerHTML = message;
@@ -30,8 +28,8 @@ function scan() {
         if (result) {
             setMsg("QR-код найден: " + result.text);
             console.log("QR-код найден:", result.text);
-            // Вы можете обработать найденный QR-код здесь
-        } else if (err && !(err instanceof zxing.NotFoundException)) {
+            // Здесь можно прекратить сканирование или выполнить другую логику
+        } else if (err && !(err instanceof ZXing.NotFoundException)) {
             setMsg("Ошибка сканирования: " + err);
             console.error("Ошибка сканирования:", err);
         } else {
