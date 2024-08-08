@@ -1,6 +1,7 @@
 let video = document.getElementById('videoElement');
 let msg = document.getElementById('msg');
-let codeReader = new ZXing.BrowserQRCodeReader();
+let canvas = document.createElement('canvas');
+let canvasContext = canvas.getContext('2d');
 let currentStream = null; // Хранит текущий видеопоток
 
 function setMsg(message) {
@@ -12,15 +13,6 @@ async function initCamera() {
         if (currentStream) {
             // Если видеопоток уже инициализирован, не запрашиваем снова
             setMsg("Камера уже запущена.");
-            return;
-        }
-
-        // Проверка доступных устройств
-        const devices = await navigator.mediaDevices.enumerateDevices();
-        const videoDevices = devices.filter(device => device.kind === 'videoinput');
-
-        if (videoDevices.length === 0) {
-            setMsg("Нет доступных видеоустройств.");
             return;
         }
 
@@ -44,18 +36,28 @@ async function initCamera() {
 
 function scan() {
     if (currentStream) {
-        // Используем уже открытый видеопоток
-        codeReader.decodeFromVideoDevice(null, video, (result, err) => {
-            if (result) {
-                setMsg("QR-код найден: " + result.text);
-                console.log("QR-код найден:", result.text);
-            } else if (err && !(err instanceof ZXing.NotFoundException)) {
-                setMsg("Ошибка сканирования: " + err);
-                console.error("Ошибка сканирования:", err);
-            } else {
-                setMsg("Ищем QR-код...");
-            }
+        // Установим размеры canvas равными размерам video
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        // Отображаем видео на canvas
+        canvasContext.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Считываем изображение из canvas и сканируем QR-код
+        let imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+        let code = jsQR(imageData.data, canvas.width, canvas.height, {
+            inversionAttempts: "dontInvert",
         });
+
+        if (code) {
+            setMsg("QR-код найден: " + code.data);
+            console.log("QR-код найден:", code.data);
+        } else {
+            setMsg("Ищем QR-код...");
+        }
+
+        // Повторяем сканирование через небольшой интервал
+        requestAnimationFrame(scan);
     }
 }
 
