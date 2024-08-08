@@ -2,7 +2,11 @@
     <h1>Scan QR code</h1>
 
     <video autoplay style="width: 300px; height: 300px; background-color: cadetblue;"></video>
+    <p id="msg"/>
     <script>
+        const setMsg = (msg) => {
+            document.getElementById("msg").innerHTML = msg;
+        }
         async function initCamera() {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
@@ -14,10 +18,9 @@
                     video.play();
                 };
 
-                console.log("Поток успешно передан в элемент video.");
+                setMsg("Поток успешно передан в элемент video.");
             } catch (error) {
-                console.log("Ошибка при доступе к камере:", error);
-                alert("Не удалось получить доступ к камере.");
+                setMsg(`Ошибка при доступе к камере: ${error}`);
             }
         }
 
