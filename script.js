@@ -12,25 +12,22 @@ function setMsg(message) {
 async function initCamera() {
     try {
         if (currentStream) {
-            // Если видеопоток уже инициализирован, не запрашиваем снова
             setMsg("Камера уже запущена.");
             return;
         }
 
-        // Запрашиваем доступ к камере и получаем видеопоток
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         currentStream = stream; // Сохраняем видеопоток
         video.srcObject = stream;
         video.play();
 
-        // Убедимся, что элемент video имеет размеры
         video.addEventListener('loadedmetadata', () => {
-            video.style.width = '100%'; // Устанавливаем размеры элемента video
-            video.style.height = 'auto'; // Или установите фиксированную высоту, если это нужно
+            video.style.width = '100%';
+            video.style.height = 'auto';
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             setMsg("Видео загружено, начинаем сканирование...");
-            scan(); // Запуск сканирования QR-кода
+            scan();
         });
     } catch (err) {
         setMsg("Ошибка доступа к камере: " + err);
@@ -48,25 +45,33 @@ function scan() {
         // Отображаем видео на canvas
         canvasContext.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        // Считываем изображение из canvas и сканируем QR-код
-        let imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
-        let code = jsQR(imageData.data, canvas.width, canvas.height, {
-            inversionAttempts: "dontInvert",
-        });
+        try {
+            // Считываем изображение из canvas и сканируем QR-код
+            let imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+            if (imageData.data.length === 0) {
+                setMsg('Ошибка: Пустые данные изображения');
+                return;
+            }
 
-        if (code) {
-            setMsg("QR-код найден: " + code.data);
-            console.log("QR-код найден:", code.data);
-        } else {
-            setMsg(`Ищем QR-код... Попытка #${scanAttempts}`);
+            let code = jsQR(imageData.data, canvas.width, canvas.height, {
+                inversionAttempts: "dontInvert",
+            });
+
+            if (code) {
+                setMsg("QR-код найден: " + code.data);
+            } else {
+                setMsg(`Ищем QR-код... Попытка #${scanAttempts}`);
+            }
+        } catch (error) {
+            setMsg('Ошибка сканирования: ' + error.message);
         }
 
-        // Повторяем сканирование через небольшой интервал
-        requestAnimationFrame(scan);
+        // Повторяем сканирование через 200 мс
+        setTimeout(() => requestAnimationFrame(scan), 200);
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    initCamera(); // Инициализация камеры
+    initCamera();
     setMsg("Инициализация камеры...");
 });
