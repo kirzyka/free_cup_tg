@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css"> <!-- Подключение файла стилей -->
 </head>
 <body>
-    <h1>Scan QR Code <span>v.0.0.8</span></h1>
+    <h1>Scan QR Code <span>v.0.0.9</span></h1>
 
     <div id="videoContainer">
         <video id="videoElement" autoplay playsinline muted></video>
@@ -15,7 +15,8 @@
     
     <p id="msg"></p> <!-- Элемент для вывода сообщений -->
 
+    <script type="module" src="https://unpkg.com/@zxing/library@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js"></script>
-    <script src="script.js?v=0.0.8"></script> <!-- Подключение файла скриптов -->
+    <script type="module" src="script.js?v=0.0.9"></script> <!-- Подключение файла скриптов -->
 </body>
 </html>

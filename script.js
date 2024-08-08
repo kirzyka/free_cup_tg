@@ -1,5 +1,8 @@
+import { BrowserQRCodeReader } from '@zxing/library';
+
 let video = document.getElementById('videoElement');
 let msg = document.getElementById('msg');
+let codeReader = new BrowserQRCodeReader();
 
 function setMsg(message) {
     msg.innerHTML = message;
@@ -12,10 +15,9 @@ function initCamera() {
         video.play();
         setMsg("Камера запущена");
 
-        // Начинаем сканирование, когда видео начинает проигрываться
         video.addEventListener('playing', () => {
             setMsg("Видео воспроизводится, начинаем сканирование...");
-            requestAnimationFrame(scan);  // Запускаем сканирование
+            scan(); // Запуск сканирования QR-кода
         });
     })
     .catch((err) => {
@@ -24,27 +26,18 @@ function initCamera() {
 }
 
 function scan() {
-    let canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    let context = canvas.getContext('2d');
-
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-    
-    // Добавим отладочное сообщение, чтобы проверить, что изображение захватывается
-    setMsg("Захвачено изображение, начинаем сканирование...");
-
-    let code = jsQR(imageData.data, canvas.width, canvas.height);
-
-    if (code) {
-        setMsg("QR-код найден: " + code.data);
-        console.log("QR-код найден:", code.data);
-        // Здесь можно прекратить сканирование или выполнить другую логику
-    } else {
-        setMsg("QR-код не найден, продолжаем сканирование...");
-        requestAnimationFrame(scan); // Продолжаем сканирование
-    }
+    codeReader.decodeFromVideoDevice(null, 'videoElement', (result, err) => {
+        if (result) {
+            setMsg("QR-код найден: " + result.text);
+            console.log("QR-код найден:", result.text);
+            // Вы можете обработать найденный QR-код здесь
+        } else if (err && !(err instanceof zxing.NotFoundException)) {
+            setMsg("Ошибка сканирования: " + err);
+            console.error("Ошибка сканирования:", err);
+        } else {
+            setMsg("Ищем QR-код...");
+        }
+    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
