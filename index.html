@@ -5,17 +5,16 @@
     <script>
         async function initCamera() {
             try {
-                const devices = await navigator.mediaDevices.enumerateDevices();
-                const hasCamera = devices.some(device => device.kind === 'videoinput');
-                
-                if (!hasCamera) {
-                    alert("Камера не найдена на устройстве.");
-                    return;
-                }
-
                 const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
                 const video = document.querySelector("video");
+
                 video.srcObject = stream;
+
+                video.onloadedmetadata = () => {
+                    video.play();
+                };
+
+                console.log("Поток успешно передан в элемент video.");
             } catch (error) {
                 console.log("Ошибка при доступе к камере:", error);
                 alert("Не удалось получить доступ к камере.");
