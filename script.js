@@ -13,10 +13,11 @@ function initCamera() {
         currentStream = stream; // Сохраняем видеопоток
         video.srcObject = stream;
         video.play();
-        setMsg("Камера запущена");
 
-        // Запуск сканирования после того, как видео начнет воспроизводиться
+        // Убедимся, что элемент video имеет размеры
         video.addEventListener('loadedmetadata', () => {
+            video.style.width = '100%'; // Устанавливаем размеры элемента video
+            video.style.height = 'auto'; // Или установите фиксированную высоту, если это нужно
             setMsg("Видео загружено, начинаем сканирование...");
             scan(); // Запуск сканирования QR-кода
         });
@@ -29,7 +30,7 @@ function initCamera() {
 function scan() {
     if (currentStream) {
         // Используем уже открытый видеопоток
-        codeReader.decodeFromStream(currentStream, video, (result, err) => {
+        codeReader.decodeFromVideoDevice(null, video, (result, err) => {
             if (result) {
                 setMsg("QR-код найден: " + result.text);
                 console.log("QR-код найден:", result.text);
