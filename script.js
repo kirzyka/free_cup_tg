@@ -11,9 +11,11 @@ function initCamera() {
         video.srcObject = stream;
         video.play();
         setMsg("Камера запущена");
-        
-        video.addEventListener('loadedmetadata', () => {
-            requestAnimationFrame(scan);  // Начинаем сканировать только после загрузки метаданных видео
+
+        // Начинаем сканирование, когда видео начинает проигрываться
+        video.addEventListener('playing', () => {
+            setMsg("Видео воспроизводится, начинаем сканирование...");
+            requestAnimationFrame(scan);  // Запускаем сканирование
         });
     })
     .catch((err) => {
@@ -33,10 +35,9 @@ function scan() {
 
     if (code) {
         setMsg("QR-код найден: " + code.data);
-        // Вы можете обработать найденный QR-код здесь, например, прекратить сканирование
+        // Здесь можно прекратить сканирование или выполнить другую логику
     } else {
-        setMsg("Ищем QR-код...");
-        requestAnimationFrame(scan); // Повторяем сканирование
+        requestAnimationFrame(scan); // Продолжаем сканирование
     }
 }
 
