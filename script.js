@@ -31,12 +31,18 @@ function scan() {
 
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    
+    // Добавим отладочное сообщение, чтобы проверить, что изображение захватывается
+    setMsg("Захвачено изображение, начинаем сканирование...");
+
     let code = jsQR(imageData.data, canvas.width, canvas.height);
 
     if (code) {
         setMsg("QR-код найден: " + code.data);
+        console.log("QR-код найден:", code.data);
         // Здесь можно прекратить сканирование или выполнить другую логику
     } else {
+        setMsg("QR-код не найден, продолжаем сканирование...");
         requestAnimationFrame(scan); // Продолжаем сканирование
     }
 }
