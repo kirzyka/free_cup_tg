@@ -7,9 +7,19 @@ function setMsg(message) {
     msg.innerHTML = message;
 }
 
-function initCamera() {
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-    .then((stream) => {
+async function initCamera() {
+    try {
+        // Проверка доступных устройств
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter(device => device.kind === 'videoinput');
+        
+        if (videoDevices.length === 0) {
+            setMsg("Нет доступных видеоустройств.");
+            return;
+        }
+
+        // Запрашиваем доступ к камере и получаем видеопоток
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
         currentStream = stream; // Сохраняем видеопоток
         video.srcObject = stream;
         video.play();
@@ -21,10 +31,9 @@ function initCamera() {
             setMsg("Видео загружено, начинаем сканирование...");
             scan(); // Запуск сканирования QR-кода
         });
-    })
-    .catch((err) => {
+    } catch (err) {
         setMsg("Ошибка доступа к камере: " + err);
-    });
+    }
 }
 
 function scan() {
