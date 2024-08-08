@@ -15,8 +15,9 @@ function initCamera() {
         video.play();
         setMsg("Камера запущена");
 
-        video.addEventListener('playing', () => {
-            setMsg("Видео воспроизводится, начинаем сканирование...");
+        // Запуск сканирования после того, как видео начнет воспроизводиться
+        video.addEventListener('loadedmetadata', () => {
+            setMsg("Видео загружено, начинаем сканирование...");
             scan(); // Запуск сканирования QR-кода
         });
     })
@@ -28,7 +29,7 @@ function initCamera() {
 function scan() {
     if (currentStream) {
         // Используем уже открытый видеопоток
-        codeReader.decodeFromStream(currentStream, 'videoElement', (result, err) => {
+        codeReader.decodeFromStream(currentStream, video, (result, err) => {
             if (result) {
                 setMsg("QR-код найден: " + result.text);
                 console.log("QR-код найден:", result.text);
