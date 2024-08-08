@@ -24,6 +24,7 @@ h1 {
     width: 100%;
     max-width: 400px; /* Ограничиваем максимальный размер видео */
     aspect-ratio: 1/1; /* Делаем видео квадратным */
+    max-height: 400px;;
     background-color: black;
 }
 
