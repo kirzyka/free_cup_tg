@@ -1,51 +1,28 @@
 <div>
     <h1>Scan QR code</h1>
 
-    <p id="msg" style="color: red;"></p> <!-- Элемент для вывода сообщений -->
-    <ul id="deviceList"></ul> <!-- Список устройств -->
-
     <video id="videoElement" autoplay playsinline muted style="width: 300px; height: 300px; background-color: cadetblue;"></video>
-    
+    <p id="msg" style="color: red;"></p> <!-- Элемент для вывода сообщений -->
     <script>
         const setMsg = (msg) => {
             document.getElementById("msg").innerHTML = msg;
         };
 
-        async function getDevices() {
+        async function initCamera() {
             try {
-                const devices = await navigator.mediaDevices.enumerateDevices();
-                const videoDevices = devices.filter(device => device.kind === 'videoinput');
-                
-                const deviceList = document.getElementById("deviceList");
-                deviceList.innerHTML = ""; // Очистка списка перед добавлением элементов
-
-                videoDevices.forEach((device, index) => {
-                    const listItem = document.createElement("li");
-                    listItem.textContent = `${index + 1}: ${device.label || `Камера ${index + 1}`}`;
-                    listItem.onclick = () => initCamera(device.deviceId); // Установка камеры по клику
-                    deviceList.appendChild(listItem);
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        facingMode: { exact: "environment" } // Запрос задней камеры
+                    },
+                    audio: false
                 });
-
-                if (videoDevices.length === 0) {
-                    setMsg("Видеоустройства не найдены.");
-                } else {
-                    setMsg("Выберите камеру из списка.");
-                }
-            } catch (error) {
-                setMsg("Ошибка при получении списка устройств: " + error.message);
-            }
-        }
-
-        async function initCamera(deviceId) {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId: { exact: deviceId } }, audio: false });
                 const video = document.getElementById("videoElement");
 
                 video.srcObject = stream;
 
                 video.onloadedmetadata = () => {
                     video.play();
-                    setMsg("Video is playing from selected camera.");
+                    setMsg("Metadata loaded. Video should be playing.");
                 };
 
                 video.onplay = () => {
@@ -65,8 +42,8 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            getDevices(); // Получение и вывод списка устройств при загрузке страницы
-            setMsg("Fetching available devices...");
+            initCamera();
+            setMsg("Initializing camera...");
         });
     </script>
 </div>
