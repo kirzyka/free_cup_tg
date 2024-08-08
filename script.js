@@ -1,33 +1,42 @@
-const setMsg = (msg) => {
-    document.getElementById("msg").innerHTML = msg;
-};
+let video = document.getElementById('videoElement');
+let msg = document.getElementById('msg');
 
-async function initCamera() {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-            video: {
-                facingMode: { exact: "environment" } // Запрос задней камеры
-            },
-            audio: false
-        });
-        const video = document.getElementById("videoElement");
+function setMsg(message) {
+    msg.innerHTML = message;
+}
 
+function initCamera() {
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+    .then((stream) => {
         video.srcObject = stream;
+        video.play();
+        requestAnimationFrame(scan);
+    })
+    .catch((err) => {
+        setMsg("Ошибка доступа к камере: " + err);
+    });
+}
 
-        video.onloadedmetadata = () => {
-            video.play();
-            setMsg(""); // Очистка сообщения после успешного запуска видео
-        };
+function scan() {
+    let canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    let context = canvas.getContext('2d');
 
-        video.onerror = (e) => {
-            setMsg("Video error: " + e.message);
-        };
-    } catch (error) {
-        setMsg("Ошибка при доступе к камере: " + error.message);
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    let code = jsQR(imageData.data, canvas.width, canvas.height);
+
+    if (code) {
+        setMsg("QR-код найден: " + code.data);
+        // Вы можете обработать найденный QR-код здесь
+    } else {
+        setMsg("Ищем QR-код...");
+        requestAnimationFrame(scan); // Повторяем сканирование
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    initCamera(); // Запрос задней камеры при загрузке страницы
+    initCamera(); // Инициализация камеры
     setMsg("Инициализация камеры...");
 });
