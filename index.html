@@ -1,29 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Scanner</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
+    <h1>Scan QR Code</h1>
+
     <div id="scannerPage">
-        <h1>Scan QR Code <span>v.0.1.9</span></h1>
-        <div id="videoContainer">
-            <video id="videoElement" autoplay playsinline muted></video>
-        </div>
-        <p id="msg"></p> <!-- Элемент для вывода общих сообщений -->
-        <p id="telegramMsg"></p> <!-- Элемент для вывода сообщений от Telegram -->
+        <p id="telegramMsg"></p> <!-- Информация о пользователе -->
+        <p id="msg"></p> <!-- Элемент для вывода сообщений -->
     </div>
 
     <div id="resultPage" style="display: none;">
-        <h1>Scan Result</h1>
         <p id="scanResult"></p>
-        <button id="backButton">Scan Another QR Code</button>
+        <button id="backButton">Вернуться к сканированию</button>
     </div>
 
-    <script src="script.js?v=0.1.9"></script> <!-- Подключение файла скриптов -->
+    <script src="script.js?v=0.2.0"></script>
 </body>
 </html>

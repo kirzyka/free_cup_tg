@@ -17,7 +17,11 @@ if (window.Telegram && window.Telegram.WebApp) {
     const platform = webApp.platform || "Unknown platform";
 
     const fullName = `${firstName} ${lastName}`.trim();
-    telegramMsg.innerText = `Имя пользователя: ${username}, Полное имя: ${fullName}, Платформа: ${platform}`;
+    telegramMsg.innerHTML = `
+        <strong>Имя пользователя:</strong> ${username}<br>
+        <strong>Полное имя:</strong> ${fullName}<br>
+        <strong>Платформа:</strong> ${platform}
+    `;
     
     // Изменение цвета заголовка в соответствии с цветом фона
     document.querySelector('h1').style.color = webApp.themeParams?.headerColor || 'white';
