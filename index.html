@@ -3,23 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Scanner</title>
+    <title>FreeCup QR Scanner</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <h1>Scan QR Code</h1>
+    <h1>FreeCup</h1>
 
-    <div id="scannerPage">
-        <p id="telegramMsg"></p> <!-- Информация о пользователе -->
-        <p id="msg"></p> <!-- Элемент для вывода сообщений -->
+    <div id="content">
+        <p id="msg"></p> <!-- Элемент для вывода сообщений и результата -->
+        <button id="scanButton">Сканировать QR-код</button>
     </div>
 
-    <div id="resultPage" style="display: none;">
-        <p id="scanResult"></p>
-        <button id="backButton">Вернуться к сканированию</button>
-    </div>
-
-    <script src="script.js?v=0.2.0"></script>
+    <script src="script.js?v=0.2.1"></script>
 </body>
 </html>
