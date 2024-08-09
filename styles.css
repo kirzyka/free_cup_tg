@@ -28,6 +28,7 @@ h1 span {
     align-items: center;
     width: 100%;
     max-width: 300px;
+    max-height: 300px;
     aspect-ratio: 1/1; /* Делаем видео квадратным */
     background-color: rgb(47, 60, 68);
     margin: 20px;
