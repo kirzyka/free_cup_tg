@@ -23,19 +23,32 @@ if (window.Telegram && window.Telegram.WebApp) {
     document.querySelector('h1').style.color = telegram.themeParams?.headerColor || 'white';
 
     setMsg(`${username} (${fullName}), ищем QR-код...`);
+    
+    // Отладка: выводим сообщение перед вызовом метода showScanQrPopup
+    setMsg(`${username}, вызов метода showScanQrPopup...`);
 
-    // Используем встроенный метод Telegram для сканирования QR-кода
-    telegram.WebApp.showScanQrPopup({
-        text: 'Пожалуйста, отсканируйте QR-код',
-        callback: (result) => {
-            if (result) {
-                setMsg(`QR-код найден: ${result}`);
-                showResult(result);
-            } else {
-                setMsg('QR-код не найден');
+    try {
+        // Используем встроенный метод Telegram для сканирования QR-кода
+        telegram.WebApp.showScanQrPopup({
+            text: 'Пожалуйста, отсканируйте QR-код',
+            callback: (result) => {
+                if (result) {
+                    setMsg(`QR-код найден: ${result}`);
+                    showResult(result);
+                } else {
+                    setMsg('QR-код не найден');
+                }
             }
-        }
-    });
+        });
+
+        // Отладка: если вызов метода прошёл, выводим сообщение
+        setMsg(`${username}, окно для сканирования QR-кода вызвано.`);
+    } catch (error) {
+        // Если произошла ошибка, выводим её
+        setMsg(`Ошибка при вызове showScanQrPopup: ${error.message}`);
+    }
+} else {
+    setMsg('Telegram WebApp API не доступен.');
 }
 
 function setMsg(message) {
@@ -52,16 +65,21 @@ backButton.addEventListener('click', () => {
     resultPage.style.display = 'none';
     scannerPage.style.display = 'block';
     setMsg("Сканирование QR-кода...");
-    // Повторяем попытку сканирования через Telegram
-    window.Telegram.WebApp.showScanQrPopup({
-        text: 'Пожалуйста, отсканируйте QR-код',
-        callback: (result) => {
-            if (result) {
-                setMsg(`QR-код найден: ${result}`);
-                showResult(result);
-            } else {
-                setMsg('QR-код не найден');
+
+    try {
+        window.Telegram.WebApp.showScanQrPopup({
+            text: 'Пожалуйста, отсканируйте QR-код',
+            callback: (result) => {
+                if (result) {
+                    setMsg(`QR-код найден: ${result}`);
+                    showResult(result);
+                } else {
+                    setMsg('QR-код не найден');
+                }
             }
-        }
-    });
+        });
+        setMsg(`Окно для сканирования QR-кода вызвано повторно.`);
+    } catch (error) {
+        setMsg(`Ошибка при повторном вызове showScanQrPopup: ${error.message}`);
+    }
 });
