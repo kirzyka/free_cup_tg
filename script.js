@@ -7,7 +7,14 @@ let scanResultElement = document.getElementById('scanResult');
 let scannerPage = document.getElementById('scannerPage');
 let resultPage = document.getElementById('resultPage');
 let backButton = document.getElementById('backButton');
-let WebApp = window.Telegram.WebApp;
+
+// Инициализация Telegram Web App
+if (window.Telegram && window.Telegram.WebApp) {
+    const telegram = window.Telegram.WebApp;
+    telegram.expand(); // Разворачивает окно на весь экран
+    const username = telegram.initDataUnsafe.user ? telegram.initDataUnsafe.user.username : "User";
+    setMsg(`${username}, ищем QR-код...`);
+}
 
 function setMsg(message) {
     msg.innerHTML = message;
@@ -58,7 +65,7 @@ function scan() {
                 showResult(code.data);
                 return;
             } else {
-                setMsg(`Ищем QR-код... @${WebApp?.WebAppUser?.username}`);
+                setMsg("Ищем QR-код...");
             }
         } catch (error) {
             setMsg('Ошибка сканирования: ' + error.message);
@@ -82,7 +89,6 @@ backButton.addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    //WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
     initCamera();
     setMsg("Инициализация камеры...");
 });
