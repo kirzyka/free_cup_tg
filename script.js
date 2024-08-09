@@ -58,7 +58,7 @@ function scan() {
                 showResult(code.data);
                 return;
             } else {
-                setMsg(`Ищем QR-код... @${WebApp.WebAppUser.username}`);
+                setMsg(`Ищем QR-код... @${WebApp?.WebAppUser?.username}`);
             }
         } catch (error) {
             setMsg('Ошибка сканирования: ' + error.message);
