@@ -58,7 +58,7 @@ function scan() {
                 showResult(code.data);
                 return;
             } else {
-                setMsg("Ищем QR-код...");
+                setMsg(`Ищем QR-код... @${WebApp.WebAppUser.username}`);
             }
         } catch (error) {
             setMsg('Ошибка сканирования: ' + error.message);
@@ -82,7 +82,7 @@ backButton.addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
+    //WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
     initCamera();
     setMsg("Инициализация камеры...");
 });
