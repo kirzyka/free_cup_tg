@@ -1,5 +1,6 @@
 let video = document.getElementById('videoElement');
 let msg = document.getElementById('msg');
+let telegramMsg = document.getElementById('telegramMsg'); // Новый элемент для сообщений от Telegram
 let canvas = document.createElement('canvas');
 let canvasContext = canvas.getContext('2d');
 let currentStream = null;
@@ -13,6 +14,7 @@ if (window.Telegram && window.Telegram.WebApp) {
     const telegram = window.Telegram.WebApp;
     telegram.expand(); // Разворачивает окно на весь экран
     const username = telegram.initDataUnsafe.user ? telegram.initDataUnsafe.user.username : "User";
+    telegramMsg.innerText = `Имя пользователя: ${username}`; // Выводим имя пользователя в telegramMsg
     setMsg(`${username}, ищем QR-код...`);
 }
 
