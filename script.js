@@ -14,6 +14,8 @@ if (window.Telegram && window.Telegram.WebApp) {
             }, (result) => {
                 if (result) {
                     msg.innerHTML = `QR-код найден: ${result}`;
+                    // Закрытие окна сканирования после успешного распознавания
+                    webApp.close();
                 } else {
                     msg.innerHTML = 'QR-код не найден';
                 }
