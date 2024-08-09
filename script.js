@@ -1,5 +1,6 @@
 let msg = document.getElementById('msg');
 let scanButton = document.getElementById('scanButton');
+let code = "";
 
 // Инициализация Telegram Web App
 if (window.Telegram && window.Telegram.WebApp) {
@@ -8,11 +9,13 @@ if (window.Telegram && window.Telegram.WebApp) {
 
     // Обработчик нажатия кнопки
     scanButton.addEventListener('click', () => {
+        code = "";
         try {
             webApp.showScanQrPopup({
                 text: 'Пожалуйста, отсканируйте QR-код'
             }, (result) => {
                 if (result) {
+                    code = result;
                     msg.innerHTML = `QR-код найден: ${result}`;
                 } else {
                     msg.innerHTML = 'QR-код не найден';
@@ -28,7 +31,9 @@ if (window.Telegram && window.Telegram.WebApp) {
 
     // Обработка события закрытия попапа
     window.Telegram.WebApp.onEvent('scanQrPopupClosed', () => {
-        msg.innerHTML = ''; // Очищаем сообщение при закрытии сканера
+        if (!code) {
+            msg.innerHTML = ''; // Очищаем сообщение при закрытии сканера    
+        }        
     });
 } else {
     msg.innerHTML = 'Telegram WebApp API не доступен.';
