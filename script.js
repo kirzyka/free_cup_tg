@@ -19,10 +19,15 @@ if (window.Telegram && window.Telegram.WebApp) {
                 }
             });
 
-            msg.innerHTML = 'Окно для сканирования QR-кода вызвано.';
+            msg.innerHTML = ''; // Очищаем сообщение о вызове сканера
         } catch (error) {
             msg.innerHTML = `Ошибка при вызове showScanQrPopup: ${error.message}`;
         }
+    });
+
+    // Обработка события закрытия попапа
+    window.Telegram.WebApp.onEvent('scanQrPopupClosed', () => {
+        msg.innerHTML = ''; // Очищаем сообщение при закрытии сканера
     });
 } else {
     msg.innerHTML = 'Telegram WebApp API не доступен.';
