@@ -2,20 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    
-    <title>Scan QR Code</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Подключение файла стилей -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
 </head>
 <body>
-    <h1>Scan QR Code <span>v.0.1.0</span></h1>
-
-    <div id="videoContainer">
-        <video id="videoElement" autoplay playsinline muted></video>
+    <div id="scannerPage">
+        <h1>Scan QR Code <span>v.0.1.1</span></h1>
+        <div id="videoContainer">
+            <video id="videoElement" autoplay playsinline muted></video>
+        </div>
+        <p id="msg"></p> <!-- Элемент для вывода сообщений -->
     </div>
-    
-    <p id="msg"></p> <!-- Элемент для вывода сообщений -->
 
-    <script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
-    <script src="script.js?v=0.1.0"></script> <!-- Подключение файла скриптов -->
+    <div id="resultPage" style="display: none;">
+        <h1>Scan Result</h1>
+        <p id="scanResult"></p>
+        <button id="backButton">Scan Another QR Code</button>
+    </div>
+
+    <script src="script.js?v=0.1.1"></script> <!-- Подключение файла скриптов -->
 </body>
 </html>
