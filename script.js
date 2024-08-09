@@ -7,6 +7,7 @@ let scanResultElement = document.getElementById('scanResult');
 let scannerPage = document.getElementById('scannerPage');
 let resultPage = document.getElementById('resultPage');
 let backButton = document.getElementById('backButton');
+let WebApp = 
 
 function setMsg(message) {
     msg.innerHTML = message;
@@ -81,6 +82,7 @@ backButton.addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+    WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
     initCamera();
     setMsg("Инициализация камеры...");
 });
