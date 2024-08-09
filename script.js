@@ -25,8 +25,6 @@ async function initCamera() {
         video.play();
 
         video.addEventListener('loadedmetadata', () => {
-            video.style.width = '100%';
-            video.style.height = 'auto';
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             setMsg("Видео загружено, начинаем сканирование...");
