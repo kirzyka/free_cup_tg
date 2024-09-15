@@ -37,15 +37,13 @@ export default function Scaner() {
 
     useEffect(() => {
         // Инициализация Telegram Web App
-        if (webApp) {
-          if (typeof window !== 'undefined') {
+        if (webApp) {          
           webApp.expand(); // Разворачивает окно на весь экран
           webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
             if (!code) {
               setMsg(''); // Очищаем сообщение при закрытии сканера    
             }        
           });
-        }
         } else {
             setMsg('Telegram WebApp API не доступен.');
         }    
