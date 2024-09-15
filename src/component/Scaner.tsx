@@ -36,7 +36,6 @@ export default function Scaner() {
     };
 
     useEffect(() => {
-        // Инициализация Telegram Web App
         if (webApp) {          
           webApp.expand(); // Разворачивает окно на весь экран
           webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
@@ -51,15 +50,15 @@ export default function Scaner() {
 
       return (
         <div>
-        <div>
-            <h1>FreeCup</h1>
-        </div>
-        <div>
-            <p>{msg}</p>
-        </div>
-        <div>
-            <button onClick={onScan}>Сканировать QR-код</button>
-        </div>
+          <div>
+              <h1>FreeCup</h1>
+          </div>
+          <div>
+              <p>{msg}</p>
+          </div>
+          <div>
+              <button onClick={onScan}>Сканировать QR-код</button>
+          </div>
         </div>
       );
 
