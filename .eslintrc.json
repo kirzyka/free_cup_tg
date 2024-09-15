@@ -1,12 +1,12 @@
 {
   "extends": ["next/core-web-vitals", "next/typescript"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
   "rules": {
-    "@typescript-eslint/no-explicit-any": [
-      "error",
-      {
-        "ignoreRestArgs": true,  // Это позволит использовать any для параметров catch
-        "fixToUnknown": true    // По умолчанию лучше использовать unknown вместо any
-      }
-    ]
+    "@typescript-eslint/no-implicit-any-catch": "off",
+    "@typescript-eslint/no-explicit-any": "error"
   }
 }

@@ -21,11 +21,14 @@ export default function Home() {
                 setMsg('QR-код не найден');
             }
             webApp.closeScanQrPopup();
+            return true;
         });
 
         setMsg(''); // Очищаем сообщение о вызове сканера
-    } catch (error: any) {
+    } catch (error: unknown) {
+      if (error instanceof Error) {
         setMsg(`Ошибка при вызове showScanQrPopup: ${error.message}`);
+      }
     }
   };
 
@@ -33,7 +36,7 @@ export default function Home() {
     // Инициализация Telegram Web App
     if (webApp) {
       webApp.expand(); // Разворачивает окно на весь экран
-      webApp.onEvent('scanQrPopupClosed', () => {
+      webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
         if (!code) {
           setMsg(''); // Очищаем сообщение при закрытии сканера    
         }        
