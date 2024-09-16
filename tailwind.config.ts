@@ -11,6 +11,10 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        brown: {
+          500: '#664343', // основной коричневый
+          600: '#3B3030', // более темный оттенок для hover
+        },
       },
     },
   },

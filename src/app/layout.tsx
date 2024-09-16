@@ -32,9 +32,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <WindowExpander/>
-        <header id="custom-header" style={{backgroundColor: "#55423d", height: "50px"}}>
-          Ваш заголовок
-        </header>
         {children}
       </body>
     </html>

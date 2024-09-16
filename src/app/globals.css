@@ -7,10 +7,16 @@
   --foreground: #fffffe;
 }
 
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
 }
 
 @layer utilities {
