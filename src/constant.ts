@@ -1,3 +1,10 @@
+/*
+background: var(--tg-theme-bg-color) - Цвет заднего фона под тему Telegram
+
+color: var(--tg-theme-text-color) - Цвет текста под тему Telegram
+
+var(--tg-theme-link-color) - Цвет ссылки под тему Telegram
+*/
 
 export const COLOR_BASE_BG: string = "#55423d";
 export const COLOR_BASE_HEADER: string = "#fffffe";

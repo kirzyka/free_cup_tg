@@ -10,6 +10,7 @@ export default function WindowExpander() {
     useEffect(() => {
       if (webApp) {          
         webApp.expand(); 
+        webApp.setHeaderColor('#55423d');
       //} else {
          // setMsg('Telegram WebApp API не доступен.');
       }    
