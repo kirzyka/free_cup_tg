@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Button from '@/component/button/Button';
 
 export default function Home() {
   return (
@@ -8,9 +8,7 @@ export default function Home() {
           <h1>FreeCup</h1>
         </div>
         <footer className='p-3'>
-          <button className="bg-brown-500 text-white rounded-lg px-4 py-2 hover:bg-brown-600">
-            <Link href="/coffee-shop/add">Add Caffee Shop</Link>
-          </button>
+          <Button label="Add Coffee Shop" url="/coffee-shop/add"/>
         </footer>        
       </main>
     </div>
