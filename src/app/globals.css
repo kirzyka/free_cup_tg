@@ -5,6 +5,8 @@
 :root {
   --background: #55423d;
   --foreground: #fffffe;
+  --type-1-1: #ffc0ad;
+  --type-1-2: #ffe0d6;
 }
 
 html {
