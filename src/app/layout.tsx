@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import dynamic from 'next/dynamic';
-import Script from 'next/script'
 import "./globals.css";
 
 const geistSans = localFont({
@@ -32,7 +31,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Script src="../scripts/telegram-web-app.js"/>
         <WindowExpander/>
         {children}
       </body>
