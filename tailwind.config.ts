@@ -3,21 +3,30 @@
 
 const config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/component/**/*.{js,ts,jsx,tsx,mdx}",    
   ],
   theme: {
     extend: {
       colors: {
         background: "var(--background)",
-        foreground: "var(--foreground)",
-        type1: {
-          1: "var(--type-1-1)",
-          2: "var(--type-1-2)"
+        foreground: {
+          DEFAULT:"var(--foreground)",
+          light: "var(--foreground_light)",
+          dark: "var(--foreground_dark)",
         },
-        type2: "#ff8822",
-        bb: "#4400ee",
+        content_w: {
+          DEFAULT: "var(content)",
+          light: "var(--content_light)",
+          dark: "var(--content_dark)",
+        },
+        content_b: {
+          DEFAULT: "var(--content_b)",
+        },
+        active: "var(--active)",
+        excited: "var(--excited)",
+        inactive: "var(--inactive)",
+        danger: "var(--danger)",
         brown: {
           500: '#664343', // основной коричневый
           600: '#3B3030', // более темный оттенок для hover

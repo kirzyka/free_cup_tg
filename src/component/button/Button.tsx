@@ -10,8 +10,8 @@ interface Props {
 
 const Button: FC<Props> = ({label, url}: Props) => {
     return (
-        <button className="bg-type1-1 rounded-lg p-5 hover:bg-brown-600">
-            <Link className="text-type2" href={url}>{label}</Link>
+        <button className="bg-active rounded-lg p-5 hover:bg-excited">
+            <Link className="text-content_b" href={url}>{label}</Link>
         </button>
     );
 };
