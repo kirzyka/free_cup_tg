@@ -1,3 +1,4 @@
+export const BOT_KEY: string = "6871271593:AAE3P4iB4-qUsUYzI0MBzRRYl80pyDvVUV8";
 /*
 background: var(--tg-theme-bg-color) - Цвет заднего фона под тему Telegram
 

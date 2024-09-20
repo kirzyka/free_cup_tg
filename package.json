@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@telegram-web-app/core": "^0.0.1-beta.1",
+    "grammy": "^1.30.0",
     "next": "14.2.11",
     "react": "^18",
     "react-dom": "^18"
