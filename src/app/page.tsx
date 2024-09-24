@@ -7,7 +7,7 @@ export default function Home() {
         <div className='flex flex-grow items-center'>
           <h1 className='text-3xl'>FreeCup</h1>
         </div>
-        <footer className='p-3'>
+        <footer className='w-full p-3'>
           <Button label="Add Coffee Shop" url="/coffee-shop/add"/>
         </footer>        
       </main>
