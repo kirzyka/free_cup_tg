@@ -27,8 +27,8 @@ bot.on('message:text', async (ctx) => {
   }
 
   if (text === '/link') {
-    await ctx.reply('Your link: ', {
-      reply_markup: new InlineKeyboard().url('Link', 'https://free-cup.vercel.app'),
+    await ctx.reply('FreeCup: ', {
+      reply_markup: new InlineKeyboard().url('Link', 'https://free-cup-tg.vercel.app'),
     });
     return;
   }
