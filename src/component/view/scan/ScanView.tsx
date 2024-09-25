@@ -1,8 +1,8 @@
-import Scaner from "@/component/Scaner";
+//import Scaner from "@/component/Scaner";
 import Link from "next/link";
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 
-//const Scaner = dynamic(() => import('../../component/Scaner'), { ssr: false });
+const Scaner = dynamic(() => import('@/component/Scaner'), { ssr: false });
 
 const ScanView = () => {
     return (
