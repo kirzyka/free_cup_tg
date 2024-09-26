@@ -3,6 +3,7 @@
 import { TelegramWebAppContainer,  } from "@telegram-web-app/core";
 import { useEffect, useState } from "react";
 import Button from "@/component/button/Button";
+import { QrTextReceivedCallbackData } from "@telegram-web-app/core/types";
 
 const ScanView = () => {
   const telegram = new TelegramWebAppContainer();
@@ -15,7 +16,8 @@ const ScanView = () => {
   const openScanQrPopup = () => {  
     try {
       webApp.showScanQrPopup({
-        text: 'Пожалуйста, отсканируйте QR-код'
+        text: 'Пожалуйста, отсканируйте QR-код',
+        
       }, (result: string | null) => { 
         if (result) {
           setCode(result);
@@ -36,6 +38,9 @@ const ScanView = () => {
     webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
       setMsg('Окно закрыто');
     }); 
+    webApp.onEvent('qrTextReceived', (data: QrTextReceivedCallbackData) => {
+      setMsg('Код получен:' + data.data);
+    });
     openScanQrPopup();
   }, []); 
 
