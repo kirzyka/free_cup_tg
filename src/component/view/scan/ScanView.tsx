@@ -26,7 +26,9 @@ const ScanView = () => {
           //webApp.closeScanQrPopup();
           return true;
         });
-      }      
+      } else {
+        setMsg('Telegram WebApp API не доступен.');
+      }     
     } catch (e: unknown) {
       setError((e as Error).message);
     }    
@@ -69,6 +71,7 @@ const ScanView = () => {
           <p>{error}</p>
       </div>
       <footer className='flex flex-col gap-1 w-full p-3'>
+        <Button label="Scan again" onClick={openScanQrPopup}/>
         <Button label="Back" url="/"/>
       </footer>        
       </main>
