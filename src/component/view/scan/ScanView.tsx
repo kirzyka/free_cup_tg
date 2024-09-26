@@ -9,11 +9,15 @@ const ScanView = () => {
   const webApp = telegram.WebApp;
   const [msg, setMsg] = useState("");
   const [code, setCode] = useState("");
+  const [isOpened, setIsOpened] = useState(false);
 
   const openScanQrPopup = () => {  
+    setIsOpened(true);
+    console.log("Open scanQrPopup");    
     webApp.showScanQrPopup({
       text: 'Пожалуйста, отсканируйте QR-код'
     }, (result: string | null) => {
+      console.log("QRPopup callback");  
       if (result) {
         setCode(result);
         setMsg(`QR-код найден: ${result}`);
@@ -23,14 +27,17 @@ const ScanView = () => {
       webApp.closeScanQrPopup();
       return true;
     });
+    
   };
   
   useEffect(() => {
-    if (!code) {
+    console.log("UseEffect");
+    if (!isOpened) {
       webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
         setMsg('Окно закрыто');
+        setIsOpened(false);
       }); 
-      openScanQrPopup();
+      //openScanQrPopup();
     }
   }, []); 
 
@@ -39,7 +46,7 @@ const ScanView = () => {
       <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
       <div className='flex flex-col flex-grow items-center justify-center gap-3 p-5'>
           <h1 className='text-3xl'>Scan result:</h1>
-          <p>{msg}</p>
+          <p>{msg} - {code}</p>
       </div>
       <footer className='flex flex-col gap-1 w-full p-3'>
         <Button label="Scan" onClick={openScanQrPopup}/>
