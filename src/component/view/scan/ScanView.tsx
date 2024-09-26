@@ -17,7 +17,7 @@ const ScanView = () => {
 
       webApp.ready();
       webApp.onEvent('scanQrPopupClosed', () => {
-        setMsg('Окно закрыто');
+        //setMsg('Окно закрыто');
         router.back();
       }); 
 
