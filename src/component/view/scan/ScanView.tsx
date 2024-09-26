@@ -3,6 +3,9 @@
 import { TelegramWebAppContainer } from "@telegram-web-app/core";
 import { useEffect, useState } from "react";
 import Button from "@/component/button/Button";
+import Error from "next/error";
+
+type ScanViewError = Error | null;
 
 const ScanView = () => {
   const telegram = new TelegramWebAppContainer();
@@ -11,18 +14,22 @@ const ScanView = () => {
   const [code, setCode] = useState("");
 
   const openScanQrPopup = () => {  
-    webApp.showScanQrPopup({
-      text: 'Пожалуйста, отсканируйте QR-код'
-    }, (result: string | null) => { 
-      if (result) {
-        setCode(result);
-        setMsg(`QR-код найден: ${result}`);
-      } else {
-        setMsg('QR-код не найден');
-      }
-      webApp.closeScanQrPopup();
-      return true;
-    });
+    try {
+      webApp.showScanQrPopup({
+        text: 'Пожалуйста, отсканируйте QR-код'
+      }, (result: string | null) => { 
+        if (result) {
+          setCode(result);
+          setMsg(`QR-код найден: ${result}`);
+        } else {
+          setMsg('QR-код не найден');
+        }
+        webApp.closeScanQrPopup();
+        return true;
+      });
+    } catch (e: unknown) {
+      setMsg((e as Error).toString());
+    }
     
   };
   
