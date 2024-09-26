@@ -10,21 +10,19 @@ const ScanView = () => {
   const [msg, setMsg] = useState("");
   const [code, setCode] = useState("");
 
-  const openScanQrPopup = () => {
-    try {
-      webApp.showScanQrPopup({
-        text: 'Пожалуйста, отсканируйте QR-код'
-      }, (result: string | null) => {
-        if (result) {
-          setCode(result);
-          setMsg(`QR-код найден: ${result}`);
-        } else {
-          setMsg('QR-код не найден');
-        }
-        webApp.closeScanQrPopup();
-        return true;
-      });
-    }
+  const openScanQrPopup = () => {  
+    webApp.showScanQrPopup({
+      text: 'Пожалуйста, отсканируйте QR-код'
+    }, (result: string | null) => {
+      if (result) {
+        setCode(result);
+        setMsg(`QR-код найден: ${result}`);
+      } else {
+        setMsg('QR-код не найден');
+      }
+      webApp.closeScanQrPopup();
+      return true;
+    });
   };
   
   useEffect(() => {
