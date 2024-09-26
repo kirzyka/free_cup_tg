@@ -3,7 +3,6 @@
 import { TelegramWebAppContainer,  } from "@telegram-web-app/core";
 import { useEffect, useState } from "react";
 import Button from "@/component/button/Button";
-import { QrTextReceivedCallbackData } from "@telegram-web-app/core/types";
 
 const ScanView = () => {
   const telegram = new TelegramWebAppContainer();
@@ -33,7 +32,18 @@ const ScanView = () => {
     }
     
   };
-  
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
+      const webApp = window.Telegram.WebApp;
+      webApp.ready(); // Сообщаем, что приложение готово
+
+      console.log("Пользователь Telegram:", webApp.initDataUnsafe?.user?.first_name);
+      webApp.MainButton.setText("Нажмите меня!");
+      webApp.MainButton.show();
+    }
+  }, []);
+ /* 
   useEffect(() => {
     webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
       setMsg('Окно закрыто');
@@ -43,7 +53,7 @@ const ScanView = () => {
     });
     openScanQrPopup();
   }, []); 
-
+*/
   return (
     <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
       <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
