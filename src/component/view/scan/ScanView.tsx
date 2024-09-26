@@ -15,7 +15,7 @@ const ScanView = () => {
       try {
         if (typeof window !== 'undefined') {
           webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
-            setMsg('');
+            //setMsg('scanning...');
           }); 
           webApp.showScanQrPopup({
             text: 'Пожалуйста, отсканируйте QR-код'
