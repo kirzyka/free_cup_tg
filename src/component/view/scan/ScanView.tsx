@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Button from "@/component/button/Button";
 
 interface Props {
@@ -15,7 +15,6 @@ const TYPE_TO_PAGE: Record<string, string> = {
 
 const ScanView = ({type}: Props) => {
   const router = useRouter();
-  const [code, setCode] = useState("");
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
@@ -31,7 +30,6 @@ const ScanView = ({type}: Props) => {
           text: 'Пожалуйста, отсканируйте QR-код',
         }, (result: string | null) => {
           if (result) {
-            setCode(result);
             webApp.showAlert(`QR-код найден: ${result} goto ${TYPE_TO_PAGE[type]}`);
           }
           return true;
@@ -46,8 +44,7 @@ const ScanView = ({type}: Props) => {
     <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
       <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
         <div className='flex flex-col flex-grow items-center justify-center gap-3 p-5'>
-          <h1 className='text-3xl'>Scan result:</h1>
-          <p>{code}</p>
+          <h1 className='text-3xl'>Scaning...</h1>
         </div>
         <footer className='flex flex-col gap-1 w-full p-3'>
           <Button label="Back" url="/"/>
