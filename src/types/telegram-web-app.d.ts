@@ -15,8 +15,7 @@ interface TelegramWebAppUser {
       show(): void;
       hide(): void;
     };
-    on(event: 'scanQrCode' | 'popupClosed', listener: (result: string) => void): this;
-    on(event: 'scanQrCodeError', listener: (error: Error) => void): this;
+    onEvent(event: 'scanQrCode' | 'popupClosed' | 'scanQrCodeError', listener: (result: string) => void): this;
     showScanQrPopup(): Promise<void>;
     ready(): void;
   }

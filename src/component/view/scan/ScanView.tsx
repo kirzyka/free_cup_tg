@@ -38,14 +38,14 @@ const ScanView = () => {
       const webApp = window.Telegram.WebApp;
       webApp.ready(); // Сообщаем, что приложение готово
 
-      webApp.on('popupClosed', () => { //scanQrPopupClosed
+      webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
         setMsg('Окно закрыто');
       }); 
       
       webApp.showScanQrPopup();
       console.log("Пользователь Telegram:", webApp.initDataUnsafe?.user?.first_name);
-      webApp.MainButton.setText("Нажмите меня!");
-      webApp.MainButton.show();
+      //webApp.MainButton.setText("Нажмите меня!");
+      //webApp.MainButton.show();
     }
   }, []);
  /* 
