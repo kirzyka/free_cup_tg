@@ -9,7 +9,7 @@ const CloneOrNewPointView = () => {
             </div>
             <footer className='flex flex-col gap-1 w-full p-3'>
                 <Button label="New" url="/point/register"/>
-                <Button label="Clone" url="/"/>
+                <Button label="Clone" url="/point/get-copy"/>
             </footer>        
             </main>
         </div>

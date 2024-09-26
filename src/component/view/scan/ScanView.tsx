@@ -4,7 +4,16 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 import Button from "@/component/button/Button";
 
-const ScanView = () => {
+interface Props {
+  type: string;
+}
+
+const TYPE_TO_PAGE: Record<string, string> = {
+  'add': '/role',
+  'clone': '/point/clone-or-new',
+}
+
+const ScanView = ({type}: Props) => {
   const router = useRouter();
   const [code, setCode] = useState("");
 
@@ -15,7 +24,7 @@ const ScanView = () => {
       try {
         webApp.ready();
         webApp.onEvent('scanQrPopupClosed', () => {
-          router.back();
+          router.push(TYPE_TO_PAGE[type] || '/');
         });
 
         webApp.showScanQrPopup({
@@ -23,7 +32,7 @@ const ScanView = () => {
         }, (result: string | null) => {
           if (result) {
             setCode(result);
-            webApp.showAlert(result);
+            webApp.showAlert(`QR-код найден: ${result} goto ${TYPE_TO_PAGE[type]}`);
           }
           return true;
         });
