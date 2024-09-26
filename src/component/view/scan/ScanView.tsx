@@ -12,23 +12,19 @@ const ScanView = () => {
 
   const openScanQrPopup = () => {  
     try {
-      if(webApp) {
-        webApp.showScanQrPopup({
-          text: 'Пожалуйста, отсканируйте QR-код',
-          
-        }, (result: string | null) => { 
-          if (result) {
-            setCode(result);
-            setMsg(`QR-код найден: ${result}`);
-          } else {
-            setMsg('QR-код не найден');
-          }
-          //webApp.closeScanQrPopup();
-          return true;
-        });
-      } else {
-        setMsg('Telegram WebApp API не доступен.');
-      }     
+      webApp!.showScanQrPopup({
+        text: 'Пожалуйста, отсканируйте QR-код',
+        
+      }, (result: string | null) => { 
+        if (result) {
+          setCode(result);
+          setMsg(`QR-код найден: ${result}`);
+        } else {
+          setMsg('QR-код не найден');
+        }
+        //webApp.closeScanQrPopup();
+        return true;
+      });        
     } catch (e: unknown) {
       setError((e as Error).message);
     }    
@@ -50,6 +46,14 @@ const ScanView = () => {
       //webApp.MainButton.show();
     }
   }, []);
+
+  useEffect(() => {
+    if (webApp) {
+      openScanQrPopup();
+    } else {
+      setMsg('Telegram WebApp API не доступен.');
+    }  
+  }, [webApp]);
  /* 
   useEffect(() => {
     webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
