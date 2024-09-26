@@ -11,6 +11,8 @@ const ScanView = () => {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
 
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
     if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
       const webApp = window.Telegram.WebApp;
@@ -36,12 +38,16 @@ const ScanView = () => {
         });        
       } catch (e: unknown) {
         setError((e as Error).message);
-      }    
+      }   
+      
+      setIsMounted(true);
       //console.log("Пользователь Telegram:", webApp.initDataUnsafe?.user?.first_name);
       //webApp.MainButton.setText("Нажмите меня!");
       //webApp.MainButton.show();
     }
   }, []);
+
+  if (!isMounted) return null; // Ожидание, пока компонент не будет смонтирован
 
   return (
     <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
