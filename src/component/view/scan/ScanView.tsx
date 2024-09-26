@@ -11,36 +11,32 @@ const ScanView = () => {
   const [code, setCode] = useState("");
   
   useEffect(() => {
-    webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
-      if (!code) {
-        setMsg('');
-      }        
-    });  
-
-    setMsg('');
-      
-    try {
-      if (typeof window !== 'undefined') {
-        webApp.showScanQrPopup({
+    if (!code) {
+      try {
+        if (typeof window !== 'undefined') {
+          webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
+            setMsg('');
+          }); 
+          webApp.showScanQrPopup({
             text: 'Пожалуйста, отсканируйте QR-код'
-        }, (result: string | null) => {
+          }, (result: string | null) => {
             if (result) {
-                setCode(result);
-                setMsg(`QR-код найден: ${result}`);
+              setCode(result);
+              setMsg(`QR-код найден: ${result}`);
             } else {
-                setMsg('QR-код не найден');
+              setMsg('QR-код не найден');
             }
             webApp.closeScanQrPopup();
             return true;
-        });
-      }
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        setMsg(`Ошибка при вызове showScanQrPopup: ${error.message}`);
+          });
+        }
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setMsg(`Ошибка при вызове showScanQrPopup: ${error.message}`);
+        }
       }
     }
-
-  }, []);
+  }, []); 
 
   return (
     <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
