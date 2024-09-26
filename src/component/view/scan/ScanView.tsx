@@ -9,6 +9,8 @@ const ScanView = () => {
   const webApp = telegram.WebApp;
   const [msg, setMsg] = useState("");
   const [code, setCode] = useState("");
+  const [error, setError] = useState("");
+
 
   const openScanQrPopup = () => {  
     try {
@@ -25,7 +27,7 @@ const ScanView = () => {
         return true;
       });
     } catch (e: unknown) {
-      setMsg((e as Error).message);
+      setError((e as Error).message);
     }
     
   };
@@ -42,7 +44,9 @@ const ScanView = () => {
       <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
       <div className='flex flex-col flex-grow items-center justify-center gap-3 p-5'>
           <h1 className='text-3xl'>Scan result:</h1>
-          <p>{msg} - {code}</p>
+          <p>{code}</p>
+          <p>{msg}</p>
+          <p>{error}</p>
       </div>
       <footer className='flex flex-col gap-1 w-full p-3'>
         <Button label="Scan" onClick={openScanQrPopup}/>
