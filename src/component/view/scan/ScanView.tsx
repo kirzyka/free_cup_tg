@@ -5,10 +5,8 @@ import { useEffect, useState } from "react";
 import Button from "@/component/button/Button";
 
 const ScanView = () => {
-  const router = useRouter();  // Call useRouter at the top level of the component
-  const [msg, setMsg] = useState("");
+  const router = useRouter();
   const [code, setCode] = useState("");
-  const [error, setError] = useState("");
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
@@ -17,7 +15,7 @@ const ScanView = () => {
       try {
         webApp.ready();
         webApp.onEvent('scanQrPopupClosed', () => {
-          router.back(); // Safely use router here, since it's initialized outside the effect
+          router.back();
         });
 
         webApp.showScanQrPopup({
@@ -25,14 +23,12 @@ const ScanView = () => {
         }, (result: string | null) => {
           if (result) {
             setCode(result);
-            setMsg(`QR-код найден: ${result}`);
-          } else {
-            setMsg('QR-код не найден');
+            webApp.showAlert(result);
           }
           return true;
         });
       } catch (e: unknown) {
-        setError((e as Error).message);
+        console.log((e as Error).message);
       }
     }
   }, [router]);  // Add router to the dependency array
@@ -43,8 +39,6 @@ const ScanView = () => {
         <div className='flex flex-col flex-grow items-center justify-center gap-3 p-5'>
           <h1 className='text-3xl'>Scan result:</h1>
           <p>{code}</p>
-          <p>{msg}</p>
-          <p>{error}</p>
         </div>
         <footer className='flex flex-col gap-1 w-full p-3'>
           <Button label="Back" url="/"/>
