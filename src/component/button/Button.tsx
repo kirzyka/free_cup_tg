@@ -5,13 +5,15 @@ import { FC } from "react";
 
 interface Props {
     label: string;
-    url: string;
+    url?: string;
+    onClick?: () => void;
 }
 
-const Button: FC<Props> = ({label, url}: Props) => {
+const Button: FC<Props> = ({label, url, onClick}: Props) => {
     return (
-        <button className="bg-active rounded-lg p-3 font-bold rounded-full hover:bg-excited w-full">
-            <Link className="w-full block text-content_b" href={url}>{label}</Link>
+        <button className="bg-active rounded-lg p-3 font-bold rounded-full hover:bg-excited w-full" onClick={onClick}>
+            {url &&<Link className="w-full block text-content_b" href={url}>{label}</Link>}
+            {!url && label}
         </button>
     );
 };

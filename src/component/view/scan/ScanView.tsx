@@ -9,32 +9,30 @@ const ScanView = () => {
   const webApp = telegram.WebApp;
   const [msg, setMsg] = useState("");
   const [code, setCode] = useState("");
+
+  const openScanQrPopup = () => {
+    try {
+      webApp.showScanQrPopup({
+        text: 'Пожалуйста, отсканируйте QR-код'
+      }, (result: string | null) => {
+        if (result) {
+          setCode(result);
+          setMsg(`QR-код найден: ${result}`);
+        } else {
+          setMsg('QR-код не найден');
+        }
+        webApp.closeScanQrPopup();
+        return true;
+      });
+    }
+  };
   
   useEffect(() => {
     if (!code) {
-      try {
-        if (typeof window !== 'undefined') {
-          webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
-            //setMsg('scanning...');
-          }); 
-          webApp.showScanQrPopup({
-            text: 'Пожалуйста, отсканируйте QR-код'
-          }, (result: string | null) => {
-            if (result) {
-              setCode(result);
-              setMsg(`QR-код найден: ${result}`);
-            } else {
-              setMsg('QR-код не найден');
-            }
-            webApp.closeScanQrPopup();
-            return true;
-          });
-        }
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          setMsg(`Ошибка при вызове showScanQrPopup: ${error.message}`);
-        }
-      }
+      webApp.onEvent('popupClosed', () => { //scanQrPopupClosed
+        setMsg('Окно закрыто');
+      }); 
+      openScanQrPopup();
     }
   }, []); 
 
@@ -46,7 +44,8 @@ const ScanView = () => {
           <p>{msg}</p>
       </div>
       <footer className='flex flex-col gap-1 w-full p-3'>
-          <Button label="Back" url="/"/>
+        <Button label="Scan" onClick={openScanQrPopup}/>
+        <Button label="Back" url="/"/>
       </footer>        
       </main>
   </div>
