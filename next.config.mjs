@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: { 
-        serverComponentsExternalPackages: ['grammy'], 
-      }, 
+  reactStrictMode: false,
+  experimental: { 
+      serverComponentsExternalPackages: ['grammy'], 
+    }, 
 };
 
 export default nextConfig;
