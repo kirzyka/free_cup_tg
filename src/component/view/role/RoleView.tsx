@@ -8,8 +8,8 @@ const RoleView = () => {
                 <h1 className='text-3xl'>Who are you?</h1>
             </div>
             <footer className='flex flex-col gap-1 w-full p-3'>
-                <Button label="Client" url="/coffee-shop/add"/>
-                <Button label="Barista" url="/coffee-shop/clone-or-new"/>
+                <Button label="Client" url="/point/add"/>
+                <Button label="Barista" url="/point/clone-or-new"/>
             </footer>        
             </main>
         </div>
