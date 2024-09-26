@@ -1,6 +1,6 @@
 "use client";
 
-import { TelegramWebAppContainer } from "@telegram-web-app/core";
+import { TelegramWebAppContainer,  } from "@telegram-web-app/core";
 import { useEffect, useState } from "react";
 import Button from "@/component/button/Button";
 
@@ -23,7 +23,7 @@ const ScanView = () => {
         } else {
           setMsg('QR-код не найден');
         }
-        webApp.closeScanQrPopup();
+        //webApp.closeScanQrPopup();
         return true;
       });
     } catch (e: unknown) {
