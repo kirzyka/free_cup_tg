@@ -3,9 +3,6 @@
 import { TelegramWebAppContainer } from "@telegram-web-app/core";
 import { useEffect, useState } from "react";
 import Button from "@/component/button/Button";
-import Error from "next/error";
-
-type ScanViewError = Error | null;
 
 const ScanView = () => {
   const telegram = new TelegramWebAppContainer();
@@ -28,7 +25,7 @@ const ScanView = () => {
         return true;
       });
     } catch (e: unknown) {
-      setMsg((e as Error).toString());
+      setMsg((e as Error).message);
     }
     
   };
