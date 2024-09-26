@@ -4,6 +4,6 @@ const ScanView = dynamic(() => import('@/component/view/scan/ScanView'), { ssr: 
 
 export default function Page() {
     return (
-      <ScanView/>
+      <ScanView type="clone"/>
     );
 }
