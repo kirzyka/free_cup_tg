@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@telegram-web-app/core": "^0.0.1-beta.1",
     "@types/telegram-web-app": "^7.10.0",
     "grammy": "^1.30.0",
     "next": "14.2.11",

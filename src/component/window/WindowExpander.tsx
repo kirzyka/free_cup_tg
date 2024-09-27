@@ -1,16 +1,11 @@
 'use client';
 
-//import { BOT_KEY } from "@/constant";
-import { TelegramWebAppContainer } from "@telegram-web-app/core";
 import { useEffect } from "react";
 
-export default function WindowExpander() {
-    const {WebApp: webApp} = new TelegramWebAppContainer();    
-    //const t = new TelegramBot(BOT_KEY || "", { polling: true });
-
-  
+export default function WindowExpander() {  
     useEffect(() => {
-      if (webApp) {          
+      if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
+        const webApp = window.Telegram.WebApp;      
         webApp.expand(); 
         webApp.setHeaderColor("secondary_bg_color");
       //} else {
