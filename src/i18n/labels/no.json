@@ -1,0 +1,43 @@
+{
+  "CMN_BACK": "Tilbake",
+  "CMN_CLOSE": "Lukk",
+  "CMN_DELETE": "Slett",
+
+  "SCR_ROLE_HEADER": "Hvem er du?",
+  "SCR_ROLE_LBL_CLIENT": "Kunde",
+  "SCR_ROLE_LBL_BARISTA": "Barista",
+
+  "SCR_POINTS_HEADER": "Kaffebarer",
+  "SCR_POINTS_BTN_ADD_POINT": "Legg til kaffebar",
+
+  "SCR_POINT_BTN_ADD_CUP": "Gi en kopp",
+  "SCR_POINT_BTN_ADD_POINT": "Del kaffebar",
+  "SCR_POINT_BTN_POINTS": "Mine kaffebarer",
+  "SCR_POINT_BTN_CLONE_POINT": "Klon kaffebar",
+  "SCR_POINT_BTN_GET_CUP": "Få en kopp",
+  "SCR_POINT_BTN_DELETE": "Slett kaffebar",
+
+  "SCR_CLONE_OR_NEW_HEADER": "Registrer en ny kafé eller få en kopi fra en kollega?",
+  "SCR_CLONE_OR_NEW_LBL_NEW": "Registrer ny",
+  "SCR_CLONE_OR_NEW_LBL_GET": "Få en kopi",
+  
+  "SCR_REG_POINT_HEADER": "Registrer ny kaffebar",
+  "SCR_REG_POINT_LBL_NAME": "Navn:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT": "Antall kopper for gratis kopp:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT_DESCR": "Kunden må samle {cups} kopper for å få en gratis kopp.",
+  "SCR_REG_POINT_LBL_DISCOUNT_DESCR": "Dette tilsvarer en rabatt på {discount}%.",
+  "SCR_REG_POINT_BTN_REGISTER": "Registrer",
+
+  "SCR_DELETE_POINT_HEADER": "Slett Kaffebar",
+  "SCR_DELETE_POINT_DESCRIPTION_BARISTA": "Ved å slette denne kaffebaren vil du miste den unike nøkkelen som brukes av dine kunder for identifikasjon. Dette betyr at kundene dine må begynne å samle kopper på nytt. Gjenoppretting er kun mulig ved å klone kaffebaren fra kollegenes telefoner.",
+  "SCR_DELETE_POINT_DESCRIPTION_CLIENT": "Ved å slette denne kaffebaren vil du miste alle akkumulerte kopper for denne kaffebaren. Denne handlingen kan ikke angres, og du må begynne å samle kopper på nytt. Er du sikker på at du vil fortsette?",
+
+  "SCR_CODE_ADD_POINT_HEADER": "Legger til kaffebar",
+  "SCR_CODE_ADD_POINT_DESCR": "La kunden skanne koden",
+  "SCR_CODE_CLONE_HEADER": "Kloner kaffebar",
+  "SCR_CODE_CLONE_DESCR": "La kollegaen din skanne koden",
+  "SCR_CODE_ADD_CUP_HEADER": "Legger til en kopp",
+  "SCR_CODE_ADD_CUP_DESCR": "La kunden skanne koden",
+
+  "SCR_SCAN_DESCR": "Vennligst skann koden fra baristaens enhet"
+}

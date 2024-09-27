@@ -1,0 +1,43 @@
+{
+  "CMN_BACK": "Назад",
+  "CMN_CLOSE": "Закрити",
+  "CMN_DELETE": "Видалити",
+
+  "SCR_ROLE_HEADER": "Хто ви?",
+  "SCR_ROLE_LBL_CLIENT": "Клієнт",
+  "SCR_ROLE_LBL_BARISTA": "Бариста",
+
+  "SCR_POINTS_HEADER": "Кав'ярні",
+  "SCR_POINTS_BTN_ADD_POINT": "Додати кав'ярню",
+
+  "SCR_POINT_BTN_ADD_CUP": "Додати чашку",
+  "SCR_POINT_BTN_ADD_POINT": "Поділитися кав'ярнею",
+  "SCR_POINT_BTN_POINTS": "Мої кав'ярні",
+  "SCR_POINT_BTN_CLONE_POINT": "Клонувати кав'ярню",
+  "SCR_POINT_BTN_GET_CUP": "Отримати чашку",
+  "SCR_POINT_BTN_DELETE": "Видалити кав'ярню",
+
+  "SCR_CLONE_OR_NEW_HEADER": "Зареєструвати нову кав'ярню або отримати копію від колеги?",
+  "SCR_CLONE_OR_NEW_LBL_NEW": "Зареєструвати нову",
+  "SCR_CLONE_OR_NEW_LBL_GET": "Отримати копію",
+
+  "SCR_REG_POINT_HEADER": "Реєстрація нової кав'ярні",
+  "SCR_REG_POINT_LBL_NAME": "Назва:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT": "Кількість чашок для безкоштовної:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT_DESCR": "Клієнту потрібно зібрати {cups} чашок, щоб отримати одну безкоштовно.",
+  "SCR_REG_POINT_LBL_DISCOUNT_DESCR": "Це еквівалентно знижці в {discount}%.",
+  "SCR_REG_POINT_BTN_REGISTER": "Зареєструвати",
+
+  "SCR_DELETE_POINT_HEADER": "Видалити кав'ярню",
+  "SCR_DELETE_POINT_DESCRIPTION_BARISTA": "Видаливши цю кав'ярню, ви втратите унікальний ключ, який використовують ваші клієнти для ідентифікації. Це означає, що вашим клієнтам доведеться знову збирати чашки. Відновлення можливе лише шляхом клонування кав'ярні з телефонів ваших колег.",
+  "SCR_DELETE_POINT_DESCRIPTION_CLIENT": "Видаливши цю кав'ярню, ви втратите всі накопичені чашки для цієї кав'ярні. Ця дія не може бути скасована, і вам доведеться почати збирати чашки заново. Ви впевнені, що хочете продовжити?",
+
+  "SCR_CODE_ADD_POINT_HEADER": "Додавання кав'ярні",
+  "SCR_CODE_ADD_POINT_DESCR": "Дозвольте клієнту відсканувати код",
+  "SCR_CODE_CLONE_HEADER": "Клонування кав'ярні",
+  "SCR_CODE_CLONE_DESCR": "Дозвольте вашому колезі відсканувати код",
+  "SCR_CODE_ADD_CUP_HEADER": "Додавання чашки",
+  "SCR_CODE_ADD_CUP_DESCR": "Дозвольте клієнту відсканувати код",
+
+  "SCR_SCAN_DESCR": "Скануйте код з пристрою баристи"
+}

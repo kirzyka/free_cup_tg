@@ -1,0 +1,43 @@
+{
+  "CMN_BACK": "Tillbaka",
+  "CMN_CLOSE": "Stäng",
+  "CMN_DELETE": "Radera",
+
+  "SCR_ROLE_HEADER": "Vem är du?",
+  "SCR_ROLE_LBL_CLIENT": "Kund",
+  "SCR_ROLE_LBL_BARISTA": "Barista",
+
+  "SCR_POINTS_HEADER": "Kaffebarer",
+  "SCR_POINTS_BTN_ADD_POINT": "Lägg till kaffebar",
+
+  "SCR_POINT_BTN_ADD_CUP": "Ge en kopp",
+  "SCR_POINT_BTN_ADD_POINT": "Dela kaffebar",
+  "SCR_POINT_BTN_POINTS": "Mina kaffebarer",
+  "SCR_POINT_BTN_CLONE_POINT": "Klona kaffebar",
+  "SCR_POINT_BTN_GET_CUP": "Få en kopp",
+  "SCR_POINT_BTN_DELETE": "Radera kaffebar",
+
+  "SCR_CLONE_OR_NEW_HEADER": "Registrera ett nytt kafé eller få en kopia från en kollega?",
+  "SCR_CLONE_OR_NEW_LBL_NEW": "Registrera ny",
+  "SCR_CLONE_OR_NEW_LBL_GET": "Få en kopia",
+
+  "SCR_REG_POINT_HEADER": "Registrera ny kaffebar",
+  "SCR_REG_POINT_LBL_NAME": "Namn:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT": "Antal koppar för gratis kopp:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT_DESCR": "Kunden måste samla {cups} koppar för att få en gratis kopp.",
+  "SCR_REG_POINT_LBL_DISCOUNT_DESCR": "Detta motsvarar en rabatt på {discount}%.",
+  "SCR_REG_POINT_BTN_REGISTER": "Registrera",
+
+  "SCR_DELETE_POINT_HEADER": "Radera Kaffebar",
+  "SCR_DELETE_POINT_DESCRIPTION_BARISTA": "Genom att radera denna kaffebar förlorar du dess unika nyckel, som används av dina kunder för identifiering. Detta innebär att dina kunder måste börja samla koppar igen. Återställning är endast möjlig genom att klona kaffebaren från dina kollegers telefoner.",
+  "SCR_DELETE_POINT_DESCRIPTION_CLIENT": "Genom att radera denna kaffebar förlorar du alla ackumulerade koppar för denna kaffebar. Denna åtgärd kan inte ångras, och du måste börja samla koppar igen från början. Är du säker på att du vill fortsätta?",
+
+  "SCR_CODE_ADD_POINT_HEADER": "Lägger till kaffebar",
+  "SCR_CODE_ADD_POINT_DESCR": "Låt kunden skanna koden",
+  "SCR_CODE_CLONE_HEADER": "Klona kaffebar",
+  "SCR_CODE_CLONE_DESCR": "Låt din kollega skanna koden",
+  "SCR_CODE_ADD_CUP_HEADER": "Lägger till en kopp",
+  "SCR_CODE_ADD_CUP_DESCR": "Låt kunden skanna koden",
+
+  "SCR_SCAN_DESCR": "Skanna koden från baristans enhet"
+}

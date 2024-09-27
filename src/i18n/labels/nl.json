@@ -1,0 +1,43 @@
+{
+  "CMN_BACK": "Terug",
+  "CMN_CLOSE": "Sluiten",
+  "CMN_DELETE": "Verwijderen",
+
+  "SCR_ROLE_HEADER": "Wie ben jij?",
+  "SCR_ROLE_LBL_CLIENT": "Klant",
+  "SCR_ROLE_LBL_BARISTA": "Barista",
+
+  "SCR_POINTS_HEADER": "Koffiebars",
+  "SCR_POINTS_BTN_ADD_POINT": "Koffiebar toevoegen",
+
+  "SCR_POINT_BTN_ADD_CUP": "Geef een kopje",
+  "SCR_POINT_BTN_ADD_POINT": "Deel koffiebar",
+  "SCR_POINT_BTN_POINTS": "Mijn koffiebars",
+  "SCR_POINT_BTN_CLONE_POINT": "Kloon koffiebar",
+  "SCR_POINT_BTN_GET_CUP": "Ontvang een kopje",
+  "SCR_POINT_BTN_DELETE": "Verwijder koffiebar",
+  
+  "SCR_CLONE_OR_NEW_HEADER": "Registreer een nieuwe koffieshop of ontvang een kopie van een collega?",
+  "SCR_CLONE_OR_NEW_LBL_NEW": "Nieuwe registreren",
+  "SCR_CLONE_OR_NEW_LBL_GET": "Kopie ontvangen",
+
+  "SCR_REG_POINT_HEADER": "Registreer nieuwe koffiebar",
+  "SCR_REG_POINT_LBL_NAME": "Naam:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT": "Aantal kopjes voor gratis kopje:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT_DESCR": "De klant moet {cups} kopjes verzamelen om een gratis kopje te krijgen.",
+  "SCR_REG_POINT_LBL_DISCOUNT_DESCR": "Dit komt overeen met een korting van {discount}%.",
+  "SCR_REG_POINT_BTN_REGISTER": "Registreren",
+
+  "SCR_DELETE_POINT_HEADER": "Verwijder Koffiebar",
+  "SCR_DELETE_POINT_DESCRIPTION_BARISTA": "Door deze koffiebar te verwijderen, verliest u de unieke sleutel die door uw klanten voor identificatie wordt gebruikt. Dit betekent dat uw klanten opnieuw kopjes moeten verzamelen. Herstel is alleen mogelijk door de koffiebar van de telefoons van uw collega's te klonen.",
+  "SCR_DELETE_POINT_DESCRIPTION_CLIENT": "Door deze koffiebar te verwijderen, verliest u alle verzamelde kopjes voor deze koffiebar. Deze actie kan niet ongedaan worden gemaakt, en u moet opnieuw beginnen met het verzamelen van kopjes. Weet u zeker dat u door wilt gaan?",
+
+  "SCR_CODE_ADD_POINT_HEADER": "Koffiebar toevoegen",
+  "SCR_CODE_ADD_POINT_DESCR": "Laat de klant de code scannen",
+  "SCR_CODE_CLONE_HEADER": "Koffiebar klonen",
+  "SCR_CODE_CLONE_DESCR": "Laat uw collega de code scannen",
+  "SCR_CODE_ADD_CUP_HEADER": "Een kopje toevoegen",
+  "SCR_CODE_ADD_CUP_DESCR": "Laat de klant de code scannen",
+
+  "SCR_SCAN_DESCR": "Scan de code van het apparaat van de barista"
+}

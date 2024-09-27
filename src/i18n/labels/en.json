@@ -1,0 +1,44 @@
+{
+  "CMN_BACK": "Back",  
+  "CMN_CLOSE": "Close",
+  "CMN_DELETE": "Delete",
+  "CMN_MORE": "...",
+
+  "SCR_ROLE_HEADER": "Who are you?",
+  "SCR_ROLE_LBL_CLIENT": "Client",
+  "SCR_ROLE_LBL_BARISTA": "Barista",
+
+  "SCR_POINTS_HEADER": "Coffee Shops",
+  "SCR_POINTS_BTN_ADD_POINT": "Add coffee shop",
+
+  "SCR_POINT_BTN_ADD_CUP": "Give a cup",
+  "SCR_POINT_BTN_ADD_POINT": "Share coffee shop",
+  "SCR_POINT_BTN_POINTS": "My coffee shops",
+  "SCR_POINT_BTN_CLONE_POINT": "Clone coffe shop",
+  "SCR_POINT_BTN_GET_CUP": "Get a cup",
+  "SCR_POINT_BTN_DELETE": "Delete coffee shop",
+
+  "SCR_CLONE_OR_NEW_HEADER": "Register a new coffee shop or get clone from a colleague?",
+  "SCR_CLONE_OR_NEW_LBL_NEW": "Register new",
+  "SCR_CLONE_OR_NEW_LBL_GET": "Get a copy",
+
+  "SCR_REG_POINT_HEADER": "Register New Coffee Shop",
+  "SCR_REG_POINT_LBL_NAME": "Name:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT": "Cups count for free:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT_DESCR": "The customer needs to collect {cups} cups to get a free one.",
+  "SCR_REG_POINT_LBL_DISCOUNT_DESCR": "This is equivalent to a {discount}% discount.",
+  "SCR_REG_POINT_BTN_REGISTER": "Register",
+
+  "SCR_DELETE_POINT_HEADER": "Delete Coffee Shop",
+  "SCR_DELETE_POINT_DESCRIPTION_BARISTA": "By deleting this coffee shop you will lose its unique key, which is used by your customers for identification. This means that your customers will have to start collecting cups again. Restoration is only possible by cloning the coffee shop from your colleagues' phones.",
+  "SCR_DELETE_POINT_DESCRIPTION_CLIENT": "By deleting this coffee shop, you will lose all accumulated cups for this coffee shop. This action cannot be undone, and you will have to start collecting cups again from scratch. Are you sure you want to proceed?",
+
+  "SCR_CODE_ADD_POINT_HEADER": "Adding the coffee shop",
+  "SCR_CODE_ADD_POINT_DESCR": "Let the customer scan the code",
+  "SCR_CODE_CLONE_HEADER": "Cloning the coffee shop",
+  "SCR_CODE_CLONE_DESCR": "Let your colleague scan the code",
+  "SCR_CODE_ADD_CUP_HEADER": "Adding a cup",
+  "SCR_CODE_ADD_CUP_DESCR": "Let the customer scan the code",
+
+  "SCR_SCAN_DESCR": "Please scan the code from the barista's device"
+}

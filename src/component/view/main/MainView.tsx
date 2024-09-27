@@ -1,22 +1,24 @@
+"use client";
+
 import Button from "@/component/button/Button";
-import UserLanguage from "@/component/UserLanguage";
+import { useLabel } from "@/hooks/useLabel";
 
 const MainView = () => {
-    return (
-        <div className="flex items-center w-full h-full justify-center [family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
-          <div className='flex flex-col flex-grow items-center justify-center'>
-            <h1 className='text-3xl'>FreeCup  <span className="text-xs">v 0.0.1</span></h1>     
-            <div>
-              <UserLanguage/>       
-            </div>
-          </div>
-          <footer className='w-full p-3'>
-            <Button label="Add Coffee Shop" url="/role"/>
-          </footer>        
-        </main>
-      </div>
-    );
+  const {t} = useLabel();
+
+  return (
+    <div className="flex items-center w-full h-full justify-center [family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
+        <span className="text-xs absolute top-2 right-2">v 0.0.1</span>
+        <div className='flex flex-col flex-grow items-center justify-center'>
+          <h1 className='text-3xl'>FreeCup </h1>
+        </div>
+        <footer className='w-full p-3'>
+          <Button label={t("SCR_POINTS_BTN_ADD_POINT")} url="/role"/>
+        </footer>        
+      </main>
+    </div>
+  );
 };  
 
 

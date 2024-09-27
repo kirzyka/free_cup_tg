@@ -1,0 +1,43 @@
+{
+  "CMN_BACK": "Wstecz",
+  "CMN_CLOSE": "Zamknij",
+  "CMN_DELETE": "Usuń",
+
+  "SCR_ROLE_HEADER": "Kim jesteś?",
+  "SCR_ROLE_LBL_CLIENT": "Klient",
+  "SCR_ROLE_LBL_BARISTA": "Barista",
+
+  "SCR_POINTS_HEADER": "Kawiarnie",
+  "SCR_POINTS_BTN_ADD_POINT": "Dodaj kawiarnię",
+
+  "SCR_POINT_BTN_ADD_CUP": "Dodaj filiżankę",
+  "SCR_POINT_BTN_ADD_POINT": "Udostępnij kawiarnię",
+  "SCR_POINT_BTN_POINTS": "Moje kawiarnie",
+  "SCR_POINT_BTN_CLONE_POINT": "Klonuj kawiarnię",
+  "SCR_POINT_BTN_GET_CUP": "Odbierz filiżankę",
+  "SCR_POINT_BTN_DELETE": "Usuń kawiarnię",
+
+  "SCR_CLONE_OR_NEW_HEADER": "Zarejestruj nową kawiarnię lub uzyskaj kopię od kolegi?",
+  "SCR_CLONE_OR_NEW_LBL_NEW": "Zarejestruj nową",
+  "SCR_CLONE_OR_NEW_LBL_GET": "Uzyskaj kopię",
+  
+  "SCR_REG_POINT_HEADER": "Zarejestruj nową kawiarnię",
+  "SCR_REG_POINT_LBL_NAME": "Nazwa:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT": "Liczba filiżanek za darmo:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT_DESCR": "Klient musi zebrać {cups} filiżanek, aby otrzymać darmową.",
+  "SCR_REG_POINT_LBL_DISCOUNT_DESCR": "Jest to równoważne z rabatem {discount}%.",
+  "SCR_REG_POINT_BTN_REGISTER": "Zarejestruj",
+
+  "SCR_DELETE_POINT_HEADER": "Usuń kawiarnię",
+  "SCR_DELETE_POINT_DESCRIPTION_BARISTA": "Usunięcie tej kawiarni spowoduje utratę unikalnego klucza, który jest używany przez klientów do identyfikacji. Oznacza to, że klienci będą musieli ponownie zbierać filiżanki. Przywrócenie jest możliwe tylko poprzez sklonowanie kawiarni z telefonów kolegów.",
+  "SCR_DELETE_POINT_DESCRIPTION_CLIENT": "Usunięcie tej kawiarni spowoduje utratę wszystkich zebranych filiżanek dla tej kawiarni. Ta akcja jest nieodwracalna i będziesz musiał zacząć zbierać filiżanki od nowa. Czy jesteś pewien, że chcesz kontynuować?",
+
+  "SCR_CODE_ADD_POINT_HEADER": "Dodawanie kawiarni",
+  "SCR_CODE_ADD_POINT_DESCR": "Pozwól klientowi zeskanować kod",
+  "SCR_CODE_CLONE_HEADER": "Klonowanie kawiarni",
+  "SCR_CODE_CLONE_DESCR": "Pozwól swojemu koledze zeskanować kod",
+  "SCR_CODE_ADD_CUP_HEADER": "Dodawanie filiżanki",
+  "SCR_CODE_ADD_CUP_DESCR": "Pozwól klientowi zeskanować kod",
+
+  "SCR_SCAN_DESCR": "Zeskanuj kod z urządzenia baristy"
+}

@@ -1,0 +1,43 @@
+{
+  "CMN_BACK": "Zurück",
+  "CMN_CLOSE": "Schließen",
+  "CMN_DELETE": "Löschen",
+
+  "SCR_ROLE_HEADER": "Wer bist du?",
+  "SCR_ROLE_LBL_CLIENT": "Kunde",
+  "SCR_ROLE_LBL_BARISTA": "Barista",
+
+  "SCR_POINTS_HEADER": "Cafés",
+  "SCR_POINTS_BTN_ADD_POINT": "Café hinzufügen",
+
+  "SCR_POINT_BTN_ADD_CUP": "Eine Tasse geben",
+  "SCR_POINT_BTN_ADD_POINT": "Café teilen",
+  "SCR_POINT_BTN_POINTS": "Meine Cafés",
+  "SCR_POINT_BTN_CLONE_POINT": "Café klonen",
+  "SCR_POINT_BTN_GET_CUP": "Eine Tasse bekommen",
+  "SCR_POINT_BTN_DELETE": "Café löschen",
+
+  "SCR_CLONE_OR_NEW_HEADER": "Ein neues Café registrieren oder eine Kopie von einem Kollegen erhalten?",
+  "SCR_CLONE_OR_NEW_LBL_NEW": "Neu registrieren",
+  "SCR_CLONE_OR_NEW_LBL_GET": "Kopie erhalten",
+  
+  "SCR_REG_POINT_HEADER": "Neues Café registrieren",
+  "SCR_REG_POINT_LBL_NAME": "Name:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT": "Anzahl der Tassen für gratis:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT_DESCR": "Der Kunde muss {cups} Tassen sammeln, um eine kostenlose zu bekommen.",
+  "SCR_REG_POINT_LBL_DISCOUNT_DESCR": "Dies entspricht einem Rabatt von {discount}%.",
+  "SCR_REG_POINT_BTN_REGISTER": "Registrieren",
+
+  "SCR_DELETE_POINT_HEADER": "Café löschen",
+  "SCR_DELETE_POINT_DESCRIPTION_BARISTA": "Wenn Sie dieses Café löschen, verlieren Sie den einzigartigen Schlüssel, der von Ihren Kunden zur Identifikation verwendet wird. Dies bedeutet, dass Ihre Kunden wieder von vorne anfangen müssen, Tassen zu sammeln. Die Wiederherstellung ist nur durch das Klonen des Cafés von den Telefonen Ihrer Kollegen möglich.",
+  "SCR_DELETE_POINT_DESCRIPTION_CLIENT": "Wenn Sie dieses Café löschen, verlieren Sie alle gesammelten Tassen für dieses Café. Diese Aktion kann nicht rückgängig gemacht werden, und Sie müssen wieder von vorne anfangen, Tassen zu sammeln. Sind Sie sicher, dass Sie fortfahren möchten?",
+
+  "SCR_CODE_ADD_POINT_HEADER": "Das Café hinzufügen",
+  "SCR_CODE_ADD_POINT_DESCR": "Lassen Sie den Kunden den Code scannen",
+  "SCR_CODE_CLONE_HEADER": "Das Café klonen",
+  "SCR_CODE_CLONE_DESCR": "Lassen Sie Ihren Kollegen den Code scannen",
+  "SCR_CODE_ADD_CUP_HEADER": "Eine Tasse hinzufügen",
+  "SCR_CODE_ADD_CUP_DESCR": "Lassen Sie den Kunden den Code scannen",
+
+  "SCR_SCAN_DESCR": "Bitte scannen Sie den Code vom Gerät des Baristas"
+}

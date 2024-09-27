@@ -1,0 +1,43 @@
+{
+  "CMN_BACK": "Takaisin",
+  "CMN_CLOSE": "Sulje",
+  "CMN_DELETE": "Poista",
+
+  "SCR_ROLE_HEADER": "Kuka olet?",
+  "SCR_ROLE_LBL_CLIENT": "Asiakas",
+  "SCR_ROLE_LBL_BARISTA": "Barista",
+
+  "SCR_POINTS_HEADER": "Kahvilat",
+  "SCR_POINTS_BTN_ADD_POINT": "Lisää kahvila",
+
+  "SCR_POINT_BTN_ADD_CUP": "Anna kuppi",
+  "SCR_POINT_BTN_ADD_POINT": "Jaa kahvila",
+  "SCR_POINT_BTN_POINTS": "Omat kahvilat",
+  "SCR_POINT_BTN_CLONE_POINT": "Kloonaa kahvila",
+  "SCR_POINT_BTN_GET_CUP": "Hanki kuppi",
+  "SCR_POINT_BTN_DELETE": "Poista kahvila",
+
+  "SCR_CLONE_OR_NEW_HEADER": "Rekisteröi uusi kahvila tai saa kopio kollegalta?",
+  "SCR_CLONE_OR_NEW_LBL_NEW": "Rekisteröi uusi",
+  "SCR_CLONE_OR_NEW_LBL_GET": "Hanki kopio",
+
+  "SCR_REG_POINT_HEADER": "Rekisteröi Uusi Kahvila",
+  "SCR_REG_POINT_LBL_NAME": "Nimi:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT": "Kupit ilmaiseksi:",
+  "SCR_REG_POINT_LBL_CUPS_COUNT_DESCR": "Asiakkaan on kerättävä {cups} kuppia saadakseen ilmaisen.",
+  "SCR_REG_POINT_LBL_DISCOUNT_DESCR": "Tämä vastaa {discount}% alennusta.",
+  "SCR_REG_POINT_BTN_REGISTER": "Rekisteröidy",
+
+  "SCR_DELETE_POINT_HEADER": "Poista Kahvila",
+  "SCR_DELETE_POINT_DESCRIPTION_BARISTA": "Poistamalla tämän kahvilan menetät sen ainutlaatuisen avaimen, jota asiakkaasi käyttävät tunnistamiseen. Tämä tarkoittaa, että asiakkaidesi on aloitettava kuppien kerääminen uudelleen. Palautus on mahdollista vain kloonaamalla kahvila kollegoidesi puhelimista.",
+  "SCR_DELETE_POINT_DESCRIPTION_CLIENT": "Poistamalla tämän kahvilan menetät kaikki kerätyt kupit tälle kahvilalle. Tätä toimintoa ei voi peruuttaa, ja sinun on aloitettava kuppien kerääminen uudelleen alusta alkaen. Oletko varma, että haluat jatkaa?",
+
+  "SCR_CODE_ADD_POINT_HEADER": "Kahvilan lisääminen",
+  "SCR_CODE_ADD_POINT_DESCR": "Anna asiakkaan skannata koodi",
+  "SCR_CODE_CLONE_HEADER": "Kahvilan kloonaaminen",
+  "SCR_CODE_CLONE_DESCR": "Anna kollegasi skannata koodi",
+  "SCR_CODE_ADD_CUP_HEADER": "Kupin lisääminen",
+  "SCR_CODE_ADD_CUP_DESCR": "Anna asiakkaan skannata koodi",
+
+  "SCR_SCAN_DESCR": "Ole hyvä ja skannaa koodi baristan laitteesta"
+}
