@@ -1,15 +1,22 @@
+"use client";
+
 import Button from "@/component/button/Button";
+import { useLabel } from "@/i18n/LocalizationProvider";
 
 const RoleView = () => {
+    const {language, t} = useLabel();
+
     return (
         <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
             <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
             <div className='flex flex-grow items-center'>
-                <h1 className='text-3xl'>Who are you?</h1>
+                <h1 className='text-3xl'>
+                {t('SCR_ROLE_HEADER')}
+                </h1>
             </div>
             <footer className='flex flex-col gap-1 w-full p-3'>
-                <Button label="Client" url="/point/add"/>
-                <Button label="Barista" url="/point/clone-or-new"/>
+                <Button label={t("SCR_ROLE_LBL_CLIENT")} url="/point/add" lang={language}/>
+                <Button label={t('SCR_ROLE_LBL_BARISTA')} lang={language}/>
             </footer>        
             </main>
         </div>

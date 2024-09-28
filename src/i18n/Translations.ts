@@ -27,3 +27,5 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
   sv, // Swedish
   uk, // Ukrainian
 };
+
+export const SUPPORTED_LANGS: string[] = Object.keys(TRANSLATIONS);

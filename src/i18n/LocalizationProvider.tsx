@@ -5,6 +5,7 @@ import { TRANSLATIONS } from '@/i18n/Translations';
 import { DEFAULT_LANG } from '@/client_const';
 
 export interface LocalizationContext {
+  language: string;
   t: (key: string, values?: Record<string, string>) => string;
 }
 
@@ -20,7 +21,7 @@ export function LocalizationProvider({ children, language }: { children: React.R
   };
 
   return (
-    <LocalizationContext.Provider value={{ t }}>
+    <LocalizationContext.Provider value={{ language, t }}>
       {children}
     </LocalizationContext.Provider>
   );
