@@ -11,12 +11,12 @@ const RoleView = () => {
             <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
             <div className='flex flex-grow items-center'>
                 <h1 className='text-3xl'>
-                {t('SCR_ROLE_HEADER')}
+                    {t('SCR_ROLE_HEADER')}
                 </h1>
             </div>
             <footer className='flex flex-col gap-1 w-full p-3'>
                 <Button label={t("SCR_ROLE_LBL_CLIENT")} url="/point/add" lang={language}/>
-                <Button label={t('SCR_ROLE_LBL_BARISTA')} lang={language}/>
+                <Button label={t('SCR_ROLE_LBL_BARISTA')} url="/point/clone-or-new"  lang={language}/>
             </footer>        
             </main>
         </div>
