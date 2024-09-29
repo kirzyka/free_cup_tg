@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext } from 'react';
+import { createContext } from 'react';
 import { TRANSLATIONS } from '@/i18n/Translations';
 import { DEFAULT_LANG } from '@/client_const';
 
