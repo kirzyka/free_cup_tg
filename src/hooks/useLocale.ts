@@ -1,11 +1,11 @@
 import { LocalizationContext } from "@/i18n/LocalizationProvider";
 import { useContext } from "react";
 
-export const useLabel = () => {
+export const useLocale = () => {
   const context = useContext(LocalizationContext);
 
   if (context === undefined) {
-    throw new Error("useLabel must be used within a LocalizationProvider");
+    throw new Error("useLocale must be used within a LocalizationProvider");
   }
   return context;
 };

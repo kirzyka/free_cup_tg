@@ -1,10 +1,10 @@
 "use client";
 
 import Button from "@/component/button/Button";
-import { useLabel } from "@/hooks/useLabel";
+import { useLocale } from "@/hooks/useLocale";
 
 const MainView = () => {
-  const {t} = useLabel();
+  const {t} = useLocale();
 
   return (
     <div className="flex items-center w-full h-full justify-center [family-name:var(--font-geist-sans)]">

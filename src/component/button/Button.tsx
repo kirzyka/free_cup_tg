@@ -1,6 +1,6 @@
 "use client";
 
-import { useLabel } from "@/hooks/useLabel";
+import { useLocale } from "@/hooks/useLocale";
 import Link from "next/link";
 import { FC } from "react";
 
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Button: FC<Props> = ({label, url, onClick}: Props) => {
-    const {language} = useLabel();
+    const {language} = useLocale();
 
     if (url) {
         url = `/${language}${url}`;

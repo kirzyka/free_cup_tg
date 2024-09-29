@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useEffect } from "react";
 import Button from "@/component/button/Button";
+import { useLocale } from '@/hooks/useLocale';
 
 interface Props {
   type: string;
@@ -13,8 +14,13 @@ const TYPE_TO_PAGE: Record<string, string> = {
   'clone': '/point/clone-or-new',
 }
 
+const getURL = (path: string, language: string): string => {  
+  return path ? `/${language}${path}` : "/";
+};
+
 const ScanView = ({type}: Props) => {
   const router = useRouter();
+  const {language} = useLocale();
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
@@ -23,7 +29,7 @@ const ScanView = ({type}: Props) => {
       try {
         webApp.ready();
         webApp.onEvent('scanQrPopupClosed', () => {
-          router.push(TYPE_TO_PAGE[type] || '/');
+          router.push(getURL(TYPE_TO_PAGE[type], language));
         });
 
         webApp.showScanQrPopup({
