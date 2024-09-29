@@ -26,11 +26,3 @@ export function LocalizationProvider({ children, language }: { children: React.R
     </LocalizationContext.Provider>
   );
 }
-
-export const useLabel = () => {
-  const context = useContext(LocalizationContext);
-  if (!context) {
-    throw new Error("useLabel must be used within a LocalizationProvider");
-  }
-  return context;
-};

@@ -1,19 +1,20 @@
-//'use client';
+"use client";
 
-import { DEFAULT_LANG } from "@/client_const";
+import { useLabel } from "@/hooks/useLabel";
 import Link from "next/link";
 import { FC } from "react";
 
 interface Props {
     label: string;
     url?: string;
-    lang?: string;
     onClick?: () => void;
 }
 
-const Button: FC<Props> = ({label, url, lang = DEFAULT_LANG, onClick}: Props) => {
+const Button: FC<Props> = ({label, url, onClick}: Props) => {
+    const {language} = useLabel();
+
     if (url) {
-        url = `/${lang}${url}`;
+        url = `/${language}${url}`;
     }
 
     return (
