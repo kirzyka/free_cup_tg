@@ -10,7 +10,7 @@
   --content_w: #fff3ec;
   --content_w_light: #fffffe;  
   --content_w_dark: #8A7771;
-  --content_b: #000003;
+  --content_b: #271c19;
   --content_b_light: #fffffe;  
   --content_b_dark: #8A7771;
   --active: #ffc0ad;
@@ -27,7 +27,7 @@ html {
 body {
   color: var(--content_w);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
   height: 100%;
 }
 

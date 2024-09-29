@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Inter } from 'next/font/google';
 import dynamic from 'next/dynamic';
 import Script from "next/script";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+// Подключаем Inter с весами 400 и 700
+const inter = Inter({
+  subsets: ['latin', 'cyrillic'], // Подключаем нужные наборы символов (например, для кириллицы)
+  weight: ['400', '700'],         // Указываем веса
+  display: 'swap',                // Свойство для лучшей загрузки шрифта
+  variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
@@ -33,7 +30,7 @@ export default async function RootLayout({
         <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />      
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} antialiased`}
       >
         <WindowExpander/>
           {children}

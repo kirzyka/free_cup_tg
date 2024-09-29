@@ -17,6 +17,7 @@ const RoleView = () => {
             <footer className='flex flex-col gap-1 w-full p-3'>
                 <Button label={t("SCR_ROLE_LBL_CLIENT")} url="/point/add"/>
                 <Button label={t('SCR_ROLE_LBL_BARISTA')} url="/point/clone-or-new"/>
+                <Button label={t('CMN_BACK')} url="/"/>
             </footer>        
             </main>
         </div>
