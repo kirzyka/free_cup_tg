@@ -6,11 +6,15 @@ import { SUPPORTED_LANGS } from '@/i18n/Translations';
 export default function HomeRedirect() {
   const headersList = headers();
   const acceptLanguage = headersList.get('accept-language') || DEFAULT_LANG;
-  const clientLang = acceptLanguage.split(',')[0].slice(0, 2); // Например, "ru-RU" -> "ru"
 
-  // Если локаль поддерживается, используем её, иначе применяем локаль по умолчанию
-  const lang = SUPPORTED_LANGS.includes(clientLang) ? clientLang : DEFAULT_LANG;
+  const clientLangs = acceptLanguage.split(',').map(lang => lang.trim().slice(0, 2));
 
-  // Редирект на URL с языковым префиксом
+  // Check if the client's preferred language is supported
+  const supportedLang = clientLangs.find(lang => lang !== DEFAULT_LANG && SUPPORTED_LANGS.includes(lang));
+
+  // If the client's preferred language is not supported, use the default language
+  const lang = supportedLang || DEFAULT_LANG;
+
+  // Redirect to the URL with the language prefix
   redirect(`/${lang}`);
 }
