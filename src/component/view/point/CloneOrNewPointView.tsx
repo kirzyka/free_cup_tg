@@ -14,7 +14,7 @@ const CloneOrNewPointView = () => {
             </div>
             <footer className='flex flex-col gap-1 w-full p-3'>
                 <Button label={t("SCR_CLONE_OR_NEW_LBL_NEW")} url="/point/register"/>
-                <Button label={t("SCR_CLONE_OR_NEW_LBL_GET")} url="/code"/>
+                <Button label={t("SCR_CLONE_OR_NEW_LBL_GET")} url="/point/get-copy"/>
                 <Button label={t('CMN_BACK')} url="/role"/>
             </footer>        
             </main>
