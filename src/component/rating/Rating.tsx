@@ -20,31 +20,33 @@ const Rating: React.FC<RatingComponentProps> = ({
   onChange,
 }) => {
   return (
-    <ReactRating
-      initialRating={value}
-      emptySymbol={
-        <Image
-          src={inactiveImage}
-          alt="inactive"
-          width={size}
-          height={size}
-          quality={100}
-          priority
-        />
-      }
-      fullSymbol={
-        <Image
-          src={activeImage}
-          alt="active"
-          width={size}
-          height={size}
-          quality={100}
-          priority
-        />
-      }
-      onChange={onChange}
-      stop={count}
-    />
+    <div tabIndex={0}>
+      <ReactRating      
+        initialRating={value}
+        emptySymbol={
+          <Image
+            src={inactiveImage}
+            alt="inactive"
+            width={size}
+            height={size}
+            quality={100}
+            priority
+          />
+        }
+        fullSymbol={
+          <Image
+            src={activeImage}
+            alt="active"
+            width={size}
+            height={size}
+            quality={100}
+            priority
+          />
+        }
+        onChange={onChange}
+        stop={count}
+      />
+    </div>
   );
 };
 
