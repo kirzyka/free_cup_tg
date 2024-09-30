@@ -50,13 +50,14 @@ const RegisterPointView = () => {
     return (
         <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
             <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
-                <div className='flex items-center w-full p-3 justify-end min-h-[200px]'>
+                <div className='flex items-center w-full p-3 justify-end min-h-[150px]'>
                     <h1 className='text-3xl'>{t("SCR_REG_POINT_HEADER")}</h1>
                 </div>
                 <div className='flex flex-col flex-grow items-center w-full p-3'>
                     <div className="flex flex-col gap-3 w-full ">
                         <label className="block text-2xl font-bold mb-2">{t("SCR_REG_POINT_LBL_NAME")}</label>
-                        <input className='w-full p-3 bg-transparent border-dashed border-2'
+                        <input 
+                            className="bg-transparent border-2 border-dashed p-2 focus:outline-none "
                             type="text"
                             name="name"
                             placeholder="Latte Love"
