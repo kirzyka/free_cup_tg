@@ -23,6 +23,7 @@ const RegisterPointView = () => {
     const router = useRouter();
     const [requiredCups, setRequiredCups] = useState(7);
     const [iconSize, setIconSize] = useState<number>(30);
+    const calcIconSize = (width: number) => (width - 28) / 10
     const handleChangeCups = useCallback(
         (value: number) => {
             if (value < 3) {
@@ -36,9 +37,9 @@ const RegisterPointView = () => {
     };
 
     useEffect(() => {
-          setIconSize((window.innerWidth - 28) / 10);
+          setIconSize(calcIconSize(window.innerWidth));
           const handleResize = () => {
-            setIconSize(window.innerWidth / 10 - 12);
+            setIconSize(calcIconSize(window.innerWidth));
           };
           window.addEventListener('resize', handleResize);
 
