@@ -2,9 +2,11 @@
 
 import Button from "@/component/button/Button";
 import { useLocale } from "@/hooks/useLocale";
+import { useRouter } from "next/navigation";
 
 const CloneOrNewPointView = () => {
     const {t} = useLocale();
+    const router = useRouter();
 
     return (
         <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
@@ -15,7 +17,7 @@ const CloneOrNewPointView = () => {
             <footer className='flex flex-col gap-1 w-full p-3'>
                 <Button label={t("SCR_CLONE_OR_NEW_LBL_NEW")} url="/point/register"/>
                 <Button label={t("SCR_CLONE_OR_NEW_LBL_GET")} url="/point/get-copy"/>
-                <Button label={t('CMN_BACK')} url="/role"/>
+                <Button label={t('CMN_BACK')} onClick={() => router.back()}/>
             </footer>        
             </main>
         </div>

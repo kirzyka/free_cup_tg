@@ -2,9 +2,11 @@
 
 import Button from "@/component/button/Button";
 import { useLocale } from "@/hooks/useLocale";
+import { useRouter } from "next/navigation";
 
 const RoleView = () => {
     const {t} = useLocale();
+    const router = useRouter();
 
     return (
         <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
@@ -17,7 +19,7 @@ const RoleView = () => {
             <footer className='flex flex-col gap-1 w-full p-3'>
                 <Button label={t("SCR_ROLE_LBL_CLIENT")} url="/point/add"/>
                 <Button label={t('SCR_ROLE_LBL_BARISTA')} url="/point/clone-or-new"/>
-                <Button label={t('CMN_BACK')} url="/"/>
+                <Button label={t('CMN_BACK')} onClick={() => router.back()}/>
             </footer>        
             </main>
         </div>

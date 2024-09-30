@@ -3,6 +3,7 @@
 import Button from "@/component/button/Button";
 import Rating from "@/component/rating/Rating";
 import { useLocale } from "@/hooks/useLocale";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 const DISCOUNT: Record<number, number> = {
@@ -19,6 +20,7 @@ const DISCOUNT: Record<number, number> = {
 
 const RegisterPointView = () => {
     const {t} = useLocale();
+    const router = useRouter();
     const [requiredCups, setRequiredCups] = useState(7);
     const [iconSize, setIconSize] = useState<number>(30);
     const handleChangeCups = useCallback(
@@ -30,6 +32,8 @@ const RegisterPointView = () => {
         },
         []
     );
+    const handleRegister = () => {
+    };
 
     useEffect(() => {
           setIconSize((window.innerWidth - 28) / 10);
@@ -50,11 +54,14 @@ const RegisterPointView = () => {
                     <h1 className='text-3xl'>{t("SCR_REG_POINT_HEADER")}</h1>
                 </div>
                 <div className='flex flex-col flex-grow items-center w-full p-3'>
-                    <div className="w-full">
+                    <div className="flex flex-col gap-3 w-full ">
                         <label className="block text-2xl font-bold mb-2">{t("SCR_REG_POINT_LBL_NAME")}</label>
-                        <input className='w-full p-3 bg-transparent border-dashed border-2' type="text" name="name" placeholder="Latte Love" maxLength={40}/>
-                    </div>
-                    <div className="w-full">
+                        <input className='w-full p-3 bg-transparent border-dashed border-2'
+                            type="text"
+                            name="name"
+                            placeholder="Latte Love"
+                            maxLength={40}
+                        />
                         <label className="block text-2xl font-bold mb-2">{t("SCR_REG_POINT_LBL_CUPS_COUNT")}</label>
                         <Rating 
                             size={iconSize}
@@ -77,7 +84,8 @@ const RegisterPointView = () => {
                     </div>
                 </div>
                 <footer className='flex flex-col gap-1 w-full p-3'>
-                    <Button label="Register" url="/"/>
+                    <Button label={t('SCR_REG_POINT_BTN_REGISTER')} onClick={handleRegister}/>
+                    <Button label={t('CMN_BACK')} onClick={() => router.back()}/>
                 </footer>        
             </main>
         </div>
