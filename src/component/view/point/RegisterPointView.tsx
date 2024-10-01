@@ -19,8 +19,10 @@ const DISCOUNT: Record<number, number> = {
 
 const RegisterPointView = () => {
     const {t} = useLocale();
+    const [coffeePointName, setCoffeePointName] = useState('');
     const [requiredCups, setRequiredCups] = useState(7);
     const [iconSize, setIconSize] = useState<number>(30);
+    const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => setCoffeePointName(e.target.value);
     const handleChangeCups = useCallback(
         (value: number) => {
             if (value < 3) {
@@ -52,7 +54,14 @@ const RegisterPointView = () => {
                 <div className='flex flex-col flex-grow items-center w-full p-3'>
                     <div className="w-full">
                         <label className="block text-2xl font-bold mb-2">{t("SCR_REG_POINT_LBL_NAME")}</label>
-                        <input className='w-full p-3 bg-transparent border-dashed border-2' type="text" name="name" placeholder="Latte Love" maxLength={40}/>
+                        <input className='w-full p-3 bg-transparent border-dashed border-2'
+                            type="text"
+                            name="name"
+                            placeholder="Latte Love"
+                            maxLength={40}
+                            value={coffeePointName}
+                            onChange={handleChangeName}
+                        />
                     </div>
                     <div className="w-full">
                         <label className="block text-2xl font-bold mb-2">{t("SCR_REG_POINT_LBL_CUPS_COUNT")}</label>
