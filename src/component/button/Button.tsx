@@ -20,7 +20,7 @@ const Button: FC<Props> = ({label, url, onClick}: Props) => {
     return (
         <button className="bg-active p-3 font-bold rounded-[50px] hover:bg-excited w-full" onClick={onClick}>
             {url &&<Link className="w-full block text-content_b" href={url}>{label}</Link>}
-            {!url && label}
+            {!url && <span className="w-full block text-content_b">{label}</span>}
         </button>
     );
 };

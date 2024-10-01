@@ -3,6 +3,7 @@
 import Button from "@/component/button/Button";
 import Rating from "@/component/rating/Rating";
 import { useLocale } from "@/hooks/useLocale";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 const DISCOUNT: Record<number, number> = {
@@ -19,10 +20,10 @@ const DISCOUNT: Record<number, number> = {
 
 const RegisterPointView = () => {
     const {t} = useLocale();
-    const [coffeePointName, setCoffeePointName] = useState('');
+    const router = useRouter();
     const [requiredCups, setRequiredCups] = useState(7);
     const [iconSize, setIconSize] = useState<number>(30);
-    const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => setCoffeePointName(e.target.value);
+    const calcIconSize = (width: number) => (width - 28) / 10
     const handleChangeCups = useCallback(
         (value: number) => {
             if (value < 3) {
@@ -32,11 +33,13 @@ const RegisterPointView = () => {
         },
         []
     );
+    const handleRegister = () => {
+    };
 
     useEffect(() => {
-          setIconSize((window.innerWidth - 28) / 10);
+          setIconSize(calcIconSize(window.innerWidth));
           const handleResize = () => {
-            setIconSize(window.innerWidth / 10 - 12);
+            setIconSize(calcIconSize(window.innerWidth));
           };
           window.addEventListener('resize', handleResize);
 
@@ -48,20 +51,13 @@ const RegisterPointView = () => {
     return (
         <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
             <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
-                <div className='flex items-center w-full p-3 justify-end min-h-[200px]'>
+                <div className='flex items-center w-full p-3 justify-end min-h-[150px]'>
                     <h1 className='text-3xl'>{t("SCR_REG_POINT_HEADER")}</h1>
                 </div>
                 <div className='flex flex-col flex-grow items-center w-full p-3'>
-                    <div className="w-full">
+                    <div className="flex flex-col gap-3 w-full ">
                         <label className="block text-2xl font-bold mb-2">{t("SCR_REG_POINT_LBL_NAME")}</label>
-                        <input className='w-full p-3 bg-transparent border-dashed border-2'
-                            type="text"
-                            name="name"
-                            placeholder="Latte Love"
-                            maxLength={40}
-                            value={coffeePointName}
-                            onChange={handleChangeName}
-                        />
+                        <input className='w-full p-3 bg-transparent border-dashed border-2' type="text" name="name" placeholder="Latte Love" maxLength={40}/>
                     </div>
                     <div className="w-full">
                         <label className="block text-2xl font-bold mb-2">{t("SCR_REG_POINT_LBL_CUPS_COUNT")}</label>
@@ -86,7 +82,8 @@ const RegisterPointView = () => {
                     </div>
                 </div>
                 <footer className='flex flex-col gap-1 w-full p-3'>
-                    <Button label="Register" url="/"/>
+                    <Button label={t('SCR_REG_POINT_BTN_REGISTER')} onClick={handleRegister}/>
+                    <Button label={t('CMN_BACK')} onClick={() => router.back()}/>
                 </footer>        
             </main>
         </div>

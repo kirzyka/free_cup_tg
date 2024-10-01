@@ -20,7 +20,7 @@ const getURL = (path: string, language: string): string => {
 
 const ScanView = ({type}: Props) => {
   const router = useRouter();
-  const {language} = useLocale();
+  const {t, language} = useLocale();
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
@@ -44,7 +44,7 @@ const ScanView = ({type}: Props) => {
         console.log((e as Error).message);
       }
     }
-  }, [router]);  // Add router to the dependency array
+  }, [type, router, language]);
 
   return (
     <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
@@ -53,7 +53,7 @@ const ScanView = ({type}: Props) => {
           <h1 className='text-3xl'>Scaning...</h1>
         </div>
         <footer className='flex flex-col gap-1 w-full p-3'>
-          <Button label="Back" url="/"/>
+          <Button label={t('CMN_BACK')} onClick={() => router.back()}/>
         </footer>        
       </main>
     </div>
