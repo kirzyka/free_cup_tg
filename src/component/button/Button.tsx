@@ -1,16 +1,14 @@
-"use client";
+import { useLocale } from '@/hooks/useLocale';
+import Link from 'next/link';
 
-import { useLocale } from "@/hooks/useLocale";
-import Link from "next/link";
-import { FC } from "react";
-
-interface Props {
-    label: string;
-    url?: string;
-    onClick?: () => void;
+interface ButtonProps {
+  label: string;
+  url?: string;
+  onClick?: () => void;
+  disabled?: boolean; // Добавляем пропс disabled
 }
 
-const Button: FC<Props> = ({label, url, onClick}: Props) => {
+const Button: React.FC<ButtonProps> = ({ label, url, onClick, disabled = false }) => {
     const {language} = useLocale();
 
     if (url) {
@@ -18,9 +16,16 @@ const Button: FC<Props> = ({label, url, onClick}: Props) => {
     }
 
     return (
-        <button className="bg-active p-3 font-bold rounded-[50px] hover:bg-excited w-full" onClick={onClick}>
-            {url &&<Link className="w-full block text-content_b" href={url}>{label}</Link>}
-            {!url && <span className="w-full block text-content_b">{label}</span>}
+        <button
+        className={`p-3 font-bold rounded-[50px] w-full 
+            ${disabled ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-active hover:bg-excited text-content_b'}`}
+            onClick={!disabled ? onClick : undefined} // Отключаем обработчик, если disabled
+            disabled={disabled} // Атрибут HTML
+            >
+            {url && !disabled && (
+                <Link className="w-full block text-content_b" href={url}>{label}</Link>
+            )}
+            {(!url || disabled) && <span className="w-full block text-content_b">{label}</span>}
         </button>
     );
 };
