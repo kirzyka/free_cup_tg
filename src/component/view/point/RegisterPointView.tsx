@@ -2,9 +2,13 @@
 
 import Button from "@/component/button/Button";
 import Rating from "@/component/rating/Rating";
+import { AppContext } from "@/context/AppContextProvider";
 import { useLocale } from "@/hooks/useLocale";
+import Point from "@/types/Point";
+import { Role } from "@/types/Role";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 const DISCOUNT: Record<number, number> = {
     2: 33,
@@ -21,6 +25,7 @@ const DISCOUNT: Record<number, number> = {
 const RegisterPointView = () => {
     const {t} = useLocale();
     const router = useRouter();
+    const { points, setPoints } = useContext(AppContext);
     const [coffeePointName, setCoffeePointName] = useState('');
     const [requiredCups, setRequiredCups] = useState(7);
     const [iconSize, setIconSize] = useState<number>(30);
@@ -36,6 +41,26 @@ const RegisterPointView = () => {
         []
     );
     const handleRegister = () => {
+        const name: string = coffeePointName.trim();
+        const point: Point | undefined = points.find((p) => p.name === name);
+
+        if (point) {
+            //navigation.replace(Screens.Main);
+            return;
+        }
+    
+        const newPoint: Point = {
+            key: uuidv4().toString().substring(0, 8),
+            name,
+            role: Role.BARISTA,
+            requiredCups: Number(requiredCups),
+            accessKey: uuidv4().toString().substring(0, 8),
+        };
+
+        //await addPointCommand(db, newPoint);
+
+        setPoints([...points, { ...newPoint }]);
+        //navigation.replace(Screens.Main);
     };
 
     useEffect(() => {
@@ -49,6 +74,8 @@ const RegisterPointView = () => {
             window.removeEventListener('resize', handleResize);
           };
       }, []); 
+
+    console.log("Points", points);
 
     return (
         <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">

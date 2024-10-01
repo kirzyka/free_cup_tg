@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { LocalizationProvider } from '@/i18n/LocalizationProvider';
 import { SUPPORTED_LANGS } from '@/i18n/Translations';
+import { AppContextProvider } from '@/context/AppContextProvider';
 
 
 export function generateStaticParams() {
@@ -22,8 +23,10 @@ export default function LangLayout({
   }
 
   return (
-    <LocalizationProvider language={lang}>
-      {children}
-    </LocalizationProvider>
+    <AppContextProvider>
+      <LocalizationProvider language={lang}>
+        {children}
+      </LocalizationProvider>
+    </AppContextProvider>
   );
 }
