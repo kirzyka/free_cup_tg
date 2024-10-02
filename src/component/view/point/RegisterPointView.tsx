@@ -25,7 +25,7 @@ const DISCOUNT: Record<number, number> = {
 const RegisterPointView = () => {
     const {t} = useLocale();
     const router = useRouter();
-    const { points, setPoints } = useContext(AppContext);
+    const { points, setPoint, setPoints } = useContext(AppContext);
     const [coffeePointName, setCoffeePointName] = useState('');
     const [requiredCups, setRequiredCups] = useState(7);
     const [iconSize, setIconSize] = useState<number>(30);
@@ -40,7 +40,7 @@ const RegisterPointView = () => {
         },
         []
     );
-    const handleRegister = () => {
+    const handleRegister = async () => {
         const name: string = coffeePointName.trim();
         const point: Point | undefined = points.find((p) => p.name === name);
 
@@ -58,7 +58,7 @@ const RegisterPointView = () => {
         };
 
         //await addPointCommand(db, newPoint);
-
+        await setPoint(newPoint);
         setPoints([...points, { ...newPoint }]);
         //navigation.replace(Screens.Main);
     };
