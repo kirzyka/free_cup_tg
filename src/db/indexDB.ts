@@ -39,6 +39,12 @@ export async function getPoints(): Promise<Point[]> {
   return db.getAll('points');
 }
 
+export async function getPoint(key: string): Promise<Point | undefined> {
+  const db = await openCoffeeJournalDB();
+
+  return db.get('points', key);
+}
+
 // Сохранить кофейню
 export async function addPoint(point: Point) {
   const db = await openCoffeeJournalDB();

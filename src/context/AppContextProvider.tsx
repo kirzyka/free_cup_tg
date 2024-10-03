@@ -1,6 +1,6 @@
 "use client";
 
-import { addPoint, getPoints } from "@/db/indexDB";
+import { addPoint,getPoint,  getPoints } from "@/db/indexDB";
 import Cup from "@/types/Cup";
 import Point from "@/types/Point";
 import React, { createContext, useEffect, useState } from "react";
@@ -12,6 +12,7 @@ interface AppStateFields {
 }
 
 interface AppStateFunctions {
+  getPoint: (key: string) => Promise<Point | undefined>;
   setPoint: (point: Point) => void;
   setPoints: (points: Point[]) => void;
   setCups: (cups: Cup[]) => void;
@@ -65,6 +66,7 @@ export const AppContextProvider = ({
         loading,
 
         points,
+        getPoint,
         setPoint,
         setPoints,
 
