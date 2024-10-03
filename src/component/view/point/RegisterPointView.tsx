@@ -65,18 +65,16 @@ const RegisterPointView = () => {
     };
 
     useEffect(() => {
-          setIconSize(calcIconSize(window.innerWidth));
-          const handleResize = () => {
-            setIconSize(calcIconSize(window.innerWidth));
-          };
-          window.addEventListener('resize', handleResize);
+        setIconSize(calcIconSize(window.innerWidth));
+        const handleResize = () => {
+        setIconSize(calcIconSize(window.innerWidth));
+        };
+        window.addEventListener('resize', handleResize);
 
-          return () => {
-            window.removeEventListener('resize', handleResize);
-          };
-      }, []); 
-
-    console.log("Points", points);
+        return () => {
+        window.removeEventListener('resize', handleResize);
+        };
+    }, []); 
 
     return (
         <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">

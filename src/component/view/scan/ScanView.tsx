@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from "react";
 import Button from "@/component/button/Button";
 import { useLocale } from '@/hooks/useLocale';
+import { getURL } from '@/utils/routerUtils';
 
 interface Props {
   type: string;
@@ -13,10 +14,6 @@ const TYPE_TO_PAGE: Record<string, string> = {
   'add': '/role',
   'clone': '/point/clone-or-new',
 }
-
-const getURL = (path: string, language: string): string => {  
-  return path ? `/${language}${path}` : "/";
-};
 
 const ScanView = ({type}: Props) => {
   const router = useRouter();
