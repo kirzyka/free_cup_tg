@@ -60,6 +60,7 @@ const RegisterPointView = () => {
         //await addPointCommand(db, newPoint);
         await setPoint(newPoint);
         setPoints([...points, { ...newPoint }]);
+        router.push('/');
         //navigation.replace(Screens.Main);
     };
 
