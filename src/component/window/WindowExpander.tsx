@@ -9,6 +9,7 @@ export default function WindowExpander() {
              
         webApp.expand(); 
         webApp.setHeaderColor("secondary_bg_color");
+        webApp.disableVerticalSwipes();
       //} else {
          // setMsg('Telegram WebApp API не доступен.');
       }    
