@@ -6,14 +6,21 @@ import PointsView from '../points/PointsView';
 import StartView from '../start/StartView';
 
 const MainView = () => {  
-  const {points} = useContext(AppContext);
+  const {loading, points} = useContext(AppContext);
 
- if (points?.length) {
-  return <PointsView/>;
- }
+  if (loading) {
+    return (
+      <div className='flex items-center w-full h-full justify-center'>
+        <p>Loading...</p>
+      </div>
+    );  
+  }
 
- return <StartView/>
+  if (points?.length) {
+    return <PointsView/>;
+  }
 
+  return <StartView/>
 };  
 
 export default MainView;
