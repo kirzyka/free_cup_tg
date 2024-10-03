@@ -22,7 +22,7 @@ const PointsView = () => {
           <div className='flex flex-row items-center justify-center pt-8'>
             <h1 className='text-4xl font-bold'>{t("SCR_POINTS_HEADER")}</h1>
           </div>
-          <div className='flex flex-col flex-grow w-full overflow-y-auto p-3'>
+          <div className='flex flex-col flex-grow w-full overflow-y-scroll p-3'>
             {
               points.map((p: Point) => (
                 <p key={p.key} className="border-b border-content_b text-2xl font-bold py-2" onClick={handleOpenDetails}>
