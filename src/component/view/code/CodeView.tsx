@@ -25,6 +25,7 @@ const CodeView = ({ action, point_key }: Props) => {
     const [qrCode, setQRCode] = useState<string>("");
     const router = useRouter();
     const [header, setHeader] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
     const qrCodeGenerator = {
         [Action.ADD_POINT as string]: generateAddPointQRCode,
         [Action.CLONE_POINT as string]: generateClonePointQRCode,
@@ -50,8 +51,19 @@ const CodeView = ({ action, point_key }: Props) => {
     }, []);
 
     useEffect(() => {
-        if (action === Action.ADD_POINT) {
-            setHeader(t("SCR_CODE_ADD_POINT_HEADER"));
+        switch (action) {
+            case Action.ADD_CUP:
+                setHeader(t("SCR_CODE_ADD_CUP_HEADER"));
+                setDescription(t("SCR_CODE_ADD_CUP_DESCR"));
+                break;
+            case Action.ADD_POINT:
+                setHeader(t("SCR_CODE_ADD_POINT_HEADER"));
+                setDescription(t("SCR_CODE_ADD_POINT_DESCR"));
+                break;
+            case Action.CLONE_POINT:
+                setHeader(t("SCR_CODE_CLONE_HEADER"));
+                setDescription(t("SCR_CODE_CLONE_DESCR"));
+                break;
         }
     }, [t, action]);
 
@@ -64,6 +76,9 @@ const CodeView = ({ action, point_key }: Props) => {
                 <div className="flex flex-col flex-grow items-center justify-center">
                     {qrCode && <QrCodeDisplay text={qrCode} />}
                     {!qrCode && <span>generating...</span>}
+                </div>
+                <div className="flex w-full items-center justify-center p-3">
+                    <p>{description}</p>
                 </div>
                 <footer className="flex flex-col gap-1 w-full p-3">
                     <Button label={t("CMN_BACK")} onClick={handleBack} />
