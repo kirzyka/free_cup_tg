@@ -27,6 +27,31 @@ export const encryptData = (text: string, key: string): string => {
     );
 };
 
+export const decryptData = (encryptedData: string, key: string): string => {
+    // Преобразование из Base64
+    const ivAndEncrypted = CryptoJS.enc.Base64.parse(encryptedData).toString(
+        CryptoJS.enc.Utf8
+    );
+
+    // Извлечение IV и зашифрованного текста
+    const iv = CryptoJS.enc.Hex.parse(ivAndEncrypted.slice(0, 32));
+    const encrypted = ivAndEncrypted.slice(32);
+
+    // Хэширование ключа для использования в AES
+    const hashedKey = CryptoJS.SHA256(key).toString();
+
+    // Дешифрование текста с использованием ключа и вектора инициализации (IV)
+    const decrypted = CryptoJS.AES.decrypt(
+        encrypted,
+        CryptoJS.enc.Hex.parse(hashedKey),
+        {
+            iv: iv,
+        }
+    ).toString(CryptoJS.enc.Utf8);
+
+    return decrypted;
+};
+
 export async function generateHMAC(
     data: object,
     accessKey: string

@@ -1,9 +1,6 @@
-import dynamic from 'next/dynamic';
-
-const ScanView = dynamic(() => import('@/component/view/scan/ScanView'), { ssr: false });
+import ScanView from "@/component/view/scan/ScanView";
+import { Action } from "@/types/Action";
 
 export default function Page() {
-    return (
-      <ScanView type="clone"/>
-    );
+    return <ScanView action={Action.CLONE_POINT} />;
 }
