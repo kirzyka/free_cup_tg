@@ -2,7 +2,9 @@
 
 import Button from "@/component/button/Button";
 import { useLocale } from "@/hooks/useLocale";
+import { Action } from "@/types/Action";
 import Point from "@/types/Point";
+import { getURL } from "@/utils/routerUtils";
 import { useRouter } from "next/navigation";
 
 interface Props {
@@ -10,14 +12,15 @@ interface Props {
 }
 
 const PointBaristaView = ({point}: Props) => {
-    const {t} = useLocale();
+    const {t, language} = useLocale();
     const router = useRouter();
 
     const onAddCup = () => {        
+        router.push(getURL(`/code/${Action.ADD_CUP}/${point.key}`, language));
     };
 
     const onAddPoint = () => {
-
+        router.push(getURL(`/code/${Action.ADD_POINT}/${point.key}`, language));
     };
     
     const onGoToList = () => {
