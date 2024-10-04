@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/telegram-web-app": "^7.10.0",
+    "build": "^0.1.4",
     "crypto-js": "^4.2.0",
     "grammy": "^1.30.0",
     "idb": "^8.0.0",
