@@ -12,6 +12,7 @@ export const generateAddPointQRCode = async (point: Point) => {
         k: point.accessKey,
     };
 
+    console.log("Add point", data);
     return encryptData(JSON.stringify(data), DATA_KEY);
 };
 
