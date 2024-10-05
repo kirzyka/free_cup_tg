@@ -67,12 +67,12 @@ const RegisterPointView = () => {
     useEffect(() => {
         setIconSize(calcIconSize(window.innerWidth));
         const handleResize = () => {
-        setIconSize(calcIconSize(window.innerWidth));
+            setIconSize(calcIconSize(window.innerWidth));
         };
         window.addEventListener('resize', handleResize);
 
         return () => {
-        window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', handleResize);
         };
     }, []); 
 

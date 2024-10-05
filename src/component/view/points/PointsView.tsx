@@ -12,7 +12,8 @@ const PointsView = () => {
     const {t, language} = useLocale();
     const router = useRouter();
     const {points} = useContext(AppContext);
-    const handleOpenDetails = (key: string) => () =>{
+
+    const onOpenDetails = (key: string) => () =>{
         router.push(getURL(`/point/info/${key}`, language));
     };
 
@@ -25,7 +26,7 @@ const PointsView = () => {
           <div className='flex flex-col flex-grow w-full overflow-y-scroll p-3'>
             {
               points.map((p: Point) => (
-                <p key={p.key} className="border-b border-content_b text-2xl font-bold py-2" onClick={handleOpenDetails(p.key)}>
+                <p key={p.key} className="border-b border-content_b text-2xl font-bold py-2" onClick={onOpenDetails(p.key)}>
                   {p.name}
                 </p>
               ))

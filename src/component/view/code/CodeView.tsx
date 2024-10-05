@@ -32,7 +32,7 @@ const CodeView = ({ action, point_key }: Props) => {
         [Action.ADD_CUP as string]: generateAddCupQRCode,
     }[action];
 
-    const handleBack = () => {
+    const onBack = () => {
         router.back();
     };
 
@@ -81,7 +81,7 @@ const CodeView = ({ action, point_key }: Props) => {
                     <p>{description}</p>
                 </div>
                 <footer className="flex flex-col gap-1 w-full p-3">
-                    <Button label={t("CMN_BACK")} onClick={handleBack} />
+                    <Button label={t("CMN_BACK")} onClick={onBack} />
                 </footer>
             </main>
         </div>
