@@ -22,12 +22,13 @@ const TYPE_TO_PAGE: Record<string, string> = {
 };
 
 const ScanView = ({ action }: Props) => {
-  const router = useRouter();
   const { t, language } = useLocale();
-  const [inProgress, setInProgress] = useState(false);
-  const { points, setPoint } = useContext(AppContext);
+  const router = useRouter();
+  const { points, addPoint } = useContext(AppContext);
 
-  const addPoint = async (
+  const [inProgress, setInProgress] = useState(false);
+
+  const onAddPoint = async (
     key: string,
     name: string,
     requiredCups: number,
@@ -41,11 +42,16 @@ const ScanView = ({ action }: Props) => {
       accessKey,
     };
 
-    setPoint(newPoint);
+    addPoint(newPoint);
     router.push(getURL(TYPE_TO_PAGE[action], language));
   };
 
-  const clonePoint = async (key: string, name: string, requiredCups: number, accessKey: string) => {
+  const onClonePoint = async (
+    key: string,
+    name: string,
+    requiredCups: number,
+    accessKey: string
+  ) => {
     const newPoint: Point = {
       key,
       name,
@@ -54,7 +60,7 @@ const ScanView = ({ action }: Props) => {
       accessKey,
     };
 
-    setPoint(newPoint);
+    addPoint(newPoint);
     router.push(getURL(TYPE_TO_PAGE[action], language));
   };
 
@@ -83,11 +89,11 @@ const ScanView = ({ action }: Props) => {
 
         switch (action) {
           case Action.CLONE_POINT:
-            clonePoint(pointKey, pointName, cupCount, accessKey);
+            onClonePoint(pointKey, pointName, cupCount, accessKey);
             router.push(getURL(TYPE_TO_PAGE[action], language));
             break;
           case Action.ADD_POINT:
-            addPoint(pointKey, pointName, cupCount, accessKey);
+            onAddPoint(pointKey, pointName, cupCount, accessKey);
             router.push(getURL(TYPE_TO_PAGE[action], language));
             break;
         }
@@ -148,7 +154,7 @@ const ScanView = ({ action }: Props) => {
         console.log((e as Error).message);
       }
     }
-  }, [action, router, language, onCodeScanned]);
+  }, []);
 
   return (
     <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">

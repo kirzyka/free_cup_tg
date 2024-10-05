@@ -6,6 +6,7 @@ import { AppContext } from "@/context/AppContextProvider";
 import { useLocale } from "@/hooks/useLocale";
 import Point from "@/types/Point";
 import { Role } from "@/types/Role";
+import { getURL } from "@/utils/routerUtils";
 import { useRouter } from "next/navigation";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
@@ -23,15 +24,17 @@ const DISCOUNT: Record<number, number> = {
 };
 
 const RegisterPointView = () => {
-    const {t} = useLocale();
+    const {t, language} = useLocale();
     const router = useRouter();
-    const { points, setPoint, setPoints } = useContext(AppContext);
+    const { points, addPoint} = useContext(AppContext);
     const [coffeePointName, setCoffeePointName] = useState('');
     const [requiredCups, setRequiredCups] = useState(7);
     const [iconSize, setIconSize] = useState<number>(30);
     const calcIconSize = (width: number) => (width - 28) / 10
-    const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => setCoffeePointName(e.target.value);
-    const handleChangeCups = useCallback(
+    const goToMain = () => router.push(getURL(`/`, language));
+
+    const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => setCoffeePointName(e.target.value);
+    const onChangeCups = useCallback(
         (value: number) => {
             if (value < 3) {
             return setRequiredCups(2);
@@ -40,12 +43,12 @@ const RegisterPointView = () => {
         },
         []
     );
-    const handleRegister = async () => {
+    const onRegister = async () => {
         const name: string = coffeePointName.trim();
         const point: Point | undefined = points.find((p) => p.name === name);
 
         if (point) {
-            //navigation.replace(Screens.Main);
+            goToMain();
             return;
         }
     
@@ -57,11 +60,8 @@ const RegisterPointView = () => {
             accessKey: uuidv4().toString().substring(0, 8),
         };
 
-        //await addPointCommand(db, newPoint);
-        await setPoint(newPoint);
-        setPoints([...points, { ...newPoint }]);
-        router.push('/');
-        //navigation.replace(Screens.Main);
+        await addPoint(newPoint);
+        goToMain();
     };
 
     useEffect(() => {
@@ -91,7 +91,7 @@ const RegisterPointView = () => {
                             placeholder="Latte Love" 
                             maxLength={40}
                             value={coffeePointName}
-                            onChange={handleChangeName}
+                            onChange={onChangeName}
                         />
                         <label className="block text-2xl font-bold mb-2">{t("SCR_REG_POINT_LBL_CUPS_COUNT")}</label>
                         <Rating 
@@ -100,7 +100,7 @@ const RegisterPointView = () => {
                             count={10}
                             activeImage="/images/cup_c.png"
                             inactiveImage="/images/cup_w.png"
-                            onChange={handleChangeCups}
+                            onChange={onChangeCups}
                         />
                         <p>
                             {t('SCR_REG_POINT_LBL_CUPS_COUNT_DESCR', {
@@ -118,7 +118,7 @@ const RegisterPointView = () => {
                     <Button 
                         label={t('SCR_REG_POINT_BTN_REGISTER')}
                         disabled={!coffeePointName || !requiredCups}
-                        onClick={handleRegister}
+                        onClick={onRegister}
                     />
                     <Button label={t('CMN_BACK')} onClick={() => router.back()}/>
                 </footer>        
