@@ -1,13 +1,13 @@
 "use client";
 
 import Button from "@/component/button/Button";
+import { AppContext } from "@/context/AppContextProvider";
 import { useLocale } from "@/hooks/useLocale";
 import { Action } from "@/types/Action";
 import Point from "@/types/Point";
-import { Role } from "@/types/Role";
 import { getURL } from "@/utils/routerUtils";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 interface Props {
     point: Point;
@@ -15,10 +15,11 @@ interface Props {
 
 const PointBaristaView = ({point}: Props) => {
     const {t, language} = useLocale();
+    const {deletePoint} = useContext(AppContext);
     const router = useRouter();    
     const [isDetailsOpen, setIsDetailsOpen] = useState(false);
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-    const description: string = point.role === Role.BARISTA ? t('SCR_DELETE_POINT_DESCRIPTION_BARISTA') : t('SCR_DELETE_POINT_DESCRIPTION_CLIENT');
+    const description: string = t('SCR_DELETE_POINT_DESCRIPTION_BARISTA');
 
     const onAddCup = () => {        
         router.push(getURL(`/code/${Action.ADD_CUP}/${point.key}`, language));
@@ -40,8 +41,9 @@ const PointBaristaView = ({point}: Props) => {
         router.push(getURL(`/code/${Action.CLONE_POINT}/${point.key}`, language));
     };
 
-    const onDelete = () => {
-        
+    const onDelete = async () => {
+        await deletePoint(point.key);
+        router.push(getURL(`/`, language));
     };
 
     const onBack = () => {

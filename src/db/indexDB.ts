@@ -33,23 +33,29 @@ export async function openCoffeeJournalDB() {
 }
 
 // Получить список кофеен
-export async function getPoints(): Promise<Point[]> {
+export async function dbGetPoints(): Promise<Point[]> {
   const db = await openCoffeeJournalDB();
 
   return db.getAll('points');
 }
 
-export async function getPoint(key: string): Promise<Point | undefined> {
+export async function dbGetPoint(point_key: string): Promise<Point | undefined> {
   const db = await openCoffeeJournalDB();
 
-  return db.get('points', key);
+  return db.get('points', point_key);
 }
 
 // Сохранить кофейню
-export async function addPoint(point: Point) {
+export async function dbAddPoint(point: Point) {
   const db = await openCoffeeJournalDB();
 
   return db.add('points', point);
+}
+
+export async function dbDeletePoint(point_key: string) {
+  const db = await openCoffeeJournalDB();
+
+  return db.delete('points', point_key);
 }
 
 /*

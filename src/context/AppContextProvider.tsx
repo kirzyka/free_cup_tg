@@ -1,6 +1,6 @@
 "use client";
 
-import { addPoint,getPoint,  getPoints } from "@/db/indexDB";
+import { dbGetPoint, dbGetPoints, dbAddPoint, dbDeletePoint } from "@/db/indexDB";
 import Cup from "@/types/Cup";
 import Point from "@/types/Point";
 import React, { createContext, useEffect, useState } from "react";
@@ -13,9 +13,8 @@ interface AppStateFields {
 
 interface AppStateFunctions {
   getPoint: (key: string) => Promise<Point | undefined>;
-  setPoint: (point: Point) => void;
-  setPoints: (points: Point[]) => void;
-  setCups: (cups: Cup[]) => void;
+  addPoint: (point: Point) => void;
+  deletePoint: (key: string) => void;
 }
 
 type AppState = AppStateFields & AppStateFunctions;
@@ -42,13 +41,26 @@ export const AppContextProvider = ({
   const [points, setPoints] = useState<Point[]>([]);
   const [cups, setCups] = useState<Cup[]>([]);
 
-  const setPoint = async (point: Point) => {
-    await addPoint(point);
+  const getPoint = async (key: string) => {
+    const point: Point | undefined = await dbGetPoint(key);
+    return point;    
+  }
+
+  const addPoint = async (point: Point) => {
+    await dbAddPoint(point);
+    const points: Point[] = await dbGetPoints();
+    setPoints(points);
+  }
+
+  const deletePoint = async (key: string) => {
+    await dbDeletePoint(key);
+    const points: Point[] = await dbGetPoints();
+    setPoints(points);
   }
 
   useEffect(() => {
     const fetchData = async () => {
-      const points: Point[] = await getPoints();//await db.getAllAsync("SELECT * FROM points");
+      const points: Point[] = await dbGetPoints();//await db.getAllAsync("SELECT * FROM points");
       const cups: Cup[] = [];//await db.getAllAsync("SELECT * FROM cups");
 
       setPoints(points);
@@ -67,11 +79,10 @@ export const AppContextProvider = ({
 
         points,
         getPoint,
-        setPoint,
-        setPoints,
+        addPoint,
+        deletePoint,
 
         cups,
-        setCups,
       }}
     >
       {children}
