@@ -2,8 +2,7 @@ import Cup from '@/types/Cup';
 import Point from '@/types/Point';
 import { openDB, DBSchema } from 'idb';
 
-// Определяем схему базы данных
-interface CoffeeJournalDB extends DBSchema {
+interface FreeCupDB extends DBSchema {
   points: {
     key: string;
     value: Point;
@@ -14,14 +13,12 @@ interface CoffeeJournalDB extends DBSchema {
   };
 }
 
-// Функция для открытия базы данных
 const DB_NAME = 'FreeCupDB';
 const DB_VERSION = 1;
 
-export async function openCoffeeJournalDB() {
-  return openDB<CoffeeJournalDB>(DB_NAME, DB_VERSION, {
+export async function openFreeCupDB() {
+  return openDB<FreeCupDB>(DB_NAME, DB_VERSION, {
     upgrade(db) {
-      // Создаём хранилища данных при инициализации
       if (!db.objectStoreNames.contains('points')) {
         db.createObjectStore('points', { keyPath: 'key' });
       }
@@ -32,42 +29,65 @@ export async function openCoffeeJournalDB() {
   });
 }
 
-// Получить список кофеен
 export async function dbGetPoints(): Promise<Point[]> {
-  const db = await openCoffeeJournalDB();
+  const db = await openFreeCupDB();
 
   return db.getAll('points');
 }
 
 export async function dbGetPoint(point_key: string): Promise<Point | undefined> {
-  const db = await openCoffeeJournalDB();
+  const db = await openFreeCupDB();
 
   return db.get('points', point_key);
 }
 
-// Сохранить кофейню
 export async function dbAddPoint(point: Point) {
-  const db = await openCoffeeJournalDB();
+  const db = await openFreeCupDB();
 
   return db.add('points', point);
 }
 
 export async function dbDeletePoint(point_key: string) {
-  const db = await openCoffeeJournalDB();
+  const db = await openFreeCupDB();
 
   return db.delete('points', point_key);
 }
 
-/*
-// Получить все покупки
-export async function getPurchases(): Promise<PurchaseRecord[]> {
-  const db = await openCoffeeJournalDB();
-  return db.getAll('purchases');
+export async function dbGetCups(): Promise<Cup[]> {
+  const db = await openFreeCupDB();
+
+  return db.getAll('cups');
 }
 
-// Добавить новую покупку
-export async function addPurchase(purchase: PurchaseRecord) {
-  const db = await openCoffeeJournalDB();
-  return db.add('purchases', purchase);
+export async function dbAddCup(point: Point) {
+  const db = await openFreeCupDB();
+
+  return db.add('cups', {
+    id: Date.now(),
+    pointKey: point.key,
+    drinkType: "M",
+    cupCount: 1,
+    active: true,
+    addedOn: new Date().toISOString(),    
+  });
 }
-  */
+
+export async function dbDeactivateCups(point_key: string) {
+  const db = await openFreeCupDB();
+  const tx = db.transaction('cups', 'readwrite');
+  const store = tx.objectStore('cups');
+  let cursor = await store.openCursor();
+
+  while (cursor) {
+    const record = cursor.value;
+
+    if (record.pointKey === point_key) {
+      record.active = false;
+      await cursor.update(record);
+    }
+
+    cursor = await cursor.continue();
+  }
+
+  await tx.done;
+}

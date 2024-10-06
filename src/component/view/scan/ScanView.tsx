@@ -11,21 +11,16 @@ import { generateHMAC } from "@/utils/cryptoUtils";
 import Point from "@/types/Point";
 import { AppContext } from "@/context/AppContextProvider";
 import { Role } from "@/types/Role";
+import Cup from "@/types/Cup";
 
 interface Props {
   action: Action;
 }
 
-const TYPE_TO_PAGE: Record<string, string> = {
-  [Action.ADD_POINT]: "/",
-  [Action.CLONE_POINT]: "/",
-};
-
 const ScanView = ({ action }: Props) => {
   const { t, language } = useLocale();
   const router = useRouter();
-  const { points, addPoint } = useContext(AppContext);
-
+  const { points, cups, addPoint, deactivateCups } = useContext(AppContext);
   const [inProgress, setInProgress] = useState(false);
 
   const onAddPoint = async (
@@ -43,7 +38,7 @@ const ScanView = ({ action }: Props) => {
     };
 
     addPoint(newPoint);
-    router.push(getURL(TYPE_TO_PAGE[action], language));
+    router.push(getURL("/", language));
   };
 
   const onClonePoint = async (
@@ -61,7 +56,21 @@ const ScanView = ({ action }: Props) => {
     };
 
     addPoint(newPoint);
-    router.push(getURL(TYPE_TO_PAGE[action], language));
+    router.push(getURL("/", language));
+  };
+
+  const addCup = async (point?: Point) => {
+    console.log('add cup');
+    if (point) {
+      const activeCups: Cup[] = cups.filter((cup: Cup) => cup.pointKey === point.key && cup.active);
+      if (activeCups.length === point.requiredCups) {
+        await deactivateCups(point.key);
+      } else {
+        await addCup(point);
+      }
+
+      router.push(getURL(`/point/info/${point.key}`, language));
+    }
   };
 
   const onCodeScanned = async (data: string) => {
@@ -90,11 +99,9 @@ const ScanView = ({ action }: Props) => {
         switch (action) {
           case Action.CLONE_POINT:
             onClonePoint(pointKey, pointName, cupCount, accessKey);
-            router.push(getURL(TYPE_TO_PAGE[action], language));
             break;
           case Action.ADD_POINT:
             onAddPoint(pointKey, pointName, cupCount, accessKey);
-            router.push(getURL(TYPE_TO_PAGE[action], language));
             break;
         }
 
@@ -113,7 +120,6 @@ const ScanView = ({ action }: Props) => {
         }
       }
 
-      // check timestamp
       const now: number = new Date().getTime();
 
       if (timestamp + QR_CODE_TIMEOUT < now || timestamp > now) {
@@ -122,7 +128,7 @@ const ScanView = ({ action }: Props) => {
 
       if (action === Action.ADD_CUP) {
         setInProgress(true);
-        //addCup(point);
+        addCup(point);
         return;
       }
       console.log("not parsed");
@@ -136,7 +142,7 @@ const ScanView = ({ action }: Props) => {
       try {
         webApp.ready();
         webApp.onEvent("scanQrPopupClosed", () => {
-          router.push(getURL(TYPE_TO_PAGE[action], language));
+          router.push(getURL("/", language));
         });
 
         webApp.showScanQrPopup(

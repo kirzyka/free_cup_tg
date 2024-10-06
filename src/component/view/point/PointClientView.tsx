@@ -24,7 +24,7 @@ const PointClientView = ({ point }: Props) => {
   const description: string = t("SCR_DELETE_POINT_DESCRIPTION_CLIENT");
 
   const onGetCup = () => {    
-
+    router.push(getURL(`/scan`, language));
   };
 
   const getCups = (point: Point) => {
@@ -50,17 +50,9 @@ const PointClientView = ({ point }: Props) => {
     router.back();
   };
 
-  const onShowMoreClient = () => {
-    setIsDetailsOpen(true);;
-  };
-
   const onDelete = async () => {
     await deletePoint(point.key);
     router.push(getURL(`/`, language));
-  };
-
-  const onBack = () => {
-    router.back();
   };
 
   return (
@@ -69,21 +61,27 @@ const PointClientView = ({ point }: Props) => {
         <div className="flex flex-col flex-grow items-center px-3 pt-8 w-full">
           <h1 className="text-3xl">{point.name}</h1>
         </div>
-        <div className="flex flex-grow w-full p-10 items-center justify-center">
-          <TileGrid images={getCups(point)} columns={4}/>
-        </div>
+        {!isDetailsOpen && (
+            <div className="flex flex-grow w-full p-10 items-center justify-center">
+                <TileGrid images={getCups(point)} columns={3}/>
+            </div>
+        )}
         <footer className="flex flex-grow flex-col gap-1 w-full p-3 justify-end">
-          <Button label={t("SCR_POINT_BTN_GET_CUP")} onClick={onGetCup} />
-          <Button label={t("SCR_POINT_BTN_POINTS")} onClick={onGoToList} />
-          {!isDetailsOpen && (
-            <Button label={t("CMN_MORE")} onClick={onShowMoreClient} className="mt-3 text-2xl"/>
-          )}
-          {isDetailsOpen && (
-            <Button label={t("SCR_POINT_BTN_DELETE")} type="danger" onClick={() => setIsDeleteOpen(true)}/>
-          )}
-          {isDetailsOpen && (
-            <Button label={t("CMN_BACK")} className="mt-3" onClick={onBack} />
-          )}
+            {!isDetailsOpen && (
+                <Button label={t("SCR_POINT_BTN_GET_CUP")} onClick={onGetCup} />
+            )}
+            {!isDetailsOpen && (
+                <Button label={t("SCR_POINT_BTN_POINTS")} onClick={onGoToList} />
+            )}
+            {!isDetailsOpen && (
+                <Button label={t("CMN_MORE")} onClick={() => setIsDetailsOpen(true)} className="mt-3"/>
+            )}
+            {isDetailsOpen && (
+                <Button label={t("SCR_POINT_BTN_DELETE")} type="danger" onClick={() => setIsDeleteOpen(true)}/>
+            )}
+            {isDetailsOpen && (
+                <Button label={t("CMN_BACK")} className="mt-3" onClick={() => setIsDetailsOpen(false)} />
+            )}
         </footer>
       </main>
       {isDeleteOpen && (

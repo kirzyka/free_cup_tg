@@ -34,10 +34,6 @@ const PointBaristaView = ({point}: Props) => {
         router.back();
     };
 
-    const onShowMoreBarista = () => {
-        setIsDetailsOpen(true);
-    };
-    
     const onClone = () => {
         router.push(getURL(`/code/${Action.CLONE_POINT}/${point.key}`, language));
     };
@@ -47,10 +43,6 @@ const PointBaristaView = ({point}: Props) => {
         router.push(getURL(`/`, language));
     };
 
-    const onBack = () => {
-        router.back();
-    };
-
     return (
         <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
             <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
@@ -58,11 +50,17 @@ const PointBaristaView = ({point}: Props) => {
                     <h1 className='text-3xl'>{point.name}</h1>
                 </div>
                 <footer className='flex flex-grow flex-col gap-1 w-full p-3 justify-end'>
-                    <Button label={t('SCR_POINT_BTN_ADD_CUP')} onClick={onAddCup} />
-                    <Button label={t('SCR_POINT_BTN_ADD_POINT')} onClick={onAddPoint} />
-                    <Button label={t('SCR_POINT_BTN_POINTS')} onClick={onGoToList}/>
                     {!isDetailsOpen && (
-                        <Button label={t('CMN_MORE')} onClick={onShowMoreBarista} className="mt-3 text-2xl"/>
+                        <Button label={t('SCR_POINT_BTN_ADD_CUP')} onClick={onAddCup} />
+                    )}
+                    {!isDetailsOpen && (
+                        <Button label={t('SCR_POINT_BTN_ADD_POINT')} onClick={onAddPoint} />
+                    )}
+                    {!isDetailsOpen && (
+                        <Button label={t('SCR_POINT_BTN_POINTS')} onClick={onGoToList}/>
+                    )}
+                    {!isDetailsOpen && (
+                        <Button label={t('CMN_MORE')} onClick={() => setIsDetailsOpen(true)} className="mt-3"/>
                     )}
                     {isDetailsOpen && (
                         <Button label={t('SCR_POINT_BTN_CLONE_POINT')} onClick={onClone} />
@@ -71,7 +69,7 @@ const PointBaristaView = ({point}: Props) => {
                         <Button label={t('SCR_POINT_BTN_DELETE')} type="danger" onClick={() => setIsDeleteOpen(true)} />
                     )}
                     {isDetailsOpen && (
-                        <Button label={t('CMN_BACK')} className="mt-3" onClick={onBack} />
+                        <Button label={t('CMN_BACK')} className="mt-3" onClick={() => setIsDetailsOpen(false)} />
                     )}
                 </footer>        
             </main>
