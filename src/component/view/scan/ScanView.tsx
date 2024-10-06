@@ -16,7 +16,7 @@ import Cup from "@/types/Cup";
 const ScanView = () => {
   const { t, language } = useLocale();
   const router = useRouter();
-  const { points, cups, addPoint, deactivateCups } = useContext(AppContext);
+  const { points, cups, addPoint, addCup, deactivateCups } = useContext(AppContext);
   const [inProgress, setInProgress] = useState(false);
 
   const onAddPoint = async (
@@ -55,7 +55,7 @@ const ScanView = () => {
     router.push(getURL("/", language));
   };
 
-  const addCup = async (point?: Point) => {
+  const onAddCup = async (point?: Point) => {
     if (point) {
       const activeCups: Cup[] = cups.filter((cup: Cup) => cup.pointKey === point.key && cup.active);
       if (activeCups.length === point.requiredCups) {
@@ -89,7 +89,7 @@ const ScanView = () => {
       );
 
       const webApp = window.Telegram.WebApp; 
-      webApp.showAlert("Сканирование QR-кода завершено " + decoded);
+      
       if (!point) {
         setInProgress(true);
 
@@ -113,6 +113,7 @@ const ScanView = () => {
         );
 
         if (calculatedSignature !== signature) {
+          webApp.showAlert("Signature is invalid");
           return;
         }
       }
@@ -125,10 +126,10 @@ const ScanView = () => {
 
       if (action === Action.ADD_CUP) {
         setInProgress(true);
-        addCup(point);
+        //webApp.showAlert("Cup was added " + point.key);
+        onAddCup(point);
         return;
       }
-      console.log("not parsed");
     }
   };
 
