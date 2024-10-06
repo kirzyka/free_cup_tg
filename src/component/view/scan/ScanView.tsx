@@ -56,7 +56,6 @@ const ScanView = () => {
   };
 
   const addCup = async (point?: Point) => {
-    console.log('add cup');
     if (point) {
       const activeCups: Cup[] = cups.filter((cup: Cup) => cup.pointKey === point.key && cup.active);
       if (activeCups.length === point.requiredCups) {
@@ -89,6 +88,8 @@ const ScanView = () => {
         (p: Point) => p.key === pointKey
       );
 
+      const webApp = window.Telegram.WebApp; 
+      webApp.showAlert("Сканирование QR-кода завершено " + decoded);
       if (!point) {
         setInProgress(true);
 
