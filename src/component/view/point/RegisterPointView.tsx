@@ -55,7 +55,7 @@ const RegisterPointView = () => {
         const newPoint: Point = {
             key: uuidv4().toString().substring(0, 8),
             name,
-            role: Role.BARISTA,
+            role: Role.CLIENT,
             requiredCups: Number(requiredCups),
             accessKey: uuidv4().toString().substring(0, 8),
         };

@@ -8,6 +8,8 @@ import { useContext, useState } from "react";
 import DeletePointView from "./DeletePointView";
 import { AppContext } from "@/context/AppContextProvider";
 import { getURL } from "@/utils/routerUtils";
+import Cup from "@/types/Cup";
+import TileGrid from "@/component/tileGrid/TileGrid";
 
 interface Props {
   point: Point;
@@ -16,12 +18,33 @@ interface Props {
 const PointClientView = ({ point }: Props) => {
   const { t, language } = useLocale();
   const router = useRouter();
-  const { deletePoint } = useContext(AppContext);
+  const { cups, deletePoint } = useContext(AppContext);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const description: string = t("SCR_DELETE_POINT_DESCRIPTION_CLIENT");
 
-  const onGetCup = () => {};
+  const onGetCup = () => {    
+
+  };
+
+  const getCups = (point: Point) => {
+    const activeCups: Cup[] = cups.filter((cup: Cup) => cup.pointKey === point.key && cup.active);
+    const list: (Cup | undefined)[] = activeCups.concat(Array.from({ length: point.requiredCups - activeCups.length }));
+
+    return list
+      .map((cup: Cup | undefined) => (
+        {
+          alt:"Картинка чашки",
+          src: cup?.active ? "/images/cup_c.png" : "/images/cup_w.png",
+        }
+      ))
+      .concat([
+        {
+          alt: "Картинка приза",
+          src: activeCups.length === point.requiredCups ? "/images/gift_c.png" : "/images/gift_w.png",
+        }
+      ]);
+  };
 
   const onGoToList = () => {
     router.back();
@@ -46,8 +69,8 @@ const PointClientView = ({ point }: Props) => {
         <div className="flex flex-col flex-grow items-center px-3 pt-8 w-full">
           <h1 className="text-3xl">{point.name}</h1>
         </div>
-        <div className="flex flex-grow w-full p-3 items-center justify-center">
-          cups
+        <div className="flex flex-grow w-full p-10 items-center justify-center">
+          <TileGrid images={getCups(point)} columns={3}/>
         </div>
         <footer className="flex flex-grow flex-col gap-1 w-full p-3 justify-end">
           <Button label={t("SCR_POINT_BTN_GET_CUP")} onClick={onGetCup} />

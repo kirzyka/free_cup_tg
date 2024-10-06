@@ -28,6 +28,7 @@ const config = {
         inactive: "var(--inactive)",
         danger: "var(--danger)",
         transparent: {
+          DEFAULT: 'transparent',
           100: 'rgba(0, 0, 0, 0.1)',
           200: 'rgba(0, 0, 0, 0.2)',
           300: 'rgba(0, 0, 0, 0.3)',
