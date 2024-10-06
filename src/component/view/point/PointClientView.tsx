@@ -70,7 +70,7 @@ const PointClientView = ({ point }: Props) => {
           <h1 className="text-3xl">{point.name}</h1>
         </div>
         <div className="flex flex-grow w-full p-10 items-center justify-center">
-          <TileGrid images={getCups(point)} columns={3}/>
+          <TileGrid images={getCups(point)} columns={4}/>
         </div>
         <footer className="flex flex-grow flex-col gap-1 w-full p-3 justify-end">
           <Button label={t("SCR_POINT_BTN_GET_CUP")} onClick={onGetCup} />
