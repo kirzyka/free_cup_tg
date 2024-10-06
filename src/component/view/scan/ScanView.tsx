@@ -13,11 +13,7 @@ import { AppContext } from "@/context/AppContextProvider";
 import { Role } from "@/types/Role";
 import Cup from "@/types/Cup";
 
-interface Props {
-  action: Action;
-}
-
-const ScanView = ({ action }: Props) => {
+const ScanView = () => {
   const { t, language } = useLocale();
   const router = useRouter();
   const { points, cups, addPoint, deactivateCups } = useContext(AppContext);
