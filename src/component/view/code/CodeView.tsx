@@ -38,7 +38,7 @@ const CodeView = ({ action, point_key }: Props) => {
     };
 
     const generateCode = async () => {
-        getPoint(point_key).then(async(point) => {
+        getPoint(point_key).then(async(point: Point | undefined) => {
             if (point) {
                 const encoded: string = await qrCodeGenerator(point);
 
