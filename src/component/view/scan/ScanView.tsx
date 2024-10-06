@@ -121,6 +121,7 @@ const ScanView = () => {
       const now: number = new Date().getTime();
 
       if (timestamp + QR_CODE_TIMEOUT < now || timestamp > now) {
+        webApp.showAlert("QR code is expired");
         return;
       }
 
@@ -140,7 +141,7 @@ const ScanView = () => {
       try {
         webApp.ready();
         webApp.onEvent("scanQrPopupClosed", () => {
-          router.push(getURL("/", language));
+          //router.push(getURL("/", language));
         });
 
         webApp.showScanQrPopup(
