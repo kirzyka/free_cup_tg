@@ -1,5 +1,6 @@
 "use client";
 
+import { QR_CODE_LIFETIME } from "@/client_const";
 import Button from "@/component/button/Button";
 import QrCodeDisplay from "@/component/qr/QRCodeDisplay";
 import { AppContext } from "@/context/AppContextProvider";
@@ -36,19 +37,27 @@ const CodeView = ({ action, point_key }: Props) => {
         router.back();
     };
 
-    const generateCode = async (point: Point) => {
-        const encoded: string = await qrCodeGenerator(point);
+    const generateCode = async () => {
+        getPoint(point_key).then(async(point) => {
+            if (point) {
+                const encoded: string = await qrCodeGenerator(point);
 
-        setQRCode(encoded);
+                setQRCode(encoded);
+            }
+        });
     };
 
     useEffect(() => {
-        getPoint(point_key).then((point) => {
-            if (point) {
-                generateCode(point);
-            }
-        });
+        generateCode();
     }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+          generateCode();
+        }, QR_CODE_LIFETIME);
+    
+        return () => clearInterval(interval);
+      }, [qrCode]);
 
     useEffect(() => {
         switch (action) {
