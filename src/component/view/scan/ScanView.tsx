@@ -133,13 +133,13 @@ const ScanView = () => {
     }
   };
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.Telegram?.WebApp) {
+  const openScaner = () => {
+    if (window?.Telegram?.WebApp) {
       const webApp = window.Telegram.WebApp;
 
       try {
         webApp.ready();
-        webApp.onEvent("scanQrPopupClosed", () => {
+        webApp.onEvent("scanQrPopupClosed", () => {          
           //router.push(getURL("/", language));
         });
 
@@ -149,9 +149,8 @@ const ScanView = () => {
           },
           (result: string | null) => {
             if (result) {
-               return onCodeScanned(result);
+              onCodeScanned(result);
             }
-            webApp.showAlert("QR code not found");
             return true;
           }
         );
@@ -159,6 +158,10 @@ const ScanView = () => {
         console.log((e as Error).message);
       }
     }
+  };
+
+  useEffect(() => {
+    openScaner();
   }, []);
 
   return (
@@ -168,6 +171,7 @@ const ScanView = () => {
           <h1 className="text-3xl">Scaning...</h1>
         </div>
         <footer className="flex flex-col gap-1 w-full p-3">
+          <Button label={t("CMN_SCAN")} onClick={openScaner} />
           <Button label={t("CMN_BACK")} onClick={() => router.back()} />
         </footer>
       </main>
