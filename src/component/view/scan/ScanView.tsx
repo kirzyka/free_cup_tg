@@ -168,10 +168,10 @@ const ScanView = () => {
     <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
       <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
         <div className="flex flex-col flex-grow items-center justify-center gap-3 p-5">
-          <h1 className="text-3xl">Scaning...</h1>
+          <h1 className="text-3xl">{t("SCR_SCAN_HEADER")}</h1>
         </div>
         <footer className="flex flex-col gap-1 w-full p-3">
-          <Button label={t("CMN_SCAN")} onClick={openScaner} />
+          <Button label={t("SCR_SCAN_BTN")} onClick={openScaner} />
           <Button label={t("CMN_BACK")} onClick={() => router.back()} />
         </footer>
       </main>

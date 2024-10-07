@@ -39,5 +39,7 @@
   "SCR_CODE_ADD_CUP_HEADER": "Dodawanie filiżanki",
   "SCR_CODE_ADD_CUP_DESCR": "Pozwól klientowi zeskanować kod",
 
-  "SCR_SCAN_DESCR": "Zeskanuj kod z urządzenia baristy"
+  "SCR_SCAN_HEADER": "Zeskanuj kod",
+  "SCR_SCAN_DESCR": "Zeskanuj kod z urządzenia baristy",
+  "SCR_SCAN_BTN": "Zeskanuj"
 }

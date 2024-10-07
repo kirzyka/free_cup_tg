@@ -39,5 +39,7 @@
   "SCR_CODE_ADD_CUP_HEADER": "Legger til en kopp",
   "SCR_CODE_ADD_CUP_DESCR": "La kunden skanne koden",
 
-  "SCR_SCAN_DESCR": "Vennligst skann koden fra baristaens enhet"
+  "SCR_SCAN_HEADER": "Skann koden",
+  "SCR_SCAN_DESCR": "Vennligst skann koden fra baristaens enhet",
+  "SCR_SCAN_BTN": "Skann"
 }

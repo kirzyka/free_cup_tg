@@ -39,5 +39,7 @@
   "SCR_CODE_ADD_CUP_HEADER": "Een kopje toevoegen",
   "SCR_CODE_ADD_CUP_DESCR": "Laat de klant de code scannen",
 
-  "SCR_SCAN_DESCR": "Scan de code van het apparaat van de barista"
+  "SCR_SCAN_HEADER": "Scan de code",
+  "SCR_SCAN_DESCR": "Scan de code van het apparaat van de barista",
+  "SCR_SCAN_BTN": "Scannen"
 }

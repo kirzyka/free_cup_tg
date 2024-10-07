@@ -39,5 +39,7 @@
   "SCR_CODE_ADD_CUP_HEADER": "Eine Tasse hinzufügen",
   "SCR_CODE_ADD_CUP_DESCR": "Lassen Sie den Kunden den Code scannen",
 
-  "SCR_SCAN_DESCR": "Bitte scannen Sie den Code vom Gerät des Baristas"
+  "SCR_SCAN_HEADER": "Code scannen",
+  "SCR_SCAN_DESCR": "Bitte scannen Sie den Code vom Gerät des Baristas",
+  "SCR_SCAN_BTN": "Scannen"
 }

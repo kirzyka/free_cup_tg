@@ -39,5 +39,7 @@
   "SCR_CODE_ADD_CUP_HEADER": "Tilføjer en kop",
   "SCR_CODE_ADD_CUP_DESCR": "Lad kunden scanne koden",
 
-  "SCR_SCAN_DESCR": "Scan venligst koden fra baristaens enhed"
+  "SCR_SCAN_HEADER": "Scan koden",
+  "SCR_SCAN_DESCR": "Venligst scan koden fra baristaens enhed",
+  "SCR_SCAN_BTN": "Scan"
 }

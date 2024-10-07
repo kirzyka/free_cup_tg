@@ -39,5 +39,7 @@
   "SCR_CODE_ADD_CUP_HEADER": "Lägger till en kopp",
   "SCR_CODE_ADD_CUP_DESCR": "Låt kunden skanna koden",
 
-  "SCR_SCAN_DESCR": "Skanna koden från baristans enhet"
+  "SCR_SCAN_HEADER": "Skanna koden",
+  "SCR_SCAN_DESCR": "Skanna koden från baristans enhet",
+  "SCR_SCAN_BTN": "Skanna"
 }

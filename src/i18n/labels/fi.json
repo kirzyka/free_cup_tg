@@ -39,5 +39,7 @@
   "SCR_CODE_ADD_CUP_HEADER": "Kupin lisääminen",
   "SCR_CODE_ADD_CUP_DESCR": "Anna asiakkaan skannata koodi",
 
-  "SCR_SCAN_DESCR": "Ole hyvä ja skannaa koodi baristan laitteesta"
+  "SCR_SCAN_HEADER": "Skannaa koodi",
+  "SCR_SCAN_DESCR": "Ole hyvä ja skannaa koodi baristan laitteesta",
+  "SCR_SCAN_BTN": "Skannaa"
 }
