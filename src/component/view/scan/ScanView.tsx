@@ -18,7 +18,6 @@ const ScanView = () => {
   const router = useRouter();
   const { points, cups, addPoint, addCup, deactivateCups } = useContext(AppContext);
   const [inProgress, setInProgress] = useState(false);
-  const [steps, setSteps] = useState<string[]>(["0"]);
 
   const onAddPoint = async (
     key: string,
@@ -141,9 +140,6 @@ const ScanView = () => {
       try {
         webApp.ready();
         webApp.onEvent("scanQrPopupClosed", () => {
-          //console.log(params);
-          setSteps(steps.concat(["1"]));
-          webApp.showAlert(JSON.stringify(steps));
           //router.push(getURL("/", language));
         });
 
@@ -152,10 +148,10 @@ const ScanView = () => {
             text: t("SCR_SCAN_DESCR"),
           },
           (result: string | null) => {
-            setSteps(steps.concat(["2"]));
             if (result) {
-              onCodeScanned(result);
+               return onCodeScanned(result);
             }
+            webApp.showAlert("QR code not found");
             return true;
           }
         );
