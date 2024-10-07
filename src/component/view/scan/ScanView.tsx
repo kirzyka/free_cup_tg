@@ -18,7 +18,7 @@ const ScanView = () => {
   const router = useRouter();
   const { points, cups, addPoint, addCup, deactivateCups } = useContext(AppContext);
   const [inProgress, setInProgress] = useState(false);
-  const [steps, setSteps] = useState<string[]>([]);
+  const [steps, setSteps] = useState<string[]>(["0"]);
 
   const onAddPoint = async (
     key: string,
@@ -143,7 +143,7 @@ const ScanView = () => {
         webApp.onEvent("scanQrPopupClosed", () => {
           //console.log(params);
           setSteps(steps.concat(["1"]));
-          webApp.showAlert("Code: " + steps);
+          webApp.showAlert(JSON.stringify(steps));
           //router.push(getURL("/", language));
         });
 
