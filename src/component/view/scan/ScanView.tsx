@@ -18,7 +18,7 @@ const ScanView = () => {
   const router = useRouter();
   const { points, cups, addPoint, addCup, deactivateCups } = useContext(AppContext);
   const [inProgress, setInProgress] = useState(false);
-  const [code, setCode] = useState("");
+  const [steps, setSteps] = useState<string[]>([]);
 
   const onAddPoint = async (
     key: string,
@@ -71,7 +71,6 @@ const ScanView = () => {
 
   const onCodeScanned = async (data: string) => {
     if (!inProgress) {
-      setCode(data);
       const response = await fetch(
         `/api/code/decode?code=${encodeURIComponent(data)}`
       );
@@ -129,7 +128,6 @@ const ScanView = () => {
 
       if (action === Action.ADD_CUP) {
         setInProgress(true);
-        //webApp.showAlert("Cup was added " + point.key);
         onAddCup(point);
         return;
       }
@@ -144,7 +142,8 @@ const ScanView = () => {
         webApp.ready();
         webApp.onEvent("scanQrPopupClosed", () => {
           //console.log(params);
-          webApp.showAlert("Code: " + code);
+          setSteps(steps.concat(["1"]));
+          webApp.showAlert("Code: " + steps);
           //router.push(getURL("/", language));
         });
 
@@ -153,6 +152,7 @@ const ScanView = () => {
             text: t("SCR_SCAN_DESCR"),
           },
           (result: string | null) => {
+            setSteps(steps.concat(["2"]));
             if (result) {
               onCodeScanned(result);
             }
