@@ -144,7 +144,7 @@ const ScanView = () => {
         webApp.ready();
         webApp.onEvent("scanQrPopupClosed", () => {
           //console.log(params);
-          webApp.showAlert(code);
+          webApp.showAlert("Code: " + code);
           //router.push(getURL("/", language));
         });
 
