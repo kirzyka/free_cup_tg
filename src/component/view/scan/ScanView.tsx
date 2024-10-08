@@ -70,67 +70,61 @@ const ScanView = () => {
 
   const onCodeScanned = async (data: string) => {
     if (!inProgress) {
-      try {
-        const decoded = await decrypt(data);
-        const { s: signature, ...decodedData } = JSON.parse(decoded);
-        const {
-          a: action,
-          i: pointKey,
-          n: pointName,
-          c: cupCount,
-          k: accessKey,
-          t: timestamp,
-        } = decodedData;
-        const point: Point | undefined = points.find(
-          (p: Point) => p.key === pointKey
+      const decoded = await decrypt(data);
+      const { s: signature, ...decodedData } = JSON.parse(decoded);
+      const {
+        a: action,
+        i: pointKey,
+        n: pointName,
+        c: cupCount,
+        k: accessKey,
+        t: timestamp,
+      } = decodedData;
+      const point: Point | undefined = points.find(
+        (p: Point) => p.key === pointKey
+      );
+
+      const webApp = window.Telegram.WebApp; 
+      
+      if (!point) {
+        setInProgress(true);
+
+        switch (action) {
+          case Action.CLONE_POINT:
+            onClonePoint(pointKey, pointName, cupCount, accessKey);
+            break;
+          case Action.ADD_POINT:
+            onAddPoint(pointKey, pointName, cupCount, accessKey);
+            break;
+        }
+
+        return;
+      }
+
+      // check signature
+      if (signature && point) {
+        const calculatedSignature: string = await generateHMAC(
+          decodedData,
+          point.accessKey
         );
 
-        const webApp = window.Telegram.WebApp; 
-        
-        if (!point) {
-          setInProgress(true);
-
-          switch (action) {
-            case Action.CLONE_POINT:
-              onClonePoint(pointKey, pointName, cupCount, accessKey);
-              break;
-            case Action.ADD_POINT:
-              onAddPoint(pointKey, pointName, cupCount, accessKey);
-              break;
-          }
-
+        if (calculatedSignature !== signature) {
+          webApp.showAlert("Signature is invalid");
           return;
         }
+      }
 
-        // check signature
-        if (signature && point) {
-          const calculatedSignature: string = await generateHMAC(
-            decodedData,
-            point.accessKey
-          );
+      const now: number = new Date().getTime();
 
-          if (calculatedSignature !== signature) {
-            webApp.showAlert("Signature is invalid");
-            return;
-          }
-        }
+      if (timestamp + QR_CODE_TIMEOUT < now || timestamp > now) {
+        webApp.showAlert("QR code is expired");
+        return;
+      }
 
-        const now: number = new Date().getTime();
-
-        if (timestamp + QR_CODE_TIMEOUT < now || timestamp > now) {
-          webApp.showAlert("QR code is expired");
-          return;
-        }
-
-        if (action === Action.ADD_CUP) {
-          setInProgress(true);
-          onAddCup(point);
-          return;
-        }
-      } catch (e: unknown) {
-        const webApp = window.Telegram.WebApp; 
-        webApp.showAlert((e as Error).message);
-        console.log((e as Error).message);
+      if (action === Action.ADD_CUP) {
+        setInProgress(true);
+        onAddCup(point);
+        return;
       }
     }
   };
