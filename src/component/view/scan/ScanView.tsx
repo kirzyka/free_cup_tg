@@ -71,7 +71,7 @@ const ScanView = () => {
   const onCodeScanned = async (data: string) => {
     if (!inProgress) {
       try {
-        const decoded = decrypt(data);
+        const decoded = await decrypt(data);
         const { s: signature, ...decodedData } = JSON.parse(decoded);
         const {
           a: action,
