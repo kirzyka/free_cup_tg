@@ -13,6 +13,7 @@ export const LocalizationContext = createContext<LocalizationContext | undefined
 
 export function LocalizationProvider({ children, language }: { children: React.ReactNode, language: string }) {
   const t = (key: string, values?: Record<string, string>) => {
+    language = DEFAULT_LANG;
     const translation: string = TRANSLATIONS[language]?.[key] || TRANSLATIONS[DEFAULT_LANG]?.[key] || key;
 
     return values
