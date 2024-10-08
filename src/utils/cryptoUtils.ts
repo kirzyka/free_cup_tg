@@ -1,5 +1,7 @@
-//import * as crypto from 'crypto';
+"use server";
+
 import CryptoJS from "crypto-js";
+import { DATA_KEY } from "@/server-const";
 
 export const encryptData = (text: string, key: string): string => {
     // Генерация случайного вектора инициализации (IV)
@@ -76,3 +78,11 @@ export async function generateHMAC(
         .join("");
     return hashHex;
 }
+
+export const encrypt = (data: string): string => {
+    return encryptData(data, DATA_KEY);
+};
+
+export const decrypt = (code: string): string => {
+    return decryptData(code, DATA_KEY);        
+};

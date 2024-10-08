@@ -1,7 +1,7 @@
-import { DATA_KEY } from "@/server-const";
 import { Action } from "@/types/Action";
 import Point from "@/types/Point";
-import { encryptData, generateHMAC } from "./cryptoUtils";
+import { encrypt, generateHMAC } from "./cryptoUtils";
+
 
 export const generateAddPointQRCode = async (point: Point) => {
     const data = {
@@ -13,7 +13,7 @@ export const generateAddPointQRCode = async (point: Point) => {
     };
 
     console.log("Add point", data);
-    return encryptData(JSON.stringify(data), DATA_KEY);
+    return encrypt(JSON.stringify(data));
 };
 
 export const generateClonePointQRCode = async (point: Point) => {
@@ -27,7 +27,7 @@ export const generateClonePointQRCode = async (point: Point) => {
         t: timestamp,
     };
 
-    return encryptData(JSON.stringify(data), DATA_KEY);
+    return encrypt(JSON.stringify(data));
 };
 
 export const generateAddCupQRCode = async (point: Point) => {
@@ -39,5 +39,5 @@ export const generateAddCupQRCode = async (point: Point) => {
     };
     const signature: string = await generateHMAC(data, point.accessKey);
 
-    return encryptData(JSON.stringify({ ...data, s: signature }), DATA_KEY);
+    return encrypt(JSON.stringify({ ...data, s: signature }));
 };

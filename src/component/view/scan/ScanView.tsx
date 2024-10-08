@@ -7,7 +7,7 @@ import { useLocale } from "@/hooks/useLocale";
 import { getURL } from "@/utils/routerUtils";
 import { Action } from "@/types/Action";
 import { QR_CODE_TIMEOUT } from "@/client_const";
-import { generateHMAC } from "@/utils/cryptoUtils";
+import { decrypt, generateHMAC } from "@/utils/cryptoUtils";
 import Point from "@/types/Point";
 import { AppContext } from "@/context/AppContextProvider";
 import { Role } from "@/types/Role";
@@ -70,11 +70,7 @@ const ScanView = () => {
 
   const onCodeScanned = async (data: string) => {
     if (!inProgress) {
-      const response = await fetch(
-        `/api/code/decode?code=${encodeURIComponent(data)}`
-      );
-      const decoded = await response.json();
-      //const decoded = decryptData(data, DATA_KEY);
+      const decoded = decrypt(data);
       const { s: signature, ...decodedData } = JSON.parse(decoded);
       const {
         a: action,
