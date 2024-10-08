@@ -47,12 +47,12 @@ const PointClientView = ({ point }: Props) => {
   };
 
   const onGoToList = () => {
-    router.back();
+    router.push(getURL(`/`, language));
   };
 
   const onDelete = async () => {
     await deletePoint(point.key);
-    router.push(getURL(`/`, language));
+    onGoToList();
   };
 
   return (
