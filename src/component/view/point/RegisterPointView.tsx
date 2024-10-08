@@ -9,7 +9,7 @@ import { Role } from "@/types/Role";
 import { getURL } from "@/utils/routerUtils";
 import { useRouter } from "next/navigation";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 const DISCOUNT: Record<number, number> = {
     2: 33,
@@ -24,25 +24,23 @@ const DISCOUNT: Record<number, number> = {
 };
 
 const RegisterPointView = () => {
-    const {t, language} = useLocale();
+    const { t, language } = useLocale();
     const router = useRouter();
-    const { points, addPoint} = useContext(AppContext);
-    const [coffeePointName, setCoffeePointName] = useState('');
+    const { points, addPoint } = useContext(AppContext);
+    const [coffeePointName, setCoffeePointName] = useState("");
     const [requiredCups, setRequiredCups] = useState(7);
     const [iconSize, setIconSize] = useState<number>(30);
-    const calcIconSize = (width: number) => (width - 28) / 10
+    const calcIconSize = (width: number) => (width - 28) / 10;
     const goToMain = () => router.push(getURL(`/`, language));
 
-    const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => setCoffeePointName(e.target.value);
-    const onChangeCups = useCallback(
-        (value: number) => {
-            if (value < 3) {
+    const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) =>
+        setCoffeePointName(e.target.value);
+    const onChangeCups = useCallback((value: number) => {
+        if (value < 3) {
             return setRequiredCups(2);
-            }
-            setRequiredCups(value);
-        },
-        []
-    );
+        }
+        setRequiredCups(value);
+    }, []);
     const onRegister = async () => {
         const name: string = coffeePointName.trim();
         const point: Point | undefined = points.find((p) => p.name === name);
@@ -51,11 +49,11 @@ const RegisterPointView = () => {
             goToMain();
             return;
         }
-    
+
         const newPoint: Point = {
             key: uuidv4().toString().substring(0, 8),
             name,
-            role: Role.CLIENT,
+            role: Role.BARISTA,
             requiredCups: Number(requiredCups),
             accessKey: uuidv4().toString().substring(0, 8),
         };
@@ -69,32 +67,37 @@ const RegisterPointView = () => {
         const handleResize = () => {
             setIconSize(calcIconSize(window.innerWidth));
         };
-        window.addEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
 
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener("resize", handleResize);
         };
-    }, []); 
+    }, []);
 
     return (
         <div className="flex items-center w-full h-full justify-items-center [family-name:var(--font-geist-sans)]">
             <main className="flex flex-col w-full h-full gap-8 items-center justify-between">
-                <div className='flex flex-col items-center w-full p-3 justify-end min-h-[150px]'>
-                    <h1 className='text-3xl'>{t("SCR_REG_POINT_HEADER")}</h1>
+                <div className="flex flex-col items-center w-full p-3 justify-end min-h-[150px]">
+                    <h1 className="text-3xl">{t("SCR_REG_POINT_HEADER")}</h1>
                 </div>
-                <div className='flex flex-col flex-grow items-center w-full p-3'>
+                <div className="flex flex-col flex-grow items-center w-full p-3">
                     <div className="flex flex-col gap-3 w-full ">
-                        <label className="block text-2xl font-bold mb-2">{t("SCR_REG_POINT_LBL_NAME")}</label>
-                        <input className='w-full p-3 bg-transparent border-dashed border-2 focus:outline-none'
-                            type="text" 
-                            name="name" 
-                            placeholder="Latte Love" 
+                        <label className="block text-2xl font-bold mb-2">
+                            {t("SCR_REG_POINT_LBL_NAME")}
+                        </label>
+                        <input
+                            className="w-full p-3 bg-transparent border-dashed border-2 focus:outline-none"
+                            type="text"
+                            name="name"
+                            placeholder="Latte Love"
                             maxLength={40}
                             value={coffeePointName}
                             onChange={onChangeName}
                         />
-                        <label className="block text-2xl font-bold mb-2">{t("SCR_REG_POINT_LBL_CUPS_COUNT")}</label>
-                        <Rating 
+                        <label className="block text-2xl font-bold mb-2">
+                            {t("SCR_REG_POINT_LBL_CUPS_COUNT")}
+                        </label>
+                        <Rating
                             size={iconSize}
                             value={requiredCups}
                             count={10}
@@ -103,25 +106,29 @@ const RegisterPointView = () => {
                             onChange={onChangeCups}
                         />
                         <p>
-                            {t('SCR_REG_POINT_LBL_CUPS_COUNT_DESCR', {
+                            {t("SCR_REG_POINT_LBL_CUPS_COUNT_DESCR", {
                                 cups: requiredCups.toLocaleString(),
                             })}
                         </p>
                         <p>
-                            {t('SCR_REG_POINT_LBL_DISCOUNT_DESCR', {
-                                discount: DISCOUNT[requiredCups].toLocaleString(),
+                            {t("SCR_REG_POINT_LBL_DISCOUNT_DESCR", {
+                                discount:
+                                    DISCOUNT[requiredCups].toLocaleString(),
                             })}
                         </p>
                     </div>
                 </div>
-                <footer className='flex flex-col gap-1 w-full p-3'>
-                    <Button 
-                        label={t('SCR_REG_POINT_BTN_REGISTER')}
+                <footer className="flex flex-col gap-1 w-full p-3">
+                    <Button
+                        label={t("SCR_REG_POINT_BTN_REGISTER")}
                         disabled={!coffeePointName || !requiredCups}
                         onClick={onRegister}
                     />
-                    <Button label={t('CMN_BACK')} onClick={() => router.back()}/>
-                </footer>        
+                    <Button
+                        label={t("CMN_BACK")}
+                        onClick={() => router.back()}
+                    />
+                </footer>
             </main>
         </div>
     );
