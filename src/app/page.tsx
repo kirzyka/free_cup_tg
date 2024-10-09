@@ -1,6 +1,6 @@
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { DEFAULT_LANG} from '@/client_const';
+import { DEFAULT_LANG} from '@/constClient';
 import { SUPPORTED_LANGS } from '@/i18n/Translations';
 
 export default function HomeRedirect() {

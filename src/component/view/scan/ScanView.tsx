@@ -6,7 +6,7 @@ import Button from "@/component/button/Button";
 import { useLocale } from "@/hooks/useLocale";
 import { getURL } from "@/utils/routerUtils";
 import { Action } from "@/types/Action";
-import { QR_CODE_TIMEOUT } from "@/client_const";
+import { QR_CODE_TIMEOUT } from "@/constClient";
 import { decrypt, generateHMAC } from "@/utils/cryptoUtils";
 import Point from "@/types/Point";
 import { AppContext } from "@/context/AppContextProvider";

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Button from "@/component/button/Button";
 import { useLocale } from "@/hooks/useLocale";
-import { VERSION } from '@/client_const';
+import { VERSION } from '@/constClient';
 
 const StartView = () => {
   const {t} = useLocale();

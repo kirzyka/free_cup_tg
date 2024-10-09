@@ -1,7 +1,7 @@
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
+//export const dynamic = 'force-dynamic';
+//export const fetchCache = 'force-no-store';
 
-import { BOT_KEY } from '@/constant';
+import { BOT_KEY } from '@/constServer';
 import { Bot, InlineKeyboard, webhookCallback } from 'grammy';
 
 const bot = new Bot(BOT_KEY);

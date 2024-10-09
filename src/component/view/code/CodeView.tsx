@@ -1,6 +1,6 @@
 "use client";
 
-import { QR_CODE_LIFETIME } from "@/client_const";
+import { QR_CODE_LIFETIME } from "@/constClient";
 import Button from "@/component/button/Button";
 import QrCodeDisplay from "@/component/qr/QRCodeDisplay";
 import { AppContext } from "@/context/AppContextProvider";

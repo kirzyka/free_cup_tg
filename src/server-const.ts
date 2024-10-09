@@ -1,1 +1,0 @@
-export const DATA_KEY: string = 'aB3#9xTzWq';

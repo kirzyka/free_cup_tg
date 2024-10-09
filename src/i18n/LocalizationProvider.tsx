@@ -2,7 +2,7 @@
 
 import { createContext } from 'react';
 import { TRANSLATIONS } from '@/i18n/Translations';
-import { DEFAULT_LANG } from '@/client_const';
+import { DEFAULT_LANG } from '@/constClient';
 
 export interface LocalizationContext {
   language: string;

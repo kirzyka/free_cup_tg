@@ -1,7 +1,7 @@
 "use server";
 
 import CryptoJS from "crypto-js";
-import { DATA_KEY } from "@/server-const";
+import { DATA_KEY } from "@/constServer";
 
 export const encryptData = (text: string, key: string): string => {
     // Генерация случайного вектора инициализации (IV)
