@@ -1,5 +1,7 @@
+import { ROOT_URL } from "@/constClient";
 import { BOT_KEY } from "@/constServer";
-import { Bot, InlineKeyboard, webhookCallback } from "grammy";
+import { getTranslationFn } from "@/i18n/LocalizationProvider";
+import { Bot, webhookCallback } from "grammy";
 
 const bot = new Bot(BOT_KEY);
 
@@ -7,20 +9,21 @@ bot.on("message:text", async (ctx) => {
   //const chatId = ctx.chat.id;
   const text = ctx.message.text;
   const lang = ctx.from.language_code;
-  const imgUrl: string = "https://free-cup-tg.vercel.app/images/cup_c_e.png";
-  const description: string = `${lang} Hello, I am a bot. I can do anything you want me to. Just send me a message and I'll reply you!`;
-  const btnText: string = "FreeCup";
+  const t = getTranslationFn(lang); 
 
   if (text === "/start") {
+    const imgUrl: string = "https://free-cup-tg.vercel.app/images/cup_c_e.png";
+    const btnText: string = "FreeCup";
+
     await ctx.replyWithPhoto(imgUrl, {
-      caption: description,
+      caption: t("BOT_START_DESCRIPTION"),
       reply_markup: {
         inline_keyboard: [
           [
             {
               text: btnText,
               web_app: {
-                url: "https://free-cup-tg.vercel.app",
+                url: ROOT_URL,
               },
             },
           ],
@@ -29,7 +32,7 @@ bot.on("message:text", async (ctx) => {
     });
     return;
   }
-
+  /*
   if (text === "/link") {
     await ctx.reply("FreeCup: ", {
       reply_markup: new InlineKeyboard().url(
@@ -39,6 +42,7 @@ bot.on("message:text", async (ctx) => {
     });
     return;
   }
+  */
 
   await ctx.reply(ctx.message.text);
 });
