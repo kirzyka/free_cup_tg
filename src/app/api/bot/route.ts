@@ -8,17 +8,22 @@ bot.on("message:text", async (ctx) => {
     const text = ctx.message.text;
     const lang = ctx.from.language_code;
     const imgUrl: string = "https://free-cup-tg.vercel.app/images/cup_c_e.png";
-    const description: string =
-        "Hello, I am a bot. I can do anything you want me to. Just send me a message and I'll reply you!";
+    const description: string = `${lang} Hello, I am a bot. I can do anything you want me to. Just send me a message and I'll reply you!`;
     const btnText: string = "Run FreeCup";
 
     if (text === "/start") {
         await ctx.replyWithPhoto(imgUrl, {
             caption: description,
-            reply_markup: new InlineKeyboard().url(
-                btnText,
-                "https://free-cup-tg.vercel.app/" + lang
-            ),
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        {
+                            text: btnText,
+                            callback_data: "open_mini_app",
+                        },
+                    ],
+                ],
+            },
         });
         return;
     }
