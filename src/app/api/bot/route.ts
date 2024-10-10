@@ -7,11 +7,19 @@ bot.on("message:text", async (ctx) => {
     //const chatId = ctx.chat.id;
     const text = ctx.message.text;
     const lang = ctx.from.language_code;
+    const imgUrl: string = "https://free-cup-tg.vercel.app/images/cup_c_e.png";
+    const description: string =
+        "Hello, I am a bot. I can do anything you want me to. Just send me a message and I'll reply you!";
+    const btnText: string = "Run FreeCup";
 
     if (text === "/start") {
-        await ctx.reply(
-            lang || "lang is undefined" //""Hello, I am a bot. I can do anything you want me to. Just send me a message and I'll reply you!"
-        );
+        await ctx.replyWithPhoto(imgUrl, {
+            caption: description,
+            reply_markup: new InlineKeyboard().url(
+                btnText,
+                "https://free-cup-tg.vercel.app/" + lang
+            ),
+        });
         return;
     }
 
