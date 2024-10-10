@@ -1,3 +1,4 @@
+import { DEFAULT_LANG } from '@/constClient';
 import da from './labels/da.json';
 import de from './labels/de.json';
 import en from './labels/en.json';
@@ -29,3 +30,13 @@ export const TRANSLATIONS: Record<string, Record<string, string>> = {
 };
 
 export const SUPPORTED_LANGS: string[] = Object.keys(TRANSLATIONS);
+
+export function getTranslationFn(language: string = DEFAULT_LANG) {
+  return (key: string, values?: Record<string, string>) => {
+    const translation: string = TRANSLATIONS[language]?.[key] || TRANSLATIONS[DEFAULT_LANG]?.[key] || key;
+
+    return values
+      ? translation.replace(/{\w+}/g, (match) => values[match.slice(1, -1)] || match)
+      : translation;
+  };
+};

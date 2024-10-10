@@ -1,5 +1,6 @@
 import { ROOT_URL } from "@/constClient";
 import { BOT_KEY } from "@/constServer";
+import { getTranslationFn } from "@/i18n/Translations";
 //import { getTranslationFn } from "@/i18n/LocalizationProvider";
 import { Bot, webhookCallback } from "grammy";
 
@@ -9,14 +10,14 @@ bot.on("message:text", async (ctx) => {
   //const chatId = ctx.chat.id;
   const text = ctx.message.text;
   const lang = ctx.from.language_code;
-  //const t = getTranslationFn(lang); 
+  const t = getTranslationFn(lang); 
 
   if (text === "/start") {
     const imgUrl: string = "https://free-cup-tg.vercel.app/images/cup_c_e.png";
     const btnText: string = "FreeCup";
 
     await ctx.replyWithPhoto(imgUrl, {
-      caption: lang,// t("BOT_START_DESCRIPTION"),
+      caption: t("BOT_START_DESCRIPTION"),
       reply_markup: {
         inline_keyboard: [
           [
