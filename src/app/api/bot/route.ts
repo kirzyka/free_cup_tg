@@ -41,4 +41,19 @@ bot.on("message:text", async (ctx) => {
     await ctx.reply(ctx.message.text);
 });
 
+bot.on("callback_query", async (ctx) => {
+    if (ctx.callbackQuery.data === "open_mini_app") {
+        await ctx.answerCbQuery("Opening Mini-App...");
+        await ctx.answerWebApp(
+            {
+                url: "https://free-cup-tg.vercel.app",
+                show_in_modal: false,
+                //webapp_height: 300,
+                webapp_bot_user_id: bot.botInfo.id,
+            },
+            { cache_time: 0 }
+        );
+    }
+});
+
 export const POST = webhookCallback(bot, "std/http");
