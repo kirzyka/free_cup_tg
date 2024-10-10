@@ -43,16 +43,20 @@ bot.on("message:text", async (ctx) => {
 
 bot.on("callback_query", async (ctx) => {
     if (ctx.callbackQuery.data === "open_mini_app") {
-        await ctx.answerCbQuery("Opening Mini-App...");
-        await ctx.answerWebApp(
-            {
-                url: "https://free-cup-tg.vercel.app",
-                show_in_modal: false,
-                //webapp_height: 300,
-                webapp_bot_user_id: bot.botInfo.id,
+        await ctx.editMessageReplyMarkup({
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        {
+                            text: "FreeCup",
+                            web_app: {
+                                url: "https://free-cup-tg.vercel.app",
+                            },
+                        },
+                    ],
+                ],
             },
-            { cache_time: 0 }
-        );
+        });
     }
 });
 
