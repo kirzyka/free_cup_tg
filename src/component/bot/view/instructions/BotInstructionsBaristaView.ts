@@ -2,11 +2,11 @@ import { BotCommand } from "@/app/api/bot/BotCommand";
 import { getTranslationFn } from "@/i18n/Translations";
 import { Context } from "grammy";
 
-export const botInstructionsView = async (ctx: Context) => {
+export const botInstructionsBaristaView = async (ctx: Context) => {
     const lang: string | undefined = ctx.from?.language_code;
     const t = getTranslationFn(lang);
 
-    const instructionMessage = t("BOT_INSTRUCTION_MESSAGE");
+    const instructionMessage = t("BOT_INSTRUCTION_BARISTA_MSG");
 
     await ctx.answerCallbackQuery();
     await ctx.reply(instructionMessage, {
@@ -16,7 +16,7 @@ export const botInstructionsView = async (ctx: Context) => {
                 [
                     {
                         text: t("CMN_BACK"),
-                        callback_data: BotCommand.SHOW_MAIN,
+                        callback_data: BotCommand.SHOW_INSTRUCTIONS_MAIN,
                     },
                 ],
             ],

@@ -2,26 +2,21 @@ import { BotCommand } from "@/app/api/bot/BotCommand";
 import { getTranslationFn } from "@/i18n/Translations";
 import { Context } from "grammy";
 
-export const botOfflineView = async (ctx: Context) => {
+export const botInstructionsClientView = async (ctx: Context) => {
     const lang: string | undefined = ctx.from?.language_code;
     const t = getTranslationFn(lang);
 
-    const message = t("BOT_OFFLINE_MSG");
+    const instructionMessage = t("BOT_INSTRUCTION_CLIENT_MSG");
 
     await ctx.answerCallbackQuery();
-    await ctx.reply(message, {
+    await ctx.reply(instructionMessage, {
+        parse_mode: "Markdown",
         reply_markup: {
             inline_keyboard: [
                 [
                     {
-                        text: "Android",
-                        url: "https://play.google.com/store/apps/details?id=com.kirzyka.freecup",
-                    },
-                ],
-                [
-                    {
                         text: t("CMN_BACK"),
-                        callback_data: BotCommand.SHOW_MAIN,
+                        callback_data: BotCommand.SHOW_INSTRUCTIONS_MAIN,
                     },
                 ],
             ],

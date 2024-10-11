@@ -3,19 +3,22 @@ import { BOT_KEY } from "@/constServer";
 import { BotCommand } from "./BotCommand";
 import { Botmessage } from "./BotMessage";
 import { botMainView } from "@/component/bot/view/main/BotMainView";
-import { botInstructionsView } from "@/component/bot/view/instructions/BotInstructionsView";
+import { botInstructionsMainView } from "@/component/bot/view/instructions/BotInstructionsMainView";
+import { botInstructionsBaristaView } from "@/component/bot/view/instructions/BotInstructionsBaristaView";
+import { botInstructionsClientView } from "@/component/bot/view/instructions/BotInstructionsClientView";
+import { botInstructionsSecurityView } from "@/component/bot/view/instructions/BotInstructionsSecurityView";
 import { botOfflineView } from "@/component/bot/view/offline/BotOfflineView";
 
 const bot = new Bot(BOT_KEY);
 
 bot.on("message:text", async (ctx: Context) => {
-  const text = ctx.message?.text || Botmessage.START;
+    const text = ctx.message?.text || Botmessage.START;
 
-  if (text === Botmessage.START) {
-    await botMainView(ctx);
-    return;
-  }
-  /*
+    if (text === Botmessage.START) {
+        await botMainView(ctx);
+        return;
+    }
+    /*
   if (text === "/link") {
     await ctx.reply("FreeCup: ", {
       reply_markup: new InlineKeyboard().url(
@@ -27,23 +30,32 @@ bot.on("message:text", async (ctx: Context) => {
   }
   */
 
-  await botMainView(ctx);
+    await botMainView(ctx);
 });
 
 bot.on("callback_query:data", async (ctx) => {
-  const callbackData = ctx.callbackQuery.data;
-  
-  switch (callbackData) {
-    case BotCommand.SHOW_INSTRUCTION:
-      await botInstructionsView(ctx);
-      break;
-    case BotCommand.SHOW_MAIN:
-      await botMainView(ctx);
-      break;
-    case BotCommand.SHOW_OFFLINE:
-      await botOfflineView(ctx);
-      break;
-  }
+    const callbackData = ctx.callbackQuery.data;
+
+    switch (callbackData) {
+        case BotCommand.SHOW_INSTRUCTIONS_MAIN:
+            await botInstructionsMainView(ctx);
+            break;
+        case BotCommand.SHOW_INSTRUCTIONS_BARISTA:
+            await botInstructionsBaristaView(ctx);
+            break;
+        case BotCommand.SHOW_INSTRUCTIONS_CLIENT:
+            await botInstructionsClientView(ctx);
+            break;
+        case BotCommand.SHOW_INSTRUCTIONS_SECURITY:
+            await botInstructionsSecurityView(ctx);
+            break;
+        case BotCommand.SHOW_MAIN:
+            await botMainView(ctx);
+            break;
+        case BotCommand.SHOW_OFFLINE:
+            await botOfflineView(ctx);
+            break;
+    }
 });
 
 export const POST = webhookCallback(bot, "std/http");
