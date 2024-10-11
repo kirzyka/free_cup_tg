@@ -41,5 +41,17 @@
 
   "SCR_SCAN_HEADER": "Skannaa koodi",
   "SCR_SCAN_DESCR": "Ole hyvä ja skannaa koodi baristan laitteesta",
-  "SCR_SCAN_BTN": "Skannaa"
+  "SCR_SCAN_BTN": "Skannaa",
+
+  "BOT_START_MSG": "Tervetuloa FreeCupiin! FreeCup on digitaalinen kanta-asiakaskorttisi, joka auttaa sinua seuraamaan kahviostojasi ja ansaitsemaan ilmaisia kuppeja. Aloita käyttämään sovellusta painamalla alla olevaa painiketta!",
+  "BOT_INSTRUCTION_MAIN_BTN_TEXT": "Ohjeet",
+  "BOT_INSTRUCTION_BARISTA_BTN_TEXT": "Barista",
+  "BOT_INSTRUCTION_CLIENT_BTN_TEXT": "Asiakas",
+  "BOT_INSTRUCTION_SECURITY_BTN_TEXT": "Turvallisuus",
+  "BOT_INSTRUCTION_MAIN_MSG": "*Mitä FreeCup voi tehdä*\n\n*Kahvilan luominen:* Barista luo kahvilan ja saa ainutlaatuisen QR-koodin.\n*Kahvilan lisääminen:* Asiakas skannaa baristan QR-koodin lisätäkseen kahvilan listalleen.\n*Kupeista lisääminen:* Jokaisen ostoksen jälkeen barista luo QR-koodin, jonka asiakas skannaa päivittääkseen digitaalisen korttinsa.\n*Kahvilan kloonaaminen:* Barista voi jakaa kahvilan tiedot kollegoilleen hallinnan helpottamiseksi.\n\n Lue lisää:",
+  "BOT_INSTRUCTION_BARISTA_MSG": "*Tärkeimmät ominaisuudet baristalle*\n\n*Kahvilan luominen:* Rekisteröi kahvilasi ja saat ainutlaatuisen QR-koodin asiakkaiden lisäämiseen.\n*Kupeista lisääminen:* Luo QR-koodi jokaisen asiakasoston jälkeen päivittääksesi heidän digitaalisen korttinsa.\n*Kahvilan kloonaaminen:* Jaa kahvila kollegoidesi kanssa.\n*Turvallisuus:* Kaikki tiedot salataan tietojen suojaamiseksi.",
+  "BOT_INSTRUCTION_CLIENT_MSG": "*Tärkeimmät ominaisuudet asiakkaalle*\n\n*Kahvilan lisääminen:* Skannaa baristan QR-koodi lisätäksesi kahvilan sovellukseen.\n*Ostosten seuraaminen:* Skannaa baristan QR-koodi aina, kun ostat kupin kahvia, päivittääksesi digitaalisen korttisi.\n*Palkintojen lunastus:* Kerää tarvittava määrä kuppeja ansaitaksesi ilmaisen juoman.\n*Hallinnoi kahviloita:* Lisää ja hallitse useita kahviloita ja vaihda helposti niiden välillä.\n*Turvallisuus:* Kuppitietosi salataan tietojesi suojaamiseksi.",
+  "BOT_INSTRUCTION_SECURITY_MSG": "*Tietoturva ja tietosuoja:*\n\nKaikki kuppeja ja kahviloita koskevat tiedot salataan turvallisuuden takaamiseksi. Asiakkaat eivät voi lisätä kuppeja itse – ainoastaan skannaamalla baristan QR-koodin.\n\nFreeCup tekee ilmaisten juomien keräämisestä ja lunastamisesta helppoa sekä asiakkaille että baristoille, poistaen tarpeen kantaa paperisia kortteja.",
+  "BOT_OFFLINE_BTN_TEXT": "Offline-versio",
+  "BOT_OFFLINE_MSG": "Seuraavat sovellusversiot ovat tällä hetkellä käytettävissä \"offline\"-tilassa:"
 }

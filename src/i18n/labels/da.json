@@ -41,5 +41,17 @@
 
   "SCR_SCAN_HEADER": "Scan koden",
   "SCR_SCAN_DESCR": "Venligst scan koden fra baristaens enhed",
-  "SCR_SCAN_BTN": "Scan"
+  "SCR_SCAN_BTN": "Scan",
+
+  "BOT_START_MSG": "Velkommen til FreeCup! FreeCup er dit digitale loyalitetskort, som hjælper dig med at holde styr på dine kaffekøb og optjene gratis kopper. Tryk på knappen nedenfor for at begynde at bruge appen!",
+  "BOT_INSTRUCTION_MAIN_BTN_TEXT": "Instruktioner",
+  "BOT_INSTRUCTION_BARISTA_BTN_TEXT": "Barista",
+  "BOT_INSTRUCTION_CLIENT_BTN_TEXT": "Kunde",
+  "BOT_INSTRUCTION_SECURITY_BTN_TEXT": "Sikkerhed",
+  "BOT_INSTRUCTION_MAIN_MSG": "*Hvad FreeCup kan gøre*\n\n*Opret en kaffebar:* Baristaen opretter en kaffebar og modtager en unik QR-kode.\n*Tilføj en kaffebar:* Kunden scanner baristaens QR-kode for at tilføje kaffebaren til sin liste.\n*Tilføj kopper:* Efter hvert køb genererer baristaen en QR-kode, som kunden scanner for at opdatere deres digitale kort.\n*Klon en kaffebar:* Baristaen kan dele kaffebarens data med kolleger for at lette administrationen.\n\n Læs mere:",
+  "BOT_INSTRUCTION_BARISTA_MSG": "*Vigtige funktioner for baristaer*\n\n*Opret en kaffebar:* Registrer din kaffebar og få en unik QR-kode til at tilføje kunder.\n*Tilføj kopper:* Generer en QR-kode efter hvert kundekøb for at opdatere deres digitale kort.\n*Klon en kaffebar:* Del kaffebaren med dine kolleger.\n*Sikkerhed:* Alle data er krypteret for at beskytte information.",
+  "BOT_INSTRUCTION_CLIENT_MSG": "*Vigtige funktioner for kunder*\n\n*Tilføj en kaffebar:* Scan baristaens QR-kode for at tilføje kaffebaren til appen.\n*Følg køb:* Hver gang du køber en kop kaffe, scanner du baristaens QR-kode for at opdatere dit digitale kort.\n*Få belønninger:* Saml det nødvendige antal kopper for at få en gratis drink.\n*Administrer kaffebarer:* Tilføj og administrer flere kaffebarer, og skift nemt mellem dem.\n*Sikkerhed:* Dine kopdata er krypteret for at beskytte dine oplysninger.",
+  "BOT_INSTRUCTION_SECURITY_MSG": "*Sikkerhed og databeskyttelse:*\n\nAlle data om kopper og kaffebarer er krypteret for at sikre sikkerheden. Kunderne kan ikke tilføje kopper selv – kun efter at have scannet baristaens QR-kode.\n\nFreeCup gør det nemt for både kunder og baristaer at optjene og modtage gratis drikkevarer, og eliminerer behovet for papirloyalitetskort.",
+  "BOT_OFFLINE_BTN_TEXT": "Offline version",
+  "BOT_OFFLINE_MSG": "Følgende versioner af appen er i øjeblikket tilgængelige til brug i \"offline\" tilstand:"
 }

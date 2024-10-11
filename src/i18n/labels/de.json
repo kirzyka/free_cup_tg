@@ -41,5 +41,17 @@
 
   "SCR_SCAN_HEADER": "Code scannen",
   "SCR_SCAN_DESCR": "Bitte scannen Sie den Code vom Gerät des Baristas",
-  "SCR_SCAN_BTN": "Scannen"
+  "SCR_SCAN_BTN": "Scannen",
+
+  "BOT_START_MSG": "Willkommen bei FreeCup! FreeCup ist Ihre digitale Treuekarte, die Ihnen hilft, Ihre Kaffeekäufe zu verfolgen und kostenlose Tassen zu verdienen. Klicken Sie auf die Schaltfläche unten, um die App zu verwenden!",
+  "BOT_INSTRUCTION_MAIN_BTN_TEXT": "Anleitung",
+  "BOT_INSTRUCTION_BARISTA_BTN_TEXT": "Barista",
+  "BOT_INSTRUCTION_CLIENT_BTN_TEXT": "Kunde",
+  "BOT_INSTRUCTION_SECURITY_BTN_TEXT": "Sicherheit",
+  "BOT_INSTRUCTION_MAIN_MSG": "*Was FreeCup kann*\n\n*Erstellen eines Cafés:* Der Barista erstellt ein Café und erhält einen einzigartigen QR-Code.\n*Café hinzufügen:* Der Kunde scannt den QR-Code des Baristas, um das Café zu seiner Liste hinzuzufügen.\n*Tassen hinzufügen:* Nach jedem Kauf generiert der Barista einen QR-Code, den der Kunde scannt, um seine digitale Karte zu aktualisieren.\n*Café klonen:* Der Barista kann die Daten des Cafés mit Kollegen teilen, um die Verwaltung zu erleichtern.\n\n Mehr erfahren:",
+  "BOT_INSTRUCTION_BARISTA_MSG": "*Wichtige Funktionen für Baristas*\n\n*Café erstellen:* Registrieren Sie Ihr Café und erhalten Sie einen einzigartigen QR-Code, um Kunden hinzuzufügen.\n*Tassen hinzufügen:* Generieren Sie nach jedem Kundenkauf einen QR-Code, um dessen digitale Karte zu aktualisieren.\n*Café klonen:* Teilen Sie das Café mit Kollegen.\n*Sicherheit:* Alle Daten werden verschlüsselt, um Informationen zu schützen.",
+  "BOT_INSTRUCTION_CLIENT_MSG": "*Wichtige Funktionen für Kunden*\n\n*Café hinzufügen:* Scannen Sie den QR-Code des Baristas, um das Café zur App hinzuzufügen.\n*Käufe verfolgen:* Scannen Sie den QR-Code des Baristas nach jedem Kauf einer Tasse Kaffee, um Ihre digitale Karte zu aktualisieren.\n*Belohnungen einlösen:* Sammeln Sie die erforderliche Anzahl von Tassen und erhalten Sie ein kostenloses Getränk.\n*Cafés verwalten:* Fügen Sie mehrere Cafés hinzu und verwalten Sie sie, indem Sie einfach zwischen ihnen wechseln.\n*Sicherheit:* Ihre Tassendaten werden verschlüsselt, um Ihre Informationen zu schützen.",
+  "BOT_INSTRUCTION_SECURITY_MSG": "*Sicherheit und Datenschutz:*\n\nAlle Daten über Tassen und Cafés werden verschlüsselt, um die Sicherheit zu gewährleisten. Kunden können keine Tassen selbst hinzufügen – nur durch Scannen des QR-Codes des Baristas.\n\nFreeCup macht das Sammeln und Einlösen von kostenlosen Getränken für Kunden und Baristas bequem und spart die Notwendigkeit, Papierkarten mitzuführen.",
+  "BOT_OFFLINE_BTN_TEXT": "Offline-Version",
+  "BOT_OFFLINE_MSG": "Die folgenden Versionen der App sind derzeit zur Verwendung im \"Offline\"-Modus verfügbar:"
 }

@@ -41,5 +41,17 @@
 
   "SCR_SCAN_HEADER": "Zeskanuj kod",
   "SCR_SCAN_DESCR": "Zeskanuj kod z urządzenia baristy",
-  "SCR_SCAN_BTN": "Zeskanuj"
+  "SCR_SCAN_BTN": "Zeskanuj",
+
+  "BOT_START_MSG": "Witamy w FreeCup! FreeCup to twoja cyfrowa karta lojalnościowa, która pomaga śledzić zakupy kawy i zdobywać darmowe filiżanki. Kliknij przycisk poniżej, aby rozpocząć korzystanie z aplikacji!",
+  "BOT_INSTRUCTION_MAIN_BTN_TEXT": "Instrukcja",
+  "BOT_INSTRUCTION_BARISTA_BTN_TEXT": "Barista",
+  "BOT_INSTRUCTION_CLIENT_BTN_TEXT": "Klient",
+  "BOT_INSTRUCTION_SECURITY_BTN_TEXT": "Bezpieczeństwo",
+  "BOT_INSTRUCTION_MAIN_MSG": "*Co potrafi FreeCup*\n\n*Tworzenie kawiarni:* Barista tworzy kawiarnię i otrzymuje unikalny kod QR.\n*Dodawanie kawiarni:* Klient skanuje kod QR baristy, aby dodać kawiarnię do swojej listy.\n*Dodawanie filiżanek:* Po każdym zakupie barista generuje kod QR, który klient skanuje, aby zaktualizować swoją cyfrową kartę.\n*Klonowanie kawiarni:* Barista może udostępniać dane kawiarni kolegom, aby ułatwić zarządzanie.\n\n Dowiedz się więcej:",
+  "BOT_INSTRUCTION_BARISTA_MSG": "*Kluczowe funkcje dla baristów*\n\n*Tworzenie kawiarni:* Zarejestruj swoją kawiarnię i otrzymaj unikalny kod QR do dodawania klientów.\n*Dodawanie filiżanek:* Generuj kod QR po każdym zakupie klienta, aby zaktualizować jego cyfrową kartę.\n*Klonowanie kawiarni:* Udostępnij kawiarnię swoim kolegom.\n*Bezpieczeństwo:* Wszystkie dane są szyfrowane w celu ochrony informacji.",
+  "BOT_INSTRUCTION_CLIENT_MSG": "*Kluczowe funkcje dla klientów*\n\n*Dodawanie kawiarni:* Skanuj kod QR baristy, aby dodać kawiarnię do aplikacji.\n*Śledzenie zakupów:* Za każdym razem, gdy kupujesz filiżankę kawy, skanuj kod QR baristy, aby zaktualizować swoją cyfrową kartę.\n*Zdobywanie nagród:* Zbierz wymaganą liczbę filiżanek, aby otrzymać darmowy napój.\n*Zarządzanie kawiarniami:* Dodawaj i zarządzaj wieloma kawiarniami, łatwo przełączając się między nimi.\n*Bezpieczeństwo:* Twoje dane dotyczące filiżanek są szyfrowane, aby chronić informacje.",
+  "BOT_INSTRUCTION_SECURITY_MSG": "*Bezpieczeństwo i ochrona danych:*\n\nWszystkie dane dotyczące filiżanek i kawiarni są szyfrowane w celu zapewnienia bezpieczeństwa. Klienci nie mogą samodzielnie dodawać filiżanek – tylko po zeskanowaniu kodu QR od baristy.\n\nFreeCup ułatwia zarówno klientom, jak i baristom proces gromadzenia i zdobywania darmowych napojów, eliminując potrzebę noszenia papierowych kart.",
+  "BOT_OFFLINE_BTN_TEXT": "Wersja offline",
+  "BOT_OFFLINE_MSG": "Obecnie dostępne są następujące wersje aplikacji do użytku w trybie \"offline\":"
 }

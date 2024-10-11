@@ -41,5 +41,17 @@
 
   "SCR_SCAN_HEADER": "Scan de code",
   "SCR_SCAN_DESCR": "Scan de code van het apparaat van de barista",
-  "SCR_SCAN_BTN": "Scannen"
+  "SCR_SCAN_BTN": "Scannen",
+
+  "BOT_START_MSG": "Welkom bij FreeCup! FreeCup is je digitale klantenkaart waarmee je je koffieraankopen kunt bijhouden en gratis kopjes kunt verdienen. Klik op de knop hieronder om de app te gebruiken!",
+  "BOT_INSTRUCTION_MAIN_BTN_TEXT": "Instructies",
+  "BOT_INSTRUCTION_BARISTA_BTN_TEXT": "Barista",
+  "BOT_INSTRUCTION_CLIENT_BTN_TEXT": "Klant",
+  "BOT_INSTRUCTION_SECURITY_BTN_TEXT": "Veiligheid",
+  "BOT_INSTRUCTION_MAIN_MSG": "*Wat FreeCup kan doen*\n\n*Een koffiebar maken:* De barista maakt een koffiebar en ontvangt een unieke QR-code.\n*Een koffiebar toevoegen:* De klant scant de QR-code van de barista om de koffiebar aan zijn lijst toe te voegen.\n*Kopjes toevoegen:* Na elke aankoop genereert de barista een QR-code die de klant scant om zijn digitale kaart bij te werken.\n*Een koffiebar klonen:* De barista kan de gegevens van de koffiebar delen met collega's om het beheer te vergemakkelijken.\n\n Meer informatie:",
+  "BOT_INSTRUCTION_BARISTA_MSG": "*Belangrijke functies voor barista's*\n\n*Een koffiebar maken:* Registreer je koffiebar en ontvang een unieke QR-code om klanten toe te voegen.\n*Kopjes toevoegen:* Genereer na elke klantenaankoop een QR-code om hun digitale kaart bij te werken.\n*Een koffiebar klonen:* Deel de koffiebar met collega's.\n*Veiligheid:* Alle gegevens worden versleuteld om informatie te beschermen.",
+  "BOT_INSTRUCTION_CLIENT_MSG": "*Belangrijke functies voor klanten*\n\n*Een koffiebar toevoegen:* Scan de QR-code van de barista om de koffiebar aan de app toe te voegen.\n*Aankopen bijhouden:* Elke keer dat je een kopje koffie koopt, scan je de QR-code van de barista om je digitale kaart bij te werken.\n*Beloningen verzilveren:* Verzamel het vereiste aantal kopjes om een gratis drankje te verdienen.\n*Koffiebars beheren:* Voeg meerdere koffiebars toe en beheer ze door eenvoudig te schakelen tussen de verschillende bars.\n*Veiligheid:* Je kopjesgegevens worden versleuteld om je informatie te beschermen.",
+  "BOT_INSTRUCTION_SECURITY_MSG": "*Veiligheid en gegevensbescherming:*\n\nAlle gegevens over kopjes en koffiebars worden versleuteld om de veiligheid te waarborgen. Klanten kunnen geen kopjes zelf toevoegen – alleen na het scannen van de QR-code van de barista.\n\nFreeCup maakt het verzamelen en verzilveren van gratis drankjes gemakkelijk voor zowel klanten als barista's, en elimineert de noodzaak om papieren kaarten mee te nemen.",
+  "BOT_OFFLINE_BTN_TEXT": "Offline versie",
+  "BOT_OFFLINE_MSG": "De volgende versies van de app zijn momenteel beschikbaar voor gebruik in de \"offline\" modus:"
 }
