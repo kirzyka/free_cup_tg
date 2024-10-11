@@ -9,8 +9,7 @@ export const botOfflineView = async (ctx: Context) => {
     const message = t("BOT_OFFLINE_MESSAGE");
 
     await ctx.answerCallbackQuery();
-    await ctx.reply(message, {
-        parse_mode: "MarkdownV2",
+    await ctx.reply(message, {        
         reply_markup: {
             inline_keyboard: [
                 [
