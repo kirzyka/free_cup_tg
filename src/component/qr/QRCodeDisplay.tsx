@@ -1,3 +1,4 @@
+import { generateQRCode } from '@/service/QRCodeService';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
@@ -12,11 +13,10 @@ export default function QrCodeDisplay({ text }: QrCodeDisplayProps) {
     // Функция для запроса QR-кода с сервера
     const fetchQrCode = async () => {
       try {
-        const response = await fetch(`/api/qrcode?text=${encodeURIComponent(text)}`);
-        const data = await response.json();
+        const data: string | undefined = await generateQRCode(text);
 
-        if (data.qrCodeDataURL) {
-          setQrCode(data.qrCodeDataURL);
+        if (data) {
+          setQrCode(data);
         }
       } catch (error) {
         console.error('Ошибка при получении QR-кода:', error);

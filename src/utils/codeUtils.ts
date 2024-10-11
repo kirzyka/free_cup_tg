@@ -1,7 +1,7 @@
 import { Action } from "@/types/Action";
 import Point from "@/types/Point";
-import { encrypt, generateHMAC } from "./cryptoUtils";
-
+import { generateHMAC } from "./cryptoUtils";
+import { encrypt } from "@/service/CryptoService";
 
 export const generateAddPointQRCode = async (point: Point) => {
     const data = {
