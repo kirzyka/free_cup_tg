@@ -17,6 +17,8 @@ export const botOfflineView = async (ctx: Context) => {
                         text: "Android",
                         url: "https://play.google.com/store/apps/details?id=com.kirzyka.freecup",
                     },
+                ],
+                [
                     {
                         text: t("CMN_BACK"),
                         callback_data: BotCommand.SHOW_MAIN,
