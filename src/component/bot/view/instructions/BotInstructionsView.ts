@@ -10,7 +10,7 @@ export const botInstructionsView = async (ctx: Context) => {
 
     await ctx.answerCallbackQuery();
     await ctx.reply(instructionMessage, {
-        //parse_mode: "Markdown",
+        parse_mode: "Markdown",
         reply_markup: {
             inline_keyboard: [
                 [
