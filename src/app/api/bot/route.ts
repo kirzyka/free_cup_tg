@@ -4,6 +4,7 @@ import { BotCommand } from "./BotCommand";
 import { Botmessage } from "./BotMessage";
 import { botMainView } from "@/component/bot/view/main/BotMainView";
 import { botInstructionsView } from "@/component/bot/view/instructions/BotInstructionsView";
+import { botOfflineView } from "@/component/bot/view/offline/BotOfflineView";
 
 const bot = new Bot(BOT_KEY);
 
@@ -32,8 +33,16 @@ bot.on("message:text", async (ctx: Context) => {
 bot.on("callback_query:data", async (ctx) => {
   const callbackData = ctx.callbackQuery.data;
   
-  if (callbackData === BotCommand.SHOW_INSTRUCTION) {
-    await botInstructionsView(ctx);
+  switch (callbackData) {
+    case BotCommand.SHOW_INSTRUCTION:
+      await botInstructionsView(ctx);
+      break;
+    case BotCommand.SHOW_MAIN:
+      await botMainView(ctx);
+      break;
+    case BotCommand.SHOW_OFFLINE:
+      await botOfflineView(ctx);
+      break;
   }
 });
 
