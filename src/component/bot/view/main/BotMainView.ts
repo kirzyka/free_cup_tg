@@ -20,13 +20,13 @@ export const botMainView = async (ctx: Context) => {
           ],
           [
             {
-              text: t("BOT_INSTRUCTION_BUTTON_TEXT"),
+              text: t("BOT_INSTRUCTION_BTN_TEXT"),
               callback_data: BotCommand.SHOW_INSTRUCTION,
             },
           ],
           [
             {
-              text: "Offline version",
+              text: t("BOT_OFFLINE_BTN_TEXT"),
               callback_data: BotCommand.SHOW_OFFLINE,
             }
           ]

@@ -46,7 +46,8 @@
   "SCR_SCAN_BTN": "Scan",
 
   "BOT_START_DESCRIPTION": "Welcome to FreeCup! FreeCup is your digital loyalty card that helps you track your coffee purchases and earn free cups. Click the button below to start using the app!",
-  "BOT_INSTRUCTION_BUTTON_TEXT": "How to use the app",
-  "BOT_INSTRUCTION_MESSAGE": "To use FreeCup, simply scan the QR code at your favorite coffee shop to record a purchase. Accumulate stamps and earn free coffee!",
+  "BOT_INSTRUCTION_BTN_TEXT": "How to use the app",
+  "BOT_INSTRUCTION_MESSAGE": "To use FreeCup, simply scan the QR code at your favorite coffee shop to record a purchase. Accumulate cups and earn free coffee!",
+  "BOT_OFFLINE_BTN_TEXT": "Offline version",
   "BOT_OFFLINE_MESSAGE": "The following versions of the app are currently available for use in \"Offline mode\":"
 }
