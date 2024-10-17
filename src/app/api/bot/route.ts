@@ -8,11 +8,17 @@ import { botInstructionsBaristaView } from "@/component/bot/view/instructions/Bo
 import { botInstructionsClientView } from "@/component/bot/view/instructions/BotInstructionsClientView";
 import { botInstructionsSecurityView } from "@/component/bot/view/instructions/BotInstructionsSecurityView";
 import { botOfflineView } from "@/component/bot/view/offline/BotOfflineView";
+import { getDailyStats, getMonthlyStats, updateDailyStatistics } from "@/utils/statisticUtils";
 
 const bot = new Bot(BOT_KEY);
 
 bot.on("message:text", async (ctx: Context) => {
+    const userId: number | undefined = ctx.from?.id;
     const text = ctx.message?.text || Botmessage.START;
+
+    if (userId) {
+        updateDailyStatistics(userId);
+    }
 
     if (text === Botmessage.START) {
         await botMainView(ctx);
@@ -56,6 +62,17 @@ bot.on("callback_query:data", async (ctx) => {
             await botOfflineView(ctx);
             break;
     }
+});
+
+bot.command("stat_day", async (ctx) => {
+    const dailyStats = getDailyStats();
+    await ctx.reply(`Уникальные пользователи за сегодня: ${dailyStats}`);
+});
+  
+
+bot.command("stat_month", async (ctx) => {
+    const monthlyStats = getMonthlyStats();
+    await ctx.reply(`Уникальные пользователи за этот месяц: ${monthlyStats}`);
 });
 
 export const POST = webhookCallback(bot, "std/http");
