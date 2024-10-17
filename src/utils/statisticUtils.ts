@@ -1,22 +1,37 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
-const statsFilePath = path.resolve(process.cwd(), 'data', 'statistics.json');
+const statsFilePath = path.resolve(process.cwd(), "data", "statistics.json");
 
 // Тип данных для статистики
 type Statistics = {
   uniqueUsers: Set<number>; // Используем Set для уникальных пользователей
 };
 
+const ensureDirectoryExists = (filePath: string) => {
+  const dir = path.dirname(filePath); // Получаем директорию из пути к файлу
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true }); // Создаём директорию, если её нет
+  }
+};
+
 // Функция чтения статистики из файла
 const readStatistics = (): Record<string, Statistics> => {
   try {
-    const data = fs.readFileSync(statsFilePath, 'utf8');
+    ensureDirectoryExists(statsFilePath);
+
+    if (!fs.existsSync(statsFilePath)) {
+      fs.writeFileSync(statsFilePath, JSON.stringify({}), "utf8");
+    }
+
+    const data = fs.readFileSync(statsFilePath, "utf8");
     const parsedData = JSON.parse(data);
 
     // Преобразуем массивы обратно в Set<number> для уникальных пользователей
     for (const day in parsedData) {
-      parsedData[day].uniqueUsers = new Set<number>(parsedData[day].uniqueUsers);
+      parsedData[day].uniqueUsers = new Set<number>(
+        parsedData[day].uniqueUsers
+      );
     }
 
     return parsedData;
@@ -27,17 +42,21 @@ const readStatistics = (): Record<string, Statistics> => {
 
 // Функция записи статистики в файл
 const writeStatistics = (data: Record<string, Statistics>) => {
-  // Преобразуем Set в массив перед записью
-  const dataToSave = JSON.parse(JSON.stringify(data, (key, value) =>
-    value instanceof Set ? Array.from(value) : value
-  ));
+  ensureDirectoryExists(statsFilePath);
 
-  fs.writeFileSync(statsFilePath, JSON.stringify(dataToSave, null, 2), 'utf8');
+  // Преобразуем Set в массив перед записью
+  const dataToSave = JSON.parse(
+    JSON.stringify(data, (key, value) =>
+      value instanceof Set ? Array.from(value) : value
+    )
+  );
+
+  fs.writeFileSync(statsFilePath, JSON.stringify(dataToSave, null, 2), "utf8");
 };
 
 // Функция для обновления статистики
 export const updateDailyStatistics = (userId: number) => {
-  const today = new Date().toISOString().split('T')[0]; // Получаем дату в формате YYYY-MM-DD
+  const today = new Date().toISOString().split("T")[0]; // Получаем дату в формате YYYY-MM-DD
   const stats = readStatistics();
 
   // Если для текущего дня еще нет данных, создаем запись
@@ -56,7 +75,7 @@ export const updateDailyStatistics = (userId: number) => {
 
 // Получить статистику за день
 export const getDailyStats = () => {
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
   const stats = readStatistics();
 
   if (!stats[today]) {
