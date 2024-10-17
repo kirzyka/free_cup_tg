@@ -8,7 +8,6 @@ import { botInstructionsBaristaView } from "@/component/bot/view/instructions/Bo
 import { botInstructionsClientView } from "@/component/bot/view/instructions/BotInstructionsClientView";
 import { botInstructionsSecurityView } from "@/component/bot/view/instructions/BotInstructionsSecurityView";
 import { botOfflineView } from "@/component/bot/view/offline/BotOfflineView";
-import { getDailyStats, getMonthlyStats, updateDailyStatistics } from "@/utils/statisticUtils";
 
 const bot = new Bot(BOT_KEY);
 
@@ -17,7 +16,7 @@ bot.on("message:text", async (ctx: Context) => {
     const text = ctx.message?.text || Botmessage.START;
 
     if (userId) {
-        updateDailyStatistics(userId);
+        //updateDailyStatistics(userId);
     }
 
     if (text === Botmessage.START) {
@@ -26,12 +25,12 @@ bot.on("message:text", async (ctx: Context) => {
     }
 
     if (text === Botmessage.STAT_DAY) {
-        const dailyStats = getDailyStats();
+        const dailyStats = 123;//getDailyStats();
         await ctx.reply(`Уникальные пользователи за сегодня: ${dailyStats}`);
     }
 
     if (text === Botmessage.STAT_MONTH) {
-        const monthlyStats = getMonthlyStats();
+        const monthlyStats = 12435;//getMonthlyStats();
         await ctx.reply(`Уникальные пользователи за этот месяц: ${monthlyStats}`);
     }
     /*
