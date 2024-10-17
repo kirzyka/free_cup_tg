@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const statsFilePath = path.resolve('./data/statistics.json');
+const statsFilePath = path.resolve(process.cwd(), 'data', 'statistics.json');
 
 // Тип данных для статистики
 type Statistics = {
