@@ -8,6 +8,7 @@ import { botInstructionsBaristaView } from "@/component/bot/view/instructions/Bo
 import { botInstructionsClientView } from "@/component/bot/view/instructions/BotInstructionsClientView";
 import { botInstructionsSecurityView } from "@/component/bot/view/instructions/BotInstructionsSecurityView";
 import { botOfflineView } from "@/component/bot/view/offline/BotOfflineView";
+import { getDailyStats, getMonthlyStats, updateDailyStatistics } from "@/utils/statisticUtils";
 
 const bot = new Bot(BOT_KEY);
 
@@ -16,22 +17,12 @@ bot.on("message:text", async (ctx: Context) => {
     const text = ctx.message?.text || Botmessage.START;
 
     if (userId) {
-        //updateDailyStatistics(userId);
+        await updateDailyStatistics(userId);
     }
 
     if (text === Botmessage.START) {
         await botMainView(ctx);
         return;
-    }
-
-    if (text === Botmessage.STAT_DAY) {
-        const dailyStats = 123;//getDailyStats();
-        await ctx.reply(`Уникальные пользователи за сегодня: ${dailyStats}`);
-    }
-
-    if (text === Botmessage.STAT_MONTH) {
-        const monthlyStats = 12435;//getMonthlyStats();
-        await ctx.reply(`Уникальные пользователи за этот месяц: ${monthlyStats}`);
     }
     /*
   if (text === "/link") {
@@ -46,6 +37,18 @@ bot.on("message:text", async (ctx: Context) => {
   */
 
     await botMainView(ctx);
+});
+
+// Команда для получения статистики за день
+bot.command(Botmessage.STAT_DAY, async (ctx) => {
+    const dailyStats = await getDailyStats();
+    await ctx.reply(`Уникальные пользователи за сегодня: ${dailyStats}`);
+});
+
+// Команда для получения статистики за месяц
+bot.command(Botmessage.STAT_MONTH, async (ctx) => {
+    const monthlyStats = await getMonthlyStats();
+    await ctx.reply(`Уникальные пользователи за этот месяц: ${monthlyStats}`);
 });
 
 bot.on("callback_query:data", async (ctx) => {
