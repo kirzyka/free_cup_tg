@@ -1,7 +1,7 @@
 import { Bot, Context, webhookCallback } from "grammy";
 import { BOT_KEY } from "@/constServer";
 import { BotCommand } from "./BotCommand";
-import { Botmessage } from "./BotMessage";
+import { BotMessage } from "./BotMessage";
 import { botMainView } from "@/component/bot/view/main/BotMainView";
 import { botInstructionsMainView } from "@/component/bot/view/instructions/BotInstructionsMainView";
 import { botInstructionsBaristaView } from "@/component/bot/view/instructions/BotInstructionsBaristaView";
@@ -14,16 +14,17 @@ const bot = new Bot(BOT_KEY);
 
 bot.on("message:text", async (ctx: Context) => {
     const userId: number | undefined = ctx.from?.id;
-    const text = ctx.message?.text || Botmessage.START;
+    const text = ctx.message?.text || BotMessage.START;
 
     if (userId) {
         await updateDailyStatistics(userId);
     }
 
-    if (text === Botmessage.START) {
+    if (text === BotMessage.START) {
         await botMainView(ctx);
         return;
     }
+
     /*
   if (text === "/link") {
     await ctx.reply("FreeCup: ", {
@@ -40,13 +41,13 @@ bot.on("message:text", async (ctx: Context) => {
 });
 
 // Команда для получения статистики за день
-bot.command(Botmessage.STAT_DAY, async (ctx) => {
+bot.command(BotCommand.STAT_DAY, async (ctx) => {
     const dailyStats = await getDailyStats();
     await ctx.reply(`Уникальные пользователи за сегодня: ${dailyStats}`);
 });
 
 // Команда для получения статистики за месяц
-bot.command(Botmessage.STAT_MONTH, async (ctx) => {
+bot.command(BotCommand.STAT_MONTH, async (ctx) => {
     const monthlyStats = await getMonthlyStats();
     await ctx.reply(`Уникальные пользователи за этот месяц: ${monthlyStats}`);
 });

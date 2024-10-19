@@ -5,4 +5,6 @@ export enum BotCommand {
     SHOW_INSTRUCTIONS_CLIENT = "show_instruction_client",
     SHOW_INSTRUCTIONS_SECURITY = "show_instruction_security",
     SHOW_OFFLINE = "show_offline",
+    STAT_DAY = "stat_day",
+    STAT_MONTH = "stat_month",
 }
