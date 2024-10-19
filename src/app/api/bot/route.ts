@@ -25,6 +25,17 @@ bot.on("message:text", async (ctx: Context) => {
         return;
     }
 
+    if (text === BotMessage.STAT_DAY) {
+        const dailyStats = await getDailyStats();
+        await ctx.reply(`Уникальные пользователи за сегодня: ${dailyStats}`);
+        return;
+    }
+
+    if (text === BotMessage.STAT_MONTH) {
+        const monthlyStats = await getMonthlyStats();
+        await ctx.reply(`Уникальные пользователи за этот месяц: ${monthlyStats}`);
+        return;
+    }
     /*
   if (text === "/link") {
     await ctx.reply("FreeCup: ", {
@@ -38,18 +49,6 @@ bot.on("message:text", async (ctx: Context) => {
   */
 
     await botMainView(ctx);
-});
-
-// Команда для получения статистики за день
-bot.command(BotCommand.STAT_DAY, async (ctx) => {
-    const dailyStats = await getDailyStats();
-    await ctx.reply(`Уникальные пользователи за сегодня: ${dailyStats}`);
-});
-
-// Команда для получения статистики за месяц
-bot.command(BotCommand.STAT_MONTH, async (ctx) => {
-    const monthlyStats = await getMonthlyStats();
-    await ctx.reply(`Уникальные пользователи за этот месяц: ${monthlyStats}`);
 });
 
 bot.on("callback_query:data", async (ctx) => {
