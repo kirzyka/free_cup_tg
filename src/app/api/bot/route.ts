@@ -13,7 +13,7 @@ import { getDailyStats, getMonthlyStats, updateDailyStatistics } from "@/utils/s
 const bot = new Bot(BOT_KEY);
 
 bot.api.setMyCommands([
-    { command: "start", description: "Начать использование бота" },
+    { command: "start", description: "Начать" },
 ]);
 
 bot.on("message:text", async (ctx: Context) => {
