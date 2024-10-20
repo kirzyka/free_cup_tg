@@ -12,6 +12,10 @@ import { getDailyStats, getMonthlyStats, updateDailyStatistics } from "@/utils/s
 
 const bot = new Bot(BOT_KEY);
 
+bot.api.setMyCommands([
+    { command: "start", description: "Начать использование бота" },
+]);
+
 bot.on("message:text", async (ctx: Context) => {
     const userId: number | undefined = ctx.from?.id;
     const text = ctx.message?.text || BotMessage.START;
